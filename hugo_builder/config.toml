@@ -1,0 +1,10 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "Testing"
+theme = 'hugo-theme-hacked'
+
+[markup.goldmark.renderer]
+unsafe= true
+
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
