@@ -13,8 +13,10 @@
   "scripts": {
     "build": "rollup -c; hugo",
     "autobuild": "rollup -c -w",
-    "dev": "run-p autobuild hugo:dev",
-    "hugo:dev": "hugo server --bind=0.0.0.0 -D"
+    "dev1": "run-p autobuild hugo:dev1",
+    "dev2": "run-p autobuild hugo:dev2",
+    "hugo:dev1": "hugo server",
+    "hugo:dev2": "hugo server --renderToDisk --cleanDestinationDir"
   },
   "dependencies": {
     "svelte-spa-router": "^3.1.0"

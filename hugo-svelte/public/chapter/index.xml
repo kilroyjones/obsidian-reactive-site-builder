@@ -2,21 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Chapters on My New Hugo Site</title>
-    <link>http://example.org/chapter/</link>
+    <link>http://localhost:1313/chapter/</link>
     <description>Recent content in Chapters on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="http://example.org/chapter/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/chapter/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title></title>
-      <link>http://example.org/chapter/part1/</link>
+      <link>http://localhost:1313/chapter/part1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/chapter/part1/</guid>
-      <description>In Chapter</description>
+      <guid>http://localhost:1313/chapter/part1/</guid>
+      <description>testing part1</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:1313/chapter/part2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/chapter/part2/</guid>
+      <description>testing part 2</description>
     </item>
     
   </channel>

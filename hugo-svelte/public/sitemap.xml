@@ -3,24 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://example.org/</loc>
+    <loc>http://localhost:1313/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/chapter/part1/</loc>
+    <loc>http://localhost:1313/chapter/part1/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/categories/</loc>
+    <loc>http://localhost:1313/chapter/part2/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/chapter/</loc>
+    <loc>http://localhost:1313/categories/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/tags/</loc>
+    <loc>http://localhost:1313/chapter/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/</loc>
   </url>
   
 </urlset>
