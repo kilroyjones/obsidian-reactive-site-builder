@@ -1,47 +1,15 @@
 <script>
-  import Accordion from "./Accordion/accordion.js";
-
   let menuActive = false;
   // list of items in accordian
-  const Animals = [
-    {
-      name: "cat",
-      display: "Meow!!",
-    },
-    {
-      name: "dog",
-      display: "Ruff Ruff!",
-    },
-    {
-      name: "bird",
-      display: "tweet tweet...",
-    },
-    {
-      name: "Pig",
-      display: "Oink Oink!!",
-    },
-  ];
-
-  //current list item selection
-  let selectionID;
-  // handler to set current selection item
-  const handleSelection = (item) => {
-    selectionID = item;
-    openedAccordion = 0;
-  };
-
-  // lookup to place display text of selected item in accordian header
-  $: selection = selectionID ? Animals.find((item) => item.name == selectionID).display : "";
-
-  // opened Accordion
-  let openedAccordion = 0;
-  const toggleAccordion = (e) => (openedAccordion = e.detail == openedAccordion ? 0 : e.detail);
 </script>
 
 <style>
   #sidebar-wrapper {
     min-height: 100vh;
-    margin-left: -20rem;
+    margin-left: -25rem;
+    padding-top: 8px;
+    padding-right: 20px;
+    text-align: right;
     -webkit-transition: margin 0.25s ease-out;
     -moz-transition: margin 0.25s ease-out;
     -o-transition: margin 0.25s ease-out;
@@ -49,12 +17,12 @@
   }
 
   #sidebar-wrapper .sidebar-heading {
-    padding: 0.875rem 1.25rem;
-    font-size: 1.2rem;
+    font-size: 2.2rem;
+    padding-bottom: 1.5rem;
   }
 
   #sidebar-wrapper .list-group {
-    width: 20rem;
+    width: 25rem;
     margin-left: 0px;
   }
 
@@ -77,7 +45,11 @@
     }
 
     #wrapper.toggled #sidebar-wrapper {
-      margin-left: -20rem;
+      margin-left: -25rem;
+    }
+
+    .navbar {
+      background-color: #00000000;
     }
   }
 </style>
@@ -85,34 +57,23 @@
 <div class="d-flex" id="wrapper" class:toggled={menuActive}>
   <div class="bg-light border-right" id="sidebar-wrapper">
     <slot name="sidebar-heading">
-      <div class="sidebar-heading">Welcome!</div>
+      <div class="sidebar-heading">Course Title</div>
     </slot>
     <div class="list-group list-group-flush">
-      <Accordion>
-        <Accordion.Section title={'Header One'}><a href="google.com">Google</a></Accordion.Section>
-        <Accordion.Section title={'Header Two'}>
-          Infuse your life with action. Don't wait for it to happen. Make it happen. Make your own
-          future. Make your own hope. Make your own love. And whatever your beliefs, honor your
-          creator, not by passively waiting for grace to come down from upon high, but by doing what
-          you can to make grace happen... yourself, right now, right down here on Earth.
-        </Accordion.Section>
-        <Accordion.Section title={'Header Three'}>
-          I believe that a trusting attitude and a patient attitude go hand in hand. You see, when
-          you let go and learn to trust God, it releases joy in your life. And when you trust God,
-          you're able to be more patient. Patience is not just about waiting for something... it's
-          about how you wait, or your attitude while waiting.
-        </Accordion.Section>
-      </Accordion>
       <slot name="sidebar" />
     </div>
   </div>
+
   <div id="page-content-wrapper">
-    <nav class="navbar  navbar-light bg-light border-bottom">
-      <button class="navbar-toggler" id="menu-toggle" on:click={() => (menuActive = !menuActive)}>
+    <nav class="navbar">
+      <button
+        class="navbar-toggler"
+        id="menu-toggle"
+        on:click={() => (menuActive = !menuActive)}>
         <span class="navbar-toggler-icon" />
       </button>
       <slot name="top-content">
-        <div class="navbar-brand">Helloasdfs</div>
+        <div class="navbar-brand">Menu Items</div>
       </slot>
     </nav>
     <div class="container-fluid">

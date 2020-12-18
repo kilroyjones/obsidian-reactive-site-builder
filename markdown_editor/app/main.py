@@ -4,47 +4,56 @@ import shutil
 import os
 
 
-def get_section_files(section_path):
-    return os.listdir(section_path)
+class BuildCourse:
 
-def get_sections(course_path):
-    sections = {}
-    files = os.listdir(course_path)
-    for item in files:
-        if os.path.isdir(course_path + '/' + item) and str(item + ".md") in files:
-            sections[item] = get_section_files(course_path + '/' + item)
-    return sections
+    def __init__(self, source_path):
+        self.source_path = source_path 
+        self.sections = self.get_sections()
 
-def convert_page(source, destination):
-    '''
-    The way the HTML formatting is done is odd. Need to find another source that does a better job. 
-    '''
-    page = ''
-    with open(source) as f:
-       page = md.markdown(f.read())
-    with open(destination, 'w') as f:
-        f.write(prettierfier.prettify_html(page))
+    def get_section_files(self, section_path):
+        return os.listdir(section_path)
 
-def output_course(course_path, sections):
-    for section in sections:
-        source = course_path + '/' + section + '.md'
-        destination = './app/public/' + section + '.md'
-        convert_page(source, destination)
+    def get_sections(self):
+        sections = {}
+        files = os.listdir(self.source_path)
+        for item in files:
+            if os.path.isdir(self.source_path + '/' + item) and str(item + ".md") in files:
+                sections[item] = self.get_section_files(self.source_path + '/' + item)
+        return sections
 
-        dir = './app/public/' + section
+    def build_links(page):
+        pass
+
+    def convert_page(self, source, destination):
+        '''
+        The way the HTML formatting is done is odd. Need to find another source that does a better job. 
+        '''
+        page = ''
+        with open(source) as f:
+            page = md.markdown(f.read())
+        with open(destination, 'w') as f:
+            f.write(prettierfier.prettify_html(page))
+    
+    def clean_directory(self, destination_path, section):
+        dir = destination_path + '/' + section
         if os.path.exists(dir):
             shutil.rmtree(dir)
         os.mkdir(dir) 
 
-        for page in sections[section]:
-            source = course_path + '/' + section + '/' + page
-            destination = './app/public/' + section + '/' + page[:-3] + '.html'
-            convert_page(source, destination)
+    def output_course(self, destination_path):
+        for section in self.sections:
+            source = self.source_path + '/' + section + '.md'
+            destination = destination_path + '/' + section + '.md'
+            self.convert_page(source, destination)
+            self.clean_directory(destination_path, section)
+
+            for page in self.sections[section]:
+                source = self.source_path + '/' + section + '/' + page
+                destination = destination_path + '/' + section + '/' + page[:-3] + '.html'
+                self.convert_page(source, destination)
 
 
 if __name__ == "__main__":
-    course_path = './app/course'
-    sections = get_sections(course_path) 
-    output_course(course_path, sections)
-
+    course = BuildCourse('./app/course')
+    course.output_course('./app/public')
 
