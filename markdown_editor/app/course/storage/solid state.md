@@ -2,7 +2,7 @@
 
 ---
 
-In solid state [[storage]] devices, [[binary]] data is stored with the presence or absence of an electrical charge, meaning there are no moving parts as there are in other storage devices.
+In solid state [[storage]] devices, [[storage/binary]] data is stored with the presence or absence of an electrical charge, meaning there are no moving parts as there are in other storage devices.
 
 ---
 

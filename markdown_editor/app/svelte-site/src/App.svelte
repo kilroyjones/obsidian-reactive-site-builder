@@ -4,43 +4,53 @@
   import active from "svelte-spa-router/active";
   import { link } from "svelte-spa-router";
   import Storage from "./content/Storage.svelte";
-  import Magnetic_tape_Storage from "./content/storage/Magnetic_tape_Storage.svelte";
-  import Optical_Storage from "./content/storage/Optical_Storage.svelte";
-  import Serial_Storage from "./content/storage/Serial_Storage.svelte";
-  import Direct_Storage from "./content/storage/Direct_Storage.svelte";
-  import Ssd_Storage from "./content/storage/Ssd_Storage.svelte";
-  import Hard_disks_Storage from "./content/storage/Hard_disks_Storage.svelte";
-  import Primary_Storage from "./content/storage/Primary_Storage.svelte";
-  import Backup_Storage from "./content/storage/Backup_Storage.svelte";
-  import Data_Storage from "./content/storage/Data_Storage.svelte";
-  import Binary_Storage from "./content/storage/Binary_Storage.svelte";
-  import Solid_state_Storage from "./content/storage/Solid_state_Storage.svelte";
-  import Secondary_Storage from "./content/storage/Secondary_Storage.svelte";
-  import Magnetic_Storage from "./content/storage/Magnetic_Storage.svelte";
+import Peripherals from "./content/Peripherals.svelte";
+import Magnetic_tape_Storage from "./content/storage/Magnetic_tape_Storage.svelte";
+import Optical_Storage from "./content/storage/Optical_Storage.svelte";
+import Serial_Storage from "./content/storage/Serial_Storage.svelte";
+import Direct_Storage from "./content/storage/Direct_Storage.svelte";
+import Ssd_Storage from "./content/storage/Ssd_Storage.svelte";
+import Hard_disks_Storage from "./content/storage/Hard_disks_Storage.svelte";
+import Primary_Storage from "./content/storage/Primary_Storage.svelte";
+import Backup_Storage from "./content/storage/Backup_Storage.svelte";
+import Data_Storage from "./content/storage/Data_Storage.svelte";
+import Binary_Storage from "./content/storage/Binary_Storage.svelte";
+import Solid_state_Storage from "./content/storage/Solid_state_Storage.svelte";
+import Secondary_Storage from "./content/storage/Secondary_Storage.svelte";
+import Magnetic_Storage from "./content/storage/Magnetic_Storage.svelte";
+import Binary_Peripherals from "./content/peripherals/Binary_Peripherals.svelte";
+import Mouse_Peripherals from "./content/peripherals/Mouse_Peripherals.svelte";
+import Keyboard_Peripherals from "./content/peripherals/Keyboard_Peripherals.svelte";
+
 
   const routes = {
     "/storage": Storage,
-    "/storage/magnetic_tape": Magnetic_tape_Storage,
-    "/storage/optical": Optical_Storage,
-    "/storage/serial": Serial_Storage,
-    "/storage/direct": Direct_Storage,
-    "/storage/SSD": Ssd_Storage,
-    "/storage/hard_disks": Hard_disks_Storage,
-    "/storage/primary": Primary_Storage,
-    "/storage/backup": Backup_Storage,
-    "/storage/data": Data_Storage,
-    "/storage/binary": Binary_Storage,
-    "/storage/solid_state": Solid_state_Storage,
-    "/storage/secondary": Secondary_Storage,
-    "/storage/magnetic": Magnetic_Storage,
+"/peripherals": Peripherals,
+"/storage/magnetic_tape": Magnetic_tape_Storage,
+"/storage/optical": Optical_Storage,
+"/storage/serial": Serial_Storage,
+"/storage/direct": Direct_Storage,
+"/storage/SSD": Ssd_Storage,
+"/storage/hard_disks": Hard_disks_Storage,
+"/storage/primary": Primary_Storage,
+"/storage/backup": Backup_Storage,
+"/storage/data": Data_Storage,
+"/storage/binary": Binary_Storage,
+"/storage/solid_state": Solid_state_Storage,
+"/storage/secondary": Secondary_Storage,
+"/storage/magnetic": Magnetic_Storage,
+"/peripherals/binary": Binary_Peripherals,
+"/peripherals/mouse": Mouse_Peripherals,
+"/peripherals/keyboard": Keyboard_Peripherals,
+
   };
 </script>
 
 <!-- Sources: https://github.com/sophana/svelte-spa-router-sidebar/tree/master/src -->
 <Sidebar>
-  <span slot="sidebar">
-    <a href="/storage" use:link use:active>Storage</a>
-  </span>
+  <span slot="sidebar"> <a href="/storage" use:link use:active>Storage</a><br>
+<a href="/peripherals" use:link use:active>Peripherals</a><br>
+ </span>
   <span slot="content">
     <Router {routes} />
   </span>

@@ -4,15 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "d2ac3f6252e7cc25",
+        "id": "672cd206d204ab23",
         "type": "leaf",
         "active": true,
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "Introduction/Part 1.md",
-            "mode": "source"
-          }
+          "type": "empty",
+          "state": {}
         }
       }
     ],
@@ -49,7 +46,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -69,7 +67,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Introduction/Part 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,6 +83,7 @@
     "collapsed": true
   },
   "lastOpenFiles": [
+    "Introduction/Part 1.md",
     "Introduction/Untitled.md",
     "Untitled.md"
   ]

@@ -1,2 +1,2 @@
 # Data
-Data in computer systems is stored using [[binary]] code on a variety of [[storage]] devices.
+Data in computer systems is stored using [[storage/binary]] code on a variety of [[storage]] devices.

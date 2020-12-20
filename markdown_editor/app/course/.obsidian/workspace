@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "storage/binary.md",
+            "file": "peripherals/keyboard.md",
             "mode": "source"
           }
         }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "storage/binary.md",
+                "file": "peripherals/keyboard.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -85,15 +85,15 @@
     "width": 300
   },
   "lastOpenFiles": [
+    "peripherals/keyboard.md",
+    "peripherals/binary.md",
     "storage/binary.md",
-    "storage/backup.md",
-    "storage/data.md",
-    "assets/binary counting on fingers.png",
-    "assets/Pasted image 20201216145209.png",
-    "storage/magnetic.md",
-    "direct.md",
+    "peripherals.md",
+    "peripherals/Untitled.md",
+    "storage/secondary.md",
     "storage.md",
-    "IGCSE ICT.md",
-    "storage/optical.md"
+    "Untitled.md",
+    "peripherals/Mouse.md",
+    "storage/Backup.md"
   ]
 }
