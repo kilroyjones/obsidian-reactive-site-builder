@@ -82,7 +82,6 @@ class Profile:
                 pages_path = os.path.join(self.source, section)
                 page_paths.append(section + ".md")
                 for page in os.listdir(pages_path):
-                    page = page.replace(" ", "_")
                     page_paths.append(os.path.join(section, page))
             return page_paths
         except OSError as e:
@@ -92,6 +91,7 @@ class Profile:
 
 if __name__ == "__main__":
     course_profile = Profile("../course")
+    print(course_profile.source)
     print(course_profile.sections)
     print(course_profile.section_pages)
     print(course_profile.page_paths)
