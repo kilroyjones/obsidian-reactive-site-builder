@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "peripherals/keyboard.md",
+            "file": "with space.md",
             "mode": "source"
           }
         }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "peripherals/keyboard.md",
+                "file": "with space.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -85,6 +85,8 @@
     "width": 300
   },
   "lastOpenFiles": [
+    "Untitled.md",
+    "with space/Untitled.md",
     "peripherals/keyboard.md",
     "peripherals/binary.md",
     "storage/binary.md",
@@ -92,8 +94,6 @@
     "peripherals/Untitled.md",
     "storage/secondary.md",
     "storage.md",
-    "Untitled.md",
-    "peripherals/Mouse.md",
-    "storage/Backup.md"
+    "peripherals/Mouse.md"
   ]
 }

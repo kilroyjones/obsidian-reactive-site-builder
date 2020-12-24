@@ -32,7 +32,8 @@ class Profile:
         self.source = source
         self.sections = self.get_sections()
         self.section_pages = self.get_section_pages()
-        self.page_paths = self.get_page_paths()
+        self.markdown_paths = self.get_markdown_paths()
+        self.svelte_paths = self.get_svelte_paths()
 
     def get_sections(self):
         """
@@ -71,27 +72,53 @@ class Profile:
             print(e)
             print("get_section_pages: Unable to read files from the given folder")
 
-    def get_page_paths(self):
+    def get_markdown_paths(self):
         """
         Gets all markdown file paths. These paths are with respect to the base
         course folder.
         """
         try:
-            page_paths = []
+            markdown_paths = []
             for section in self.sections:
-                pages_path = os.path.join(self.source, section)
-                page_paths.append(section + ".md")
-                for page in os.listdir(pages_path):
-                    page_paths.append(os.path.join(section, page))
-            return page_paths
+                markdown_path = os.path.join(self.source, section)
+                markdown_paths.append(section + ".md")
+                for page in os.listdir(markdown_path):
+                    markdown_paths.append(os.path.join(section, page))
+            return markdown_paths
         except OSError as e:
             print(e)
             print("get_path_pages: Unable to read file from the given folder")
 
+    def get_svelte_paths(self):
+        """
+        Gets the svelte routes with the capitalized svelte components for building
+        the App.svelte file.
+
+        Issues: Use os walk to get full tree and scan that way.
+        """
+        try:
+            svelte_paths = {}
+            for section in self.sections:
+                source = os.path.join(self.source, section)
+                section = section.replace(" ", "_")
+                section_path = os.path.join("/", section)
+                svelte_paths[section_path] = section.capitalize()
+                for page in os.listdir(source):
+                    destination = page.replace(" ", "_")[:-3]
+                    page_path = os.path.join("/", section_path, destination)
+                    svelte_paths[page_path] = (
+                        section.capitalize() + "_" + destination.capitalize()
+                    )
+            return svelte_paths
+        except OSError as e:
+            print(e)
+            print("get_svelte_routes: Unable to read the source folder for listdir")
+
 
 if __name__ == "__main__":
-    course_profile = Profile("../course")
+    course_profile = Profile("./app/course")
     print(course_profile.source)
     print(course_profile.sections)
     print(course_profile.section_pages)
-    print(course_profile.page_paths)
+    print(course_profile.markdown_paths)
+    print(course_profile.svelte_paths)

@@ -3,16 +3,16 @@
   import Router from "svelte-spa-router";
   import active from "svelte-spa-router/active";
   import { link } from "svelte-spa-router";
-  //$$$IMPORTS$$$
+  $$IMPORTS$$
 
   const routes = {
-    //$$$ROUTES$$$
+    $$ROUTES$$
   };
 </script>
 
 <!-- Sources: https://github.com/sophana/svelte-spa-router-sidebar/tree/master/src -->
 <Sidebar>
-  <span slot="sidebar"> $$$SIDEBAR$$$ </span>
+  <span slot="sidebar"> $$SIDEBAR$$ </span>
   <span slot="content">
     <Router {routes} />
   </span>
