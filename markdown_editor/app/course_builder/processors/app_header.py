@@ -37,7 +37,7 @@ class AppHeader:
             path = os.path.join("/", section.replace(" ", "_"))
             link = template.replace("$$PATH$$", path)
             link = link.replace("$$TITLE$$", section)
-            sidebar += link + '"\n'
+            sidebar += link + "\n"
         return app_header.replace("$$SIDEBAR$$", sidebar)
 
     def run(self):

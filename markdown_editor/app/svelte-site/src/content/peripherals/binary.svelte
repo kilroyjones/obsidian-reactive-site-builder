@@ -1,1 +1,2 @@
+<script> import { link } from "svelte-spa-router"; </script>
 <h1>Another binary</h1>

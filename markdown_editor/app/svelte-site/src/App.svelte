@@ -52,9 +52,9 @@ import Peripherals_Keyboard from "./content/peripherals/keyboard.svelte";
 
 <!-- Sources: https://github.com/sophana/svelte-spa-router-sidebar/tree/master/src -->
 <Sidebar>
-  <span slot="sidebar"> <a href="/with_space" use:link use:active>with space</a><br />"
-<a href="/storage" use:link use:active>storage</a><br />"
-<a href="/peripherals" use:link use:active>peripherals</a><br />"
+  <span slot="sidebar"> <a href="/with_space" use:link use:active>with space</a><br />
+<a href="/storage" use:link use:active>storage</a><br />
+<a href="/peripherals" use:link use:active>peripherals</a><br />
  </span>
   <span slot="content">
     <Router {routes} />

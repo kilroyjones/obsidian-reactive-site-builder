@@ -1,2 +1,2 @@
 # Introduction
-[[keyboard]] and [[mouse]] and [[peripherals/binary]] vs. [[storage/binary]]
+[[peripherals/keyboard]] and [[mouse]] and [[peripherals/binary]] vs. [[storage/binary]]

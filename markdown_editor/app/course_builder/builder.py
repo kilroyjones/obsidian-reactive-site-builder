@@ -66,8 +66,15 @@ class Builder:
         app_header = AppHeader(pages, params)
         app_header.run()
 
+    def run_processors(self, markdown_pages):
+        for Processor in self.processors:
+            processor = Processor(markdown_pages, self.profile)
+            markdown_pages = processor.run()
+        return markdown_pages
+
     def output_markdown(self, svelte_path):
         markdown_pages = self.__get_markdown()
+        markdown_pages = self.run_processors(markdown_pages)
         self.setup_svelte(markdown_pages, [self.profile, svelte_path])
         html = self.__get_html(markdown_pages)
         self.__create_folders(svelte_path)
