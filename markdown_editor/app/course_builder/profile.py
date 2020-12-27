@@ -1,5 +1,5 @@
 """
-Class: profile
+Class: Profile
 
 Description:
 
