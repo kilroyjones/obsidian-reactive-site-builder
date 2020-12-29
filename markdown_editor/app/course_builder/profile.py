@@ -34,7 +34,7 @@ class Profile:
         self.sections = self.get_sections()
         self.section_pages = self.get_section_pages()
         self.svelte_paths = self.get_svelte_paths()
-        # self.folder_structure = self.get_folder_structure()
+        self.assets_paths = self.get_asset_paths()
 
     def get_sections(self):
         """
@@ -119,16 +119,24 @@ class Profile:
             print(e)
             print("get_svelte_routes: Unable to read the source folder for listdir")
 
-    # def get_folder_structure(self):
-    #     folders = []
-    #     for section in self.sections:
-    #         folders.append(section)
+    def get_asset_paths(self):
+        """
+        Gets the svelte routes with the capitalized svelte components for building
+        the App.svelte file.
 
-    #         os.chdir(
-    #         subdirs = [x[0] for x in os.walk(".")]
-    #         print(subdirs)
-    # print(self.source)
-    # print(self.profile.svelte_paths)
+        Issues: Use os walk to get full tree and scan that way.
+        """
+        try:
+            assets_paths = {}
+            path = os.path.join(self.source, "assets")
+            for file_path in Path(path).rglob("*"):
+                asset_path = str(file_path).replace(str(path) + "/", "")
+                assets_paths[file_path] = asset_path
+            return assets_paths
+
+        except OSError as e:
+            print(e)
+            print("get_svelte_routes: Unable to read the source folder for listdir")
 
 
 if __name__ == "__main__":
@@ -146,3 +154,4 @@ if __name__ == "__main__":
     # print(course_profile.svelte_paths)
 
     # print(course_profile.folder_structure)
+    print(course_profile.assets_paths)
