@@ -21,6 +21,7 @@ Issues:
 """
 
 import os
+from pathlib import Path
 
 
 class Profile:
@@ -29,11 +30,11 @@ class Profile:
         Parameters:
             source: base folder of the project
         """
-        self.source = source
+        self.source = Path(source)
         self.sections = self.get_sections()
         self.section_pages = self.get_section_pages()
-        self.markdown_paths = self.get_markdown_paths()
         self.svelte_paths = self.get_svelte_paths()
+        # self.folder_structure = self.get_folder_structure()
 
     def get_sections(self):
         """
@@ -63,31 +64,24 @@ class Profile:
         and is not recursive.
         """
         try:
+            # Older non-recursive version
+            # section_pages = {}
+            # for section in self.sections:
+            #     pages_path = os.path.join(self.source, section)
+            #     section_pages[section] = os.listdir(pages_path)
+            # return section_pages
+
             section_pages = {}
             for section in self.sections:
-                pages_path = os.path.join(self.source, section)
-                section_pages[section] = os.listdir(pages_path)
+                section_pages[section] = []
+                section_path = os.path.join(self.source, section)
+                for file_path in Path(section_path).rglob("*.md"):
+                    section_pages[section].append(file_path)
             return section_pages
+
         except OSError as e:
             print(e)
             print("get_section_pages: Unable to read files from the given folder")
-
-    def get_markdown_paths(self):
-        """
-        Gets all markdown file paths. These paths are with respect to the base
-        course folder.
-        """
-        try:
-            markdown_paths = []
-            for section in self.sections:
-                markdown_path = os.path.join(self.source, section)
-                markdown_paths.append(section + ".md")
-                for page in os.listdir(markdown_path):
-                    markdown_paths.append(os.path.join(section, page))
-            return markdown_paths
-        except OSError as e:
-            print(e)
-            print("get_path_pages: Unable to read file from the given folder")
 
     def get_svelte_paths(self):
         """
@@ -97,28 +91,58 @@ class Profile:
         Issues: Use os walk to get full tree and scan that way.
         """
         try:
+            # svelte_paths = {}
+            # for section in self.sections:
+            #     source = os.path.join(self.source, section)
+            #     section = section.replace(" ", "_")
+            #     section_path = os.path.join("/", section)
+            #     svelte_paths[section_path] = section.capitalize()
+            #     for page in os.listdir(source):
+            #         destination = page.replace(" ", "_")[:-3]
+            #         page_path = os.path.join("/", section_path, destination)
+            #         svelte_paths[page_path] = (
+            #             section.capitalize() + "_" + destination.capitalize()
+            #         )
+            # return svelte_paths
+
             svelte_paths = {}
-            for section in self.sections:
-                source = os.path.join(self.source, section)
-                section = section.replace(" ", "_")
-                section_path = os.path.join("/", section)
-                svelte_paths[section_path] = section.capitalize()
-                for page in os.listdir(source):
-                    destination = page.replace(" ", "_")[:-3]
-                    page_path = os.path.join("/", section_path, destination)
-                    svelte_paths[page_path] = (
-                        section.capitalize() + "_" + destination.capitalize()
-                    )
+            for section in self.section_pages:
+                for page in self.section_pages[section]:
+                    route = str(page).replace(str(self.source), "")[:-3]
+                    route = route.replace(" ", "_")
+                    page = str(page.name).replace(" ", "_")[:-3]
+                    page = page.capitalize() + "_" + section.capitalize()
+                    svelte_paths[route] = page
             return svelte_paths
+
         except OSError as e:
             print(e)
             print("get_svelte_routes: Unable to read the source folder for listdir")
 
+    # def get_folder_structure(self):
+    #     folders = []
+    #     for section in self.sections:
+    #         folders.append(section)
+
+    #         os.chdir(
+    #         subdirs = [x[0] for x in os.walk(".")]
+    #         print(subdirs)
+    # print(self.source)
+    # print(self.profile.svelte_paths)
+
 
 if __name__ == "__main__":
     course_profile = Profile("./app/course")
-    print(course_profile.source)
-    print(course_profile.sections)
-    print(course_profile.section_pages)
-    print(course_profile.markdown_paths)
-    print(course_profile.svelte_paths)
+    # print("Sections ------------")
+    # print(course_profile.sections)
+
+    # print("Section Pages ------------")
+    # print(course_profile.section_pages)
+
+    # print("Markdown Paths ------------")
+    # print(course_profile.markdown_paths)
+
+    # print("Svelte Paths ------------")
+    # print(course_profile.svelte_paths)
+
+    # print(course_profile.folder_structure)

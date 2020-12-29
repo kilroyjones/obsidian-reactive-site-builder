@@ -23,6 +23,7 @@ Issues:
 
 import os
 import shutil
+from pathlib import Path
 from processors.app_header import AppHeader
 
 
@@ -57,10 +58,16 @@ class Builder:
         Reads from the root markdown folder and builds a dictionary with the
         path as the key and the markdown content as the value.
         """
+        # pages = {}
+        # for path in self.profile.markdown_paths:
+        #     source = os.path.join(self.profile.source, path)
+        #     pages[path] = self.__read_file(source)
+        # return pages
+
         pages = {}
-        for path in self.profile.markdown_paths:
-            source = os.path.join(self.profile.source, path)
-            pages[path] = self.__read_file(source)
+        for section in self.profile.sections:
+            for page in self.profile.section_pages[section]:
+                pages[page] = self.__read_file(page)
         return pages
 
     def __get_html(self, markdown_pages):
@@ -71,26 +78,27 @@ class Builder:
         html = {}
         for path in markdown_pages:
             source = markdown_pages[path]
+            path = Path(str(path).replace(".md", ".html"))
             html[path] = self.md.markdown(source)
         return html
 
-    def __create_folders(self, svelte_path):
-        """
-        Parameters:
-            svelte_path: The location for the svelte project
+    # def __create_folders(self, svelte_path):
+    #     """
+    #     Parameters:
+    #         svelte_path: The location for the svelte project
 
-        Creates the svelte project section folders from the markdown
-        folders.
+    #     Creates the svelte project section folders from the markdown
+    #     folders.
 
-        Issues:
-             - Will need to be fixed if dealing with nested folders.
-        """
-        for section in self.profile.sections:
-            section = section.replace(" ", "_")
-            folder = os.path.join(svelte_path, "src/content", section)
-            if os.path.exists(folder):
-                shutil.rmtree(folder)
-            os.mkdir(folder)
+    #     Issues:
+    #          - Will need to be fixed if dealing with nested folders.
+    #     """
+    #     for section in self.profile.sections:
+    #         section = section.replace(" ", "_")
+    #         folder = os.path.join(svelte_path, "src/content", section)
+    #         if os.path.exists(folder):
+    #             shutil.rmtree(folder)
+    #         os.mkdir(folder)
 
     def __save_as_svelte(self, destination, html):
         """
@@ -102,12 +110,22 @@ class Builder:
         to write to. It overwrites the App.svelte file at a later point.
         """
         for path in html:
-            svelte_file = os.path.join(
-                destination, "src/content", path.replace(" ", "_")
-            )
-            svelte_file = svelte_file[:-3] + ".svelte"
-            with open(svelte_file, "w") as f:
-                f.write(html[path])
+            file_path = Path(str(path).replace(str(self.profile.source) + "/", ""))
+            base = os.path.join(destination, "src/content")
+            svelte_path = os.path.join(base, file_path)
+            svelte_path = svelte_path.replace(".html", ".svelte")
+            svelte_path = svelte_path.replace(" ", "_")
+            if not os.path.exists(os.path.dirname(svelte_path)):
+                try:
+                    os.makedirs(os.path.dirname(svelte_path))
+                    with open(svelte_path, "w") as f:
+                        f.write(html[path])
+                except OSError as e:
+                    if e.errno != errno.EEXIST:
+                        print(e)
+                        print(
+                            "save_as_svelte: Error creating folders in svelte project base"
+                        )
 
     def __setup_svelte(self, markdown_pages, params):
         """
@@ -144,8 +162,8 @@ class Builder:
         Primary function for the builder.
         """
         markdown_pages = self.__get_markdown()
-        markdown_pages = self.__run_processors(markdown_pages)
+        # markdown_pages = self.__run_processors(markdown_pages)
         self.__setup_svelte(markdown_pages, [self.profile, svelte_path])
         html = self.__get_html(markdown_pages)
-        self.__create_folders(svelte_path)
+        # self.__create_folders(svelte_path)
         self.__save_as_svelte(svelte_path, html)
