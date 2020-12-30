@@ -15,8 +15,11 @@ Methods:
 Issues:
     - Currently only works with one level under each section, so nested
       folders will not be included.
+      - RESOLVED: Should be fixed at this point
+     
     
     - Assets folder not yet included.
+      - RESOLVED: Assets included as assets_paths
 
 """
 
@@ -64,13 +67,6 @@ class Profile:
         and is not recursive.
         """
         try:
-            # Older non-recursive version
-            # section_pages = {}
-            # for section in self.sections:
-            #     pages_path = os.path.join(self.source, section)
-            #     section_pages[section] = os.listdir(pages_path)
-            # return section_pages
-
             section_pages = {}
             for section in self.sections:
                 section_pages[section] = []
@@ -91,28 +87,15 @@ class Profile:
         Issues: Use os walk to get full tree and scan that way.
         """
         try:
-            # svelte_paths = {}
-            # for section in self.sections:
-            #     source = os.path.join(self.source, section)
-            #     section = section.replace(" ", "_")
-            #     section_path = os.path.join("/", section)
-            #     svelte_paths[section_path] = section.capitalize()
-            #     for page in os.listdir(source):
-            #         destination = page.replace(" ", "_")[:-3]
-            #         page_path = os.path.join("/", section_path, destination)
-            #         svelte_paths[page_path] = (
-            #             section.capitalize() + "_" + destination.capitalize()
-            #         )
-            # return svelte_paths
-
             svelte_paths = {}
             for section in self.section_pages:
+                svelte_section = section.replace(" ", "_")
+                svelte_paths["/" + svelte_section] = svelte_section.capitalize()
                 for page in self.section_pages[section]:
                     route = str(page).replace(str(self.source), "")[:-3]
                     route = route.replace(" ", "_")
-                    page = str(page.name).replace(" ", "_")[:-3]
-                    page = page.capitalize() + "_" + section.capitalize()
-                    svelte_paths[route] = page
+                    page = str(route[1:]).replace("/", "_")
+                    svelte_paths[route] = page.capitalize()
             return svelte_paths
 
         except OSError as e:
@@ -141,17 +124,14 @@ class Profile:
 
 if __name__ == "__main__":
     course_profile = Profile("./app/course")
-    # print("Sections ------------")
-    # print(course_profile.sections)
+    print("\nSections ------------")
+    print(course_profile.sections)
 
-    # print("Section Pages ------------")
-    # print(course_profile.section_pages)
+    print("\nSection Pages ------------")
+    print(course_profile.section_pages)
 
-    # print("Markdown Paths ------------")
-    # print(course_profile.markdown_paths)
+    print("\nSvelte Paths ------------")
+    print(course_profile.svelte_paths)
 
-    # print("Svelte Paths ------------")
-    # print(course_profile.svelte_paths)
-
-    # print(course_profile.folder_structure)
+    print("\nAssests Paths ------------")
     print(course_profile.assets_paths)

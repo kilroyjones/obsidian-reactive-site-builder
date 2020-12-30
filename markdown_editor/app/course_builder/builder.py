@@ -11,7 +11,6 @@ Methods:
     read_file
     get_markdown
     get_html
-    create_folders
     save_as_svelte
     setup_svelte
     run_processors
@@ -58,12 +57,6 @@ class Builder:
         Reads from the root markdown folder and builds a dictionary with the
         path as the key and the markdown content as the value.
         """
-        # pages = {}
-        # for path in self.profile.markdown_paths:
-        #     source = os.path.join(self.profile.source, path)
-        #     pages[path] = self.__read_file(source)
-        # return pages
-
         pages = {}
         for section in self.profile.sections:
             for page in self.profile.section_pages[section]:
@@ -81,24 +74,6 @@ class Builder:
             path = Path(str(path).replace(".md", ".html"))
             html[path] = self.md.markdown(source)
         return html
-
-    # def __create_folders(self, svelte_path):
-    #     """
-    #     Parameters:
-    #         svelte_path: The location for the svelte project
-
-    #     Creates the svelte project section folders from the markdown
-    #     folders.
-
-    #     Issues:
-    #          - Will need to be fixed if dealing with nested folders.
-    #     """
-    #     for section in self.profile.sections:
-    #         section = section.replace(" ", "_")
-    #         folder = os.path.join(svelte_path, "src/content", section)
-    #         if os.path.exists(folder):
-    #             shutil.rmtree(folder)
-    #         os.mkdir(folder)
 
     def __save_as_svelte(self, destination, html):
         """
@@ -123,9 +98,7 @@ class Builder:
                 except OSError as e:
                     if e.errno != errno.EEXIST:
                         print(e)
-                        print(
-                            "save_as_svelte: Error creating folders in svelte project base"
-                        )
+                        print("save_as_svelte: Error creating base folders")
 
     def __setup_svelte(self, markdown_pages, params):
         """
@@ -162,8 +135,6 @@ class Builder:
         Primary function for the builder.
         """
         markdown_pages = self.__get_markdown()
-        # markdown_pages = self.__run_processors(markdown_pages)
         self.__setup_svelte(markdown_pages, [self.profile, svelte_path])
         html = self.__get_html(markdown_pages)
-        # self.__create_folders(svelte_path)
         self.__save_as_svelte(svelte_path, html)
