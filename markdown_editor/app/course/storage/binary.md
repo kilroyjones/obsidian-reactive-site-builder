@@ -2,7 +2,7 @@
 Binary code is the fundamental language of the computer, using only two digits (**0s** and **1s**) to represent data in a computer system.
 
 ## Bits and bytes
-Each zero or one is called a **bit** (binary digit), which is held in [[storage]] using some form of on/off switch. You can use a form of binary counting to count to 31 on the fingers of one hand.
+Each zero or one is called a **bit** (binary digit), which is held in [[storage/home]] using some form of on/off switch. You can use a form of binary counting to count to 31 on the fingers of one hand.
 
 If your thumb is worth 1, each finger doubles in value: your index finger is worth 2, middle finger is 4, ring finger is 8 and little finger is 16:
 ![[hand.png]]

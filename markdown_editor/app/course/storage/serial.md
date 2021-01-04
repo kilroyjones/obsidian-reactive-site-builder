@@ -1,5 +1,5 @@
 # Serial data access
-In **serial** data [[storage]] devices, data is stored in **sequential** order.
+In **serial** data [[storage/home]] devices, data is stored in **sequential** order.
 
 ![[sequentialdatastorage.png]]
 

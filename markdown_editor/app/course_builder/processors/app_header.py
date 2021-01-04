@@ -34,7 +34,7 @@ class AppHeader:
         sidebar = ""
         template = '<a href="$$PATH$$" use:link use:active>$$TITLE$$</a><br />'
         for section in self.profile.sections:
-            path = os.path.join("/", section.replace(" ", "_"))
+            path = os.path.join("/", section.replace(" ", "_") + "/home")
             link = template.replace("$$PATH$$", path)
             link = link.replace("$$TITLE$$", section)
             sidebar += link + "\n"

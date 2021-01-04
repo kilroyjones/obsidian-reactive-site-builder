@@ -6,33 +6,49 @@ import re
 
 
 class Links:
-    def __init__(self, pages, profile):
-        self.pages = pages
+    def __init__(self, markdown_pages, profile):
+        self.markdown_pages = markdown_pages
         self.profile = profile
 
-    def __replace(self, page, markdown_path, to_replace, title):
-        svelte_path = markdown_path.replace(" ", "_")[:-3]
+    def __replace_links(self, content, path, to_replace, title):
+        svelte_path = path.replace(" ", "_")
         link = '<a href="/' + svelte_path + '" use:link>' + title + "</a>"
-        print(to_replace, link)
-        self.pages[page] = self.pages[page].replace(to_replace, link)
+        return content.replace(to_replace, link)
 
-    def __process_matches(self, page, matches):
+    def __get_path(self, page, tag_title):
+        for section in self.profile.section_pages:
+            for page_path in self.profile.section_pages[section]:
+                if tag_title + ".md" in page_path:
+                    page_path = page_path.replace(str(self.profile.source) + "/", "")
+                    if page_path[-3:] == ".md":
+                        return page_path[:-3]
+                    return page_path
+        return "/"
+
+    def __process_matches(self, page, content, matches):
         for match in matches:
             to_replace = match[0].strip()
-            title = match[1].strip()
-            markdown_path = match[1].strip() + ".md"
-            if markdown_path in self.profile.markdown_paths:
-                self.__replace(page, markdown_path, to_replace, title)
-            else:
-                for section in self.profile.section_pages:
-                    if markdown_path in self.profile.section_pages[section]:
-                        markdown_path = os.path.join(section, markdown_path)
-                        self.__replace(page, markdown_path, to_replace, title)
+            tag_title = match[1].strip()
+            path = self.__get_path(page, tag_title)
+            content = self.__replace_links(content, path, to_replace, tag_title)
+        return content
+
+    def __get_all_possible_links(self, page):
+        return re.findall("[^!](\[\[(.*?)\]\])", page)
+
+    def __append_svelte_header(self, page):
+        header = '<script> import { link } from "svelte-spa-router"; </script>'
+        return header + "\n" + page
 
     def run(self):
-        header = '<script> import { link } from "svelte-spa-router"; </script>'
-        for page in self.pages:
-            matches = re.findall("(\[\[(.*?)\]\])", self.pages[page])
-            self.pages[page] = header + "\n" + self.pages[page]
-            self.__process_matches(page, matches)
-        return self.pages
+        for page in self.markdown_pages:
+            print(page)
+            content = self.markdown_pages[page]
+            matches = self.__get_all_possible_links(content)
+            if len(matches) > 0:
+                content = self.__append_svelte_header(content)
+                content = self.__process_matches(page, content, matches)
+                # print(content)
+                self.markdown_pages[page] = content
+                print("----------")
+        return self.markdown_pages

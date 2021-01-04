@@ -1,5 +1,5 @@
 # Magnetic hard disks
-Hard disks magnetically charge sectors of rotating platters to store [[storage/binary]] data. They are [[secondary]] [[storage]] devices that are commonly found in desktop and laptop computers because of their **low cost per gigabyte** and **high capacity**.
+Hard disks magnetically charge sectors of rotating platters to store [[storage/binary]] data. They are [[secondary]] [[storage/home]] devices that are commonly found in desktop and laptop computers because of their **low cost per gigabyte** and **high capacity**.
 
 Hard drive capacities have expanded in recent years due tosectors on drives being made smaller, and by more platters being included inside the drive itself.
 ![[readwritehead.png]]

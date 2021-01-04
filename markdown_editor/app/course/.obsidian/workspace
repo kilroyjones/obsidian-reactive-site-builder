@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "storage/optical.md",
+            "file": "peripherals/home.md",
             "mode": "source"
           }
         }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "storage/optical.md",
+                "file": "peripherals/home.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -85,15 +85,15 @@
     "width": 300
   },
   "lastOpenFiles": [
-    "storage/optical.md",
-    "storage/secondary.md",
-    "storage/backup.md",
-    "keyboards.md",
-    "Untitled.md",
-    "with space.md",
-    "with space/Untitled.md",
-    "peripherals/keyboard.md",
+    "peripherals/home.md",
+    "storage/magnetic tape.md",
+    "peripherals/mouse.md",
+    "peripherals/Untitled.md",
     "peripherals/binary.md",
-    "storage/binary.md"
+    "keyboard.md",
+    "with space.md",
+    "peripherals/peripherals.md",
+    "storage.md",
+    "with space/goods.md"
   ]
 }

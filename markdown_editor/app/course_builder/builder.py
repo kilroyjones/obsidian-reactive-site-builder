@@ -72,7 +72,7 @@ class Builder:
         for path in markdown_pages:
             source = markdown_pages[path]
             path = Path(str(path).replace(".md", ".html"))
-            html[path] = self.md.markdown(source)
+            html[str(path)] = self.md.markdown(source)
         return html
 
     def __save_as_svelte(self, destination, html):
@@ -93,12 +93,17 @@ class Builder:
             if not os.path.exists(os.path.dirname(svelte_path)):
                 try:
                     os.makedirs(os.path.dirname(svelte_path))
-                    with open(svelte_path, "w") as f:
-                        f.write(html[path])
                 except OSError as e:
                     if e.errno != errno.EEXIST:
                         print(e)
                         print("save_as_svelte: Error creating base folders")
+                    print(e)
+            try:
+                with open(svelte_path, "w") as f:
+                    f.write(html[path])
+            except OSError as e:
+                print(e)
+                print("save_as_svelte: file does not exist")
 
     def __setup_svelte(self, markdown_pages, params):
         """
@@ -136,5 +141,6 @@ class Builder:
         """
         markdown_pages = self.__get_markdown()
         self.__setup_svelte(markdown_pages, [self.profile, svelte_path])
+        self.__run_processors(markdown_pages)
         html = self.__get_html(markdown_pages)
         self.__save_as_svelte(svelte_path, html)

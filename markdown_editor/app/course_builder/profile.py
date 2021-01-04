@@ -36,6 +36,7 @@ class Profile:
         self.source = Path(source)
         self.sections = self.get_sections()
         self.section_pages = self.get_section_pages()
+        # self.markdown_paths = self.get_markdown_paths()
         self.svelte_paths = self.get_svelte_paths()
         self.assets_paths = self.get_asset_paths()
 
@@ -46,11 +47,11 @@ class Profile:
         """
         try:
             sections = []
-            items = os.listdir(self.source)
-            for item in items:
-                item_with_path = os.path.join(self.source, item)
-                if os.path.isdir(item_with_path) and str(item + ".md") in items:
-                    sections.append(item)
+            for section in os.listdir(self.source):
+                section_path = os.path.join(self.source, section)
+                if os.path.isdir(section_path):
+                    if "home.md" in os.listdir(section_path):
+                        sections.append(section)
             return sections
 
         except OSError as e:
@@ -69,15 +70,37 @@ class Profile:
         try:
             section_pages = {}
             for section in self.sections:
-                section_pages[section] = []
                 section_path = os.path.join(self.source, section)
+                section_pages[section] = []
                 for file_path in Path(section_path).rglob("*.md"):
-                    section_pages[section].append(file_path)
+                    section_pages[section].append(str(file_path))
             return section_pages
 
         except OSError as e:
             print(e)
             print("get_section_pages: Unable to read files from the given folder")
+
+    # def get_markdown_paths(self):
+    #     """
+    #     Temp
+    #     """
+    #     try:
+    #         markdown_paths = {}
+    #         for section in self.section_pages:
+    #             path = str(os.path.join(self.source, section)) + ".md"
+    #             markdown_paths[section] = path
+    #             for page in self.section_pages[section]:
+    #                 page = str(page)
+    #                 path = page[: page.rfind("/")]
+    #                 page = page[page.rfind("/") + 1 : -3]
+    #                 markdown_paths[page] = path
+    #         return markdown_paths
+    #     except OSError as e:
+    #         print(e)
+    #         print(
+    #             "get_markdown_paths: Error building markdown paths. Maybe missing a section (folder) markdown file."
+    #         )
+    #     return markdown_paths
 
     def get_svelte_paths(self):
         """
@@ -89,8 +112,6 @@ class Profile:
         try:
             svelte_paths = {}
             for section in self.section_pages:
-                svelte_section = section.replace(" ", "_")
-                svelte_paths["/" + svelte_section] = svelte_section.capitalize()
                 for page in self.section_pages[section]:
                     route = str(page).replace(str(self.source), "")[:-3]
                     route = route.replace(" ", "_")
@@ -114,7 +135,7 @@ class Profile:
             path = os.path.join(self.source, "assets")
             for file_path in Path(path).rglob("*"):
                 asset_path = str(file_path).replace(str(path) + "/", "")
-                assets_paths[file_path] = asset_path
+                assets_paths[file_path] = str(asset_path)
             return assets_paths
 
         except OSError as e:
@@ -129,6 +150,9 @@ if __name__ == "__main__":
 
     print("\nSection Pages ------------")
     print(course_profile.section_pages)
+
+    # print("\nMarkdown Paths ------------")
+    # print(course_profile.markdown_paths)
 
     print("\nSvelte Paths ------------")
     print(course_profile.svelte_paths)
