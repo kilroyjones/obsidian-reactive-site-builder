@@ -14,6 +14,8 @@
 <Sidebar>
   <span slot="sidebar"> $$SIDEBAR$$ </span>
   <span slot="content">
-    <Router {routes} />
+    <div class="container">
+      <Router {routes} />
+    </div>
   </span>
 </Sidebar>

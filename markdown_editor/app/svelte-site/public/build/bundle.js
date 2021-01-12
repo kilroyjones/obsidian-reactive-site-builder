@@ -505,7 +505,7 @@ var app = (function () {
     const get_sidebar_heading_slot_changes = dirty => ({});
     const get_sidebar_heading_slot_context = ctx => ({});
 
-    // (59:33)        
+    // (70:33)        
     function fallback_block_1(ctx) {
     	let div;
 
@@ -513,8 +513,8 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.textContent = "Course Title";
-    			attr_dev(div, "class", "sidebar-heading svelte-1aa4wl1");
-    			add_location(div, file, 59, 6, 1149);
+    			attr_dev(div, "class", "sidebar-heading svelte-1hzka6");
+    			add_location(div, file, 70, 6, 1337);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -528,14 +528,86 @@ var app = (function () {
     		block,
     		id: fallback_block_1.name,
     		type: "fallback",
-    		source: "(59:33)        ",
+    		source: "(70:33)        ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (75:31)          
+    // (90:8) {:else}
+    function create_else_block(ctx) {
+    	let img;
+    	let img_src_value;
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			img = element("img");
+    			t = text("\n          sidebar");
+    			if (img.src !== (img_src_value = "static/images/left-chevron.svg")) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "width", "10px");
+    			attr_dev(img, "alt", "open chevron");
+    			add_location(img, file, 90, 10, 1880);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, img, anchor);
+    			insert_dev(target, t, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(img);
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block.name,
+    		type: "else",
+    		source: "(90:8) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (84:8) {#if menuActive}
+    function create_if_block(ctx) {
+    	let t;
+    	let img;
+    	let img_src_value;
+
+    	const block = {
+    		c: function create() {
+    			t = text("sidebar\n          ");
+    			img = element("img");
+    			if (img.src !== (img_src_value = "static/images/right-chevron.svg")) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "width", "10px");
+    			attr_dev(img, "alt", "close chevron");
+    			add_location(img, file, 85, 10, 1739);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    			insert_dev(target, img, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    			if (detaching) detach_dev(img);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block.name,
+    		type: "if",
+    		source: "(84:8) {#if menuActive}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (98:31)          
     function fallback_block(ctx) {
     	let div;
 
@@ -544,7 +616,7 @@ var app = (function () {
     			div = element("div");
     			div.textContent = "Menu Items";
     			attr_dev(div, "class", "navbar-brand");
-    			add_location(div, file, 75, 8, 1589);
+    			add_location(div, file, 98, 8, 2081);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -558,7 +630,7 @@ var app = (function () {
     		block,
     		id: fallback_block.name,
     		type: "fallback",
-    		source: "(75:31)          ",
+    		source: "(98:31)          ",
     		ctx
     	});
 
@@ -574,7 +646,6 @@ var app = (function () {
     	let div3;
     	let nav;
     	let button;
-    	let span;
     	let t2;
     	let t3;
     	let div2;
@@ -586,6 +657,14 @@ var app = (function () {
     	const sidebar_heading_slot_or_fallback = sidebar_heading_slot || fallback_block_1(ctx);
     	const sidebar_slot_template = /*#slots*/ ctx[2].sidebar;
     	const sidebar_slot = create_slot(sidebar_slot_template, ctx, /*$$scope*/ ctx[1], get_sidebar_slot_context);
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*menuActive*/ ctx[0]) return create_if_block;
+    		return create_else_block;
+    	}
+
+    	let current_block_type = select_block_type(ctx);
+    	let if_block = current_block_type(ctx);
     	const top_content_slot_template = /*#slots*/ ctx[2]["top-content"];
     	const top_content_slot = create_slot(top_content_slot_template, ctx, /*$$scope*/ ctx[1], get_top_content_slot_context);
     	const top_content_slot_or_fallback = top_content_slot || fallback_block(ctx);
@@ -604,33 +683,31 @@ var app = (function () {
     			div3 = element("div");
     			nav = element("nav");
     			button = element("button");
-    			span = element("span");
+    			if_block.c();
     			t2 = space();
     			if (top_content_slot_or_fallback) top_content_slot_or_fallback.c();
     			t3 = space();
     			div2 = element("div");
     			if (content_slot) content_slot.c();
-    			attr_dev(div0, "class", "list-group list-group-flush svelte-1aa4wl1");
-    			add_location(div0, file, 61, 4, 1213);
-    			attr_dev(div1, "class", "bg-light border-right svelte-1aa4wl1");
+    			attr_dev(div0, "class", "list-group list-group-flush svelte-1hzka6");
+    			add_location(div0, file, 72, 4, 1401);
+    			attr_dev(div1, "class", "bg-light border-right svelte-1hzka6");
     			attr_dev(div1, "id", "sidebar-wrapper");
-    			add_location(div1, file, 57, 2, 1052);
-    			attr_dev(span, "class", "navbar-toggler-icon");
-    			add_location(span, file, 72, 8, 1496);
-    			attr_dev(button, "class", "navbar-toggler");
+    			add_location(div1, file, 68, 2, 1240);
+    			attr_dev(button, "class", "navbar-toggler no-border svelte-1hzka6");
     			attr_dev(button, "id", "menu-toggle");
-    			add_location(button, file, 68, 6, 1371);
-    			attr_dev(nav, "class", "navbar svelte-1aa4wl1");
-    			add_location(nav, file, 67, 4, 1344);
+    			add_location(button, file, 79, 6, 1559);
+    			attr_dev(nav, "class", "navbar svelte-1hzka6");
+    			add_location(nav, file, 78, 4, 1532);
     			attr_dev(div2, "class", "container-fluid");
-    			add_location(div2, file, 78, 4, 1661);
+    			add_location(div2, file, 101, 4, 2153);
     			attr_dev(div3, "id", "page-content-wrapper");
-    			attr_dev(div3, "class", "svelte-1aa4wl1");
-    			add_location(div3, file, 66, 2, 1308);
-    			attr_dev(div4, "class", "d-flex svelte-1aa4wl1");
+    			attr_dev(div3, "class", "svelte-1hzka6");
+    			add_location(div3, file, 77, 2, 1496);
+    			attr_dev(div4, "class", "d-flex svelte-1hzka6");
     			attr_dev(div4, "id", "wrapper");
     			toggle_class(div4, "toggled", /*menuActive*/ ctx[0]);
-    			add_location(div4, file, 56, 0, 989);
+    			add_location(div4, file, 67, 0, 1177);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -654,7 +731,7 @@ var app = (function () {
     			append_dev(div4, div3);
     			append_dev(div3, nav);
     			append_dev(nav, button);
-    			append_dev(button, span);
+    			if_block.m(button, null);
     			append_dev(nav, t2);
 
     			if (top_content_slot_or_fallback) {
@@ -685,6 +762,16 @@ var app = (function () {
     			if (sidebar_slot) {
     				if (sidebar_slot.p && dirty & /*$$scope*/ 2) {
     					update_slot(sidebar_slot, sidebar_slot_template, ctx, /*$$scope*/ ctx[1], dirty, get_sidebar_slot_changes, get_sidebar_slot_context);
+    				}
+    			}
+
+    			if (current_block_type !== (current_block_type = select_block_type(ctx))) {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
+
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(button, null);
     				}
     			}
 
@@ -723,6 +810,7 @@ var app = (function () {
     			if (detaching) detach_dev(div4);
     			if (sidebar_heading_slot_or_fallback) sidebar_heading_slot_or_fallback.d(detaching);
     			if (sidebar_slot) sidebar_slot.d(detaching);
+    			if_block.d();
     			if (top_content_slot_or_fallback) top_content_slot_or_fallback.d(detaching);
     			if (content_slot) content_slot.d(detaching);
     			mounted = false;
@@ -1011,7 +1099,7 @@ var app = (function () {
     const { Error: Error_1, Object: Object_1, console: console_1 } = globals;
 
     // (209:0) {:else}
-    function create_else_block(ctx) {
+    function create_else_block$1(ctx) {
     	let switch_instance;
     	let switch_instance_anchor;
     	let current;
@@ -1096,7 +1184,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_else_block.name,
+    		id: create_else_block$1.name,
     		type: "else",
     		source: "(209:0) {:else}",
     		ctx
@@ -1106,7 +1194,7 @@ var app = (function () {
     }
 
     // (202:0) {#if componentParams}
-    function create_if_block(ctx) {
+    function create_if_block$1(ctx) {
     	let switch_instance;
     	let switch_instance_anchor;
     	let current;
@@ -1194,7 +1282,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block.name,
+    		id: create_if_block$1.name,
     		type: "if",
     		source: "(202:0) {#if componentParams}",
     		ctx
@@ -1208,7 +1296,7 @@ var app = (function () {
     	let if_block;
     	let if_block_anchor;
     	let current;
-    	const if_block_creators = [create_if_block, create_else_block];
+    	const if_block_creators = [create_if_block$1, create_else_block$1];
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
@@ -4133,6 +4221,7 @@ var app = (function () {
     	let t7;
     	let a3;
     	let link_action_3;
+    	let t9;
     	let mounted;
     	let dispose;
 
@@ -4153,6 +4242,7 @@ var app = (function () {
     			t7 = text(" vs. ");
     			a3 = element("a");
     			a3.textContent = "storage/binary";
+    			t9 = text("\n![[521799568069754890.png]]");
     			add_location(h1, file$h, 1, 0, 61);
     			attr_dev(a0, "href", "/peripherals/keyboard");
     			add_location(a0, file$h, 2, 3, 86);
@@ -4178,6 +4268,7 @@ var app = (function () {
     			append_dev(p, a2);
     			append_dev(p, t7);
     			append_dev(p, a3);
+    			append_dev(p, t9);
 
     			if (!mounted) {
     				dispose = [
@@ -4241,29 +4332,46 @@ var app = (function () {
     }
 
     /* src/content/peripherals/bananas.svelte generated by Svelte v3.31.0 */
-
     const file$i = "src/content/peripherals/bananas.svelte";
 
     function create_fragment$l(ctx) {
     	let p;
+    	let t0;
+    	let a;
+    	let link_action;
+    	let mounted;
+    	let dispose;
 
     	const block = {
     		c: function create() {
     			p = element("p");
-    			p.textContent = "testing";
-    			add_location(p, file$i, 0, 0, 0);
+    			t0 = text("testing\n");
+    			a = element("a");
+    			a.textContent = "!521799568069754890.png";
+    			attr_dev(a, "href", "//");
+    			add_location(a, file$i, 2, 0, 72);
+    			add_location(p, file$i, 1, 0, 61);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
+    			append_dev(p, t0);
+    			append_dev(p, a);
+
+    			if (!mounted) {
+    				dispose = action_destroyer(link_action = link.call(null, a));
+    				mounted = true;
+    			}
     		},
     		p: noop,
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(p);
+    			mounted = false;
+    			dispose();
     		}
     	};
 
@@ -4278,7 +4386,7 @@ var app = (function () {
     	return block;
     }
 
-    function instance$l($$self, $$props) {
+    function instance$l($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("Bananas", slots, []);
     	const writable_props = [];
@@ -4287,6 +4395,7 @@ var app = (function () {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Bananas> was created with unknown prop '${key}'`);
     	});
 
+    	$$self.$capture_state = () => ({ link });
     	return [];
     }
 
@@ -4648,6 +4757,7 @@ var app = (function () {
     // (65:2) <span slot="content">
     function create_content_slot(ctx) {
     	let span;
+    	let div;
     	let router;
     	let current;
 
@@ -4659,13 +4769,17 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			span = element("span");
+    			div = element("div");
     			create_component(router.$$.fragment);
+    			attr_dev(div, "class", "container");
+    			add_location(div, file$l, 65, 4, 3055);
     			attr_dev(span, "slot", "content");
     			add_location(span, file$l, 64, 2, 3029);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
-    			mount_component(router, span, null);
+    			append_dev(span, div);
+    			mount_component(router, div, null);
     			current = true;
     		},
     		p: noop,

@@ -51,6 +51,17 @@
     .navbar {
       background-color: #00000000;
     }
+
+    #menu-toggle {
+      font-size: 12px;
+      margin-left: -20px;
+      margin-top: -20px;
+    }
+    .no-border {
+      outline: none;
+      border: none;
+      background: none;
+    }
   }
 </style>
 
@@ -67,10 +78,22 @@
   <div id="page-content-wrapper">
     <nav class="navbar">
       <button
-        class="navbar-toggler"
+        class="navbar-toggler no-border"
         id="menu-toggle"
         on:click={() => (menuActive = !menuActive)}>
-        <span class="navbar-toggler-icon" />
+        {#if menuActive}
+          sidebar
+          <img
+            src="static/images/right-chevron.svg"
+            width="10px"
+            alt="close chevron" />
+        {:else}
+          <img
+            src="static/images/left-chevron.svg"
+            width="10px"
+            alt="open chevron" />
+          sidebar
+        {/if}
       </button>
       <slot name="top-content">
         <div class="navbar-brand">Menu Items</div>
