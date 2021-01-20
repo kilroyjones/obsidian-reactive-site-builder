@@ -34,6 +34,10 @@
     margin-left: 0;
   }
 
+  .content-container {
+    margin-top: 30px;
+  }
+
   @media (min-width: 768px) {
     #sidebar-wrapper {
       margin-left: 0;
@@ -99,7 +103,7 @@
         <div class="navbar-brand">Menu Items</div>
       </slot>
     </nav>
-    <div class="container-fluid">
+    <div class="container-fluid content-container">
       <slot name="content" />
     </div>
   </div>

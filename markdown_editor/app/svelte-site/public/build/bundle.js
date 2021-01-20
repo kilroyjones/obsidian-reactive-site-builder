@@ -505,16 +505,16 @@ var app = (function () {
     const get_sidebar_heading_slot_changes = dirty => ({});
     const get_sidebar_heading_slot_context = ctx => ({});
 
-    // (70:33)        
+    // (98:33)        
     function fallback_block_1(ctx) {
     	let div;
 
     	const block = {
     		c: function create() {
     			div = element("div");
-    			div.textContent = "Course Title";
-    			attr_dev(div, "class", "sidebar-heading svelte-1hzka6");
-    			add_location(div, file, 70, 6, 1337);
+    			div.textContent = "TITLE";
+    			attr_dev(div, "class", "sidebar-heading svelte-1dwx5sp");
+    			add_location(div, file, 98, 6, 1828);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -528,14 +528,14 @@ var app = (function () {
     		block,
     		id: fallback_block_1.name,
     		type: "fallback",
-    		source: "(70:33)        ",
+    		source: "(98:33)        ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (90:8) {:else}
+    // (119:8) {:else}
     function create_else_block(ctx) {
     	let img;
     	let img_src_value;
@@ -545,10 +545,11 @@ var app = (function () {
     		c: function create() {
     			img = element("img");
     			t = text("\n          sidebar");
+    			attr_dev(img, "class", "filter svelte-1dwx5sp");
     			if (img.src !== (img_src_value = "static/images/left-chevron.svg")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "width", "10px");
     			attr_dev(img, "alt", "open chevron");
-    			add_location(img, file, 90, 10, 1880);
+    			add_location(img, file, 119, 10, 2391);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, img, anchor);
@@ -564,14 +565,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(90:8) {:else}",
+    		source: "(119:8) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (84:8) {#if menuActive}
+    // (112:8) {#if menuActive}
     function create_if_block(ctx) {
     	let t;
     	let img;
@@ -581,10 +582,11 @@ var app = (function () {
     		c: function create() {
     			t = text("sidebar\n          ");
     			img = element("img");
+    			attr_dev(img, "class", "filter svelte-1dwx5sp");
     			if (img.src !== (img_src_value = "static/images/right-chevron.svg")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "width", "10px");
     			attr_dev(img, "alt", "close chevron");
-    			add_location(img, file, 85, 10, 1739);
+    			add_location(img, file, 113, 10, 2223);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, t, anchor);
@@ -600,14 +602,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(84:8) {#if menuActive}",
+    		source: "(112:8) {#if menuActive}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (98:31)          
+    // (128:31)          
     function fallback_block(ctx) {
     	let div;
 
@@ -616,7 +618,7 @@ var app = (function () {
     			div = element("div");
     			div.textContent = "Menu Items";
     			attr_dev(div, "class", "navbar-brand");
-    			add_location(div, file, 98, 8, 2081);
+    			add_location(div, file, 128, 8, 2619);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -630,7 +632,7 @@ var app = (function () {
     		block,
     		id: fallback_block.name,
     		type: "fallback",
-    		source: "(98:31)          ",
+    		source: "(128:31)          ",
     		ctx
     	});
 
@@ -689,25 +691,25 @@ var app = (function () {
     			t3 = space();
     			div2 = element("div");
     			if (content_slot) content_slot.c();
-    			attr_dev(div0, "class", "list-group list-group-flush svelte-1hzka6");
-    			add_location(div0, file, 72, 4, 1401);
-    			attr_dev(div1, "class", "bg-light border-right svelte-1hzka6");
+    			attr_dev(div0, "class", "list-group list-group-flush svelte-1dwx5sp");
+    			add_location(div0, file, 100, 4, 1885);
+    			attr_dev(div1, "class", "border-right svelte-1dwx5sp");
     			attr_dev(div1, "id", "sidebar-wrapper");
-    			add_location(div1, file, 68, 2, 1240);
-    			attr_dev(button, "class", "navbar-toggler no-border svelte-1hzka6");
+    			add_location(div1, file, 96, 2, 1740);
+    			attr_dev(button, "class", "navbar-toggler no-border svelte-1dwx5sp");
     			attr_dev(button, "id", "menu-toggle");
-    			add_location(button, file, 79, 6, 1559);
-    			attr_dev(nav, "class", "navbar svelte-1hzka6");
-    			add_location(nav, file, 78, 4, 1532);
-    			attr_dev(div2, "class", "container-fluid");
-    			add_location(div2, file, 101, 4, 2153);
+    			add_location(button, file, 107, 6, 2043);
+    			attr_dev(nav, "class", "navbar svelte-1dwx5sp");
+    			add_location(nav, file, 106, 4, 2016);
+    			attr_dev(div2, "class", "container-fluid content-container svelte-1dwx5sp");
+    			add_location(div2, file, 131, 4, 2691);
     			attr_dev(div3, "id", "page-content-wrapper");
-    			attr_dev(div3, "class", "svelte-1hzka6");
-    			add_location(div3, file, 77, 2, 1496);
-    			attr_dev(div4, "class", "d-flex svelte-1hzka6");
+    			attr_dev(div3, "class", "svelte-1dwx5sp");
+    			add_location(div3, file, 105, 2, 1980);
+    			attr_dev(div4, "class", "d-flex svelte-1dwx5sp");
     			attr_dev(div4, "id", "wrapper");
     			toggle_class(div4, "toggled", /*menuActive*/ ctx[0]);
-    			add_location(div4, file, 67, 0, 1177);
+    			add_location(div4, file, 95, 0, 1677);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2262,13 +2264,19 @@ var app = (function () {
     	let t4;
     	let strong0;
     	let t6;
+    	let br0;
+    	let center;
+    	let img;
+    	let img_src_value;
+    	let br1;
+    	let t7;
     	let a1;
     	let link_action_1;
-    	let t8;
+    	let t9;
     	let strong1;
-    	let t10;
+    	let t11;
     	let strong2;
-    	let t12;
+    	let t13;
     	let a2;
     	let link_action_2;
     	let mounted;
@@ -2286,28 +2294,39 @@ var app = (function () {
     			t4 = text(" storage device that stores data ");
     			strong0 = element("strong");
     			strong0.textContent = "sequentially";
-    			t6 = text(" on the magnetically-coated surface of a plastic tape.\n![[sequentialdatastorage.png]]\nData stored in this way makes accessing a specific file a very slow process, but it is useful as a ");
+    			t6 = text(" on the magnetically-coated surface of a plastic tape.\n");
+    			br0 = element("br");
+    			center = element("center");
+    			img = element("img");
+    			br1 = element("br");
+    			t7 = text("\nData stored in this way makes accessing a specific file a very slow process, but it is useful as a ");
     			a1 = element("a");
     			a1.textContent = "backup";
-    			t8 = text(" storage medium due to its ");
+    			t9 = text(" storage medium due to its ");
     			strong1 = element("strong");
     			strong1.textContent = "low cost per gigabyte";
-    			t10 = text(" and ");
+    			t11 = text(" and ");
     			strong2 = element("strong");
     			strong2.textContent = "robustness";
-    			t12 = text(". ");
+    			t13 = text(". ");
     			a2 = element("a");
     			a2.textContent = "bananas";
     			add_location(h1, file$3, 1, 0, 61);
     			attr_dev(a0, "href", "/storage/serial");
     			add_location(a0, file$3, 2, 22, 106);
     			add_location(strong0, file$3, 2, 100, 184);
+    			add_location(br0, file$3, 3, 0, 268);
+    			if (img.src !== (img_src_value = "static/assets/sequentialdatastorage.png")) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "class", "img-fluid");
+    			add_location(img, file$3, 3, 12, 280);
+    			add_location(center, file$3, 3, 4, 272);
+    			add_location(br1, file$3, 3, 89, 357);
     			attr_dev(a1, "href", "/storage/backup");
-    			add_location(a1, file$3, 4, 99, 398);
-    			add_location(strong1, file$3, 4, 171, 470);
-    			add_location(strong2, file$3, 4, 214, 513);
+    			add_location(a1, file$3, 4, 99, 461);
+    			add_location(strong1, file$3, 4, 171, 533);
+    			add_location(strong2, file$3, 4, 214, 576);
     			attr_dev(a2, "href", "/peripherals/bananas");
-    			add_location(a2, file$3, 4, 243, 542);
+    			add_location(a2, file$3, 4, 243, 605);
     			add_location(p, file$3, 2, 0, 84);
     		},
     		l: function claim(nodes) {
@@ -2322,12 +2341,17 @@ var app = (function () {
     			append_dev(p, t4);
     			append_dev(p, strong0);
     			append_dev(p, t6);
+    			append_dev(p, br0);
+    			append_dev(p, center);
+    			append_dev(center, img);
+    			append_dev(p, br1);
+    			append_dev(p, t7);
     			append_dev(p, a1);
-    			append_dev(p, t8);
+    			append_dev(p, t9);
     			append_dev(p, strong1);
-    			append_dev(p, t10);
+    			append_dev(p, t11);
     			append_dev(p, strong2);
-    			append_dev(p, t12);
+    			append_dev(p, t13);
     			append_dev(p, a2);
 
     			if (!mounted) {
@@ -2485,22 +2509,27 @@ var app = (function () {
     	let t8;
     	let t9;
     	let p1;
-    	let t11;
+    	let br0;
+    	let center;
+    	let img;
+    	let img_src_value;
+    	let br1;
+    	let t10;
     	let p2;
-    	let t12;
+    	let t11;
     	let a1;
     	let link_action_1;
-    	let t14;
+    	let t13;
     	let a2;
     	let link_action_2;
+    	let t15;
     	let t16;
-    	let t17;
     	let p3;
     	let a3;
     	let link_action_3;
-    	let t19;
+    	let t18;
     	let em;
-    	let t21;
+    	let t20;
     	let mounted;
     	let dispose;
 
@@ -2522,40 +2551,49 @@ var app = (function () {
     			t8 = text(" order.");
     			t9 = space();
     			p1 = element("p");
-    			p1.textContent = "![[sequentialdatastorage.png]]";
-    			t11 = space();
+    			br0 = element("br");
+    			center = element("center");
+    			img = element("img");
+    			br1 = element("br");
+    			t10 = space();
     			p2 = element("p");
-    			t12 = text("This approach can be highly effective for use in ");
+    			t11 = text("This approach can be highly effective for use in ");
     			a1 = element("a");
     			a1.textContent = "backup";
-    			t14 = text(" strategies, but is less useful when files need to be accessed randomly as it is in ");
+    			t13 = text(" strategies, but is less useful when files need to be accessed randomly as it is in ");
     			a2 = element("a");
     			a2.textContent = "direct";
-    			t16 = text(" storage devices.");
-    			t17 = space();
+    			t15 = text(" storage devices.");
+    			t16 = space();
     			p3 = element("p");
     			a3 = element("a");
     			a3.textContent = "Magnetic tape";
-    			t19 = text(" is the ");
+    			t18 = text(" is the ");
     			em = element("em");
     			em.textContent = "only";
-    			t21 = text(" example of a serial data storage device in the syllabus.");
+    			t20 = text(" example of a serial data storage device in the syllabus.");
     			add_location(h1, file$5, 1, 0, 61);
     			add_location(strong0, file$5, 2, 6, 95);
     			attr_dev(a0, "href", "/storage/home");
     			add_location(a0, file$5, 2, 35, 124);
     			add_location(strong1, file$5, 2, 112, 201);
     			add_location(p0, file$5, 2, 0, 89);
+    			add_location(br0, file$5, 3, 3, 243);
+    			if (img.src !== (img_src_value = "static/assets/sequentialdatastorage.png")) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "class", "img-fluid");
+    			add_location(img, file$5, 3, 15, 255);
+    			add_location(center, file$5, 3, 7, 247);
+    			add_location(br1, file$5, 3, 92, 332);
     			add_location(p1, file$5, 3, 0, 240);
     			attr_dev(a1, "href", "/storage/backup");
-    			add_location(a1, file$5, 4, 52, 330);
+    			add_location(a1, file$5, 4, 52, 393);
     			attr_dev(a2, "href", "/storage/direct");
-    			add_location(a2, file$5, 4, 181, 459);
-    			add_location(p2, file$5, 4, 0, 278);
+    			add_location(a2, file$5, 4, 181, 522);
+    			add_location(p2, file$5, 4, 0, 341);
     			attr_dev(a3, "href", "//");
-    			add_location(a3, file$5, 5, 3, 529);
-    			add_location(em, file$5, 5, 50, 576);
-    			add_location(p3, file$5, 5, 0, 526);
+    			add_location(a3, file$5, 5, 3, 592);
+    			add_location(em, file$5, 5, 50, 639);
+    			add_location(p3, file$5, 5, 0, 589);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2573,19 +2611,23 @@ var app = (function () {
     			append_dev(p0, t8);
     			insert_dev(target, t9, anchor);
     			insert_dev(target, p1, anchor);
-    			insert_dev(target, t11, anchor);
+    			append_dev(p1, br0);
+    			append_dev(p1, center);
+    			append_dev(center, img);
+    			append_dev(p1, br1);
+    			insert_dev(target, t10, anchor);
     			insert_dev(target, p2, anchor);
-    			append_dev(p2, t12);
+    			append_dev(p2, t11);
     			append_dev(p2, a1);
-    			append_dev(p2, t14);
+    			append_dev(p2, t13);
     			append_dev(p2, a2);
-    			append_dev(p2, t16);
-    			insert_dev(target, t17, anchor);
+    			append_dev(p2, t15);
+    			insert_dev(target, t16, anchor);
     			insert_dev(target, p3, anchor);
     			append_dev(p3, a3);
-    			append_dev(p3, t19);
+    			append_dev(p3, t18);
     			append_dev(p3, em);
-    			append_dev(p3, t21);
+    			append_dev(p3, t20);
 
     			if (!mounted) {
     				dispose = [
@@ -2607,9 +2649,9 @@ var app = (function () {
     			if (detaching) detach_dev(p0);
     			if (detaching) detach_dev(t9);
     			if (detaching) detach_dev(p1);
-    			if (detaching) detach_dev(t11);
+    			if (detaching) detach_dev(t10);
     			if (detaching) detach_dev(p2);
-    			if (detaching) detach_dev(t17);
+    			if (detaching) detach_dev(t16);
     			if (detaching) detach_dev(p3);
     			mounted = false;
     			run_all(dispose);
@@ -2794,16 +2836,22 @@ var app = (function () {
     	let t13;
     	let p1;
     	let t14;
+    	let br0;
+    	let center;
+    	let img;
+    	let img_src_value;
+    	let br1;
+    	let t15;
     	let strong2;
-    	let t16;
     	let t17;
-    	let p2;
     	let t18;
+    	let p2;
+    	let t19;
     	let strong3;
-    	let t20;
+    	let t21;
     	let a3;
     	let link_action_3;
-    	let t22;
+    	let t23;
     	let mounted;
     	let dispose;
 
@@ -2831,19 +2879,24 @@ var app = (function () {
     			t12 = text(".");
     			t13 = space();
     			p1 = element("p");
-    			t14 = text("Hard drive capacities have expanded in recent years due tosectors on drives being made smaller, and by more platters being included inside the drive itself.\n![[readwritehead.png]]\nData is read from the platters by a ");
+    			t14 = text("Hard drive capacities have expanded in recent years due tosectors on drives being made smaller, and by more platters being included inside the drive itself.\n");
+    			br0 = element("br");
+    			center = element("center");
+    			img = element("img");
+    			br1 = element("br");
+    			t15 = text("\nData is read from the platters by a ");
     			strong2 = element("strong");
     			strong2.textContent = "read/write head";
-    			t16 = text(" that is so close to the platter that a single piece of dust could damage it, so the enclosures are sealed to prevent damage.");
-    			t17 = space();
+    			t17 = text(" that is so close to the platter that a single piece of dust could damage it, so the enclosures are sealed to prevent damage.");
+    			t18 = space();
     			p2 = element("p");
-    			t18 = text("Hard disks are ");
+    			t19 = text("Hard disks are ");
     			strong3 = element("strong");
     			strong3.textContent = "slower";
-    			t20 = text(" than ");
+    			t21 = text(" than ");
     			a3 = element("a");
     			a3.textContent = "solid state";
-    			t22 = text(" forms of storage because of the moving parts inside the enclosure.");
+    			t23 = text(" forms of storage because of the moving parts inside the enclosure.");
     			add_location(h1, file$7, 1, 0, 61);
     			attr_dev(a0, "href", "/storage/binary");
     			add_location(a0, file$7, 2, 72, 162);
@@ -2854,12 +2907,18 @@ var app = (function () {
     			add_location(strong0, file$7, 2, 324, 414);
     			add_location(strong1, file$7, 2, 367, 457);
     			add_location(p0, file$7, 2, 0, 90);
-    			add_location(strong2, file$7, 5, 36, 712);
+    			add_location(br0, file$7, 4, 0, 653);
+    			if (img.src !== (img_src_value = "static/assets/readwritehead.png")) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "class", "img-fluid");
+    			add_location(img, file$7, 4, 12, 665);
+    			add_location(center, file$7, 4, 4, 657);
+    			add_location(br1, file$7, 4, 81, 734);
+    			add_location(strong2, file$7, 5, 36, 775);
     			add_location(p1, file$7, 3, 0, 493);
-    			add_location(strong3, file$7, 6, 18, 892);
+    			add_location(strong3, file$7, 6, 18, 955);
     			attr_dev(a3, "href", "/storage/solid_state");
-    			add_location(a3, file$7, 6, 47, 921);
-    			add_location(p2, file$7, 6, 0, 874);
+    			add_location(a3, file$7, 6, 47, 984);
+    			add_location(p2, file$7, 6, 0, 937);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2882,15 +2941,20 @@ var app = (function () {
     			insert_dev(target, t13, anchor);
     			insert_dev(target, p1, anchor);
     			append_dev(p1, t14);
+    			append_dev(p1, br0);
+    			append_dev(p1, center);
+    			append_dev(center, img);
+    			append_dev(p1, br1);
+    			append_dev(p1, t15);
     			append_dev(p1, strong2);
-    			append_dev(p1, t16);
-    			insert_dev(target, t17, anchor);
+    			append_dev(p1, t17);
+    			insert_dev(target, t18, anchor);
     			insert_dev(target, p2, anchor);
-    			append_dev(p2, t18);
+    			append_dev(p2, t19);
     			append_dev(p2, strong3);
-    			append_dev(p2, t20);
+    			append_dev(p2, t21);
     			append_dev(p2, a3);
-    			append_dev(p2, t22);
+    			append_dev(p2, t23);
 
     			if (!mounted) {
     				dispose = [
@@ -2912,7 +2976,7 @@ var app = (function () {
     			if (detaching) detach_dev(p0);
     			if (detaching) detach_dev(t13);
     			if (detaching) detach_dev(p1);
-    			if (detaching) detach_dev(t17);
+    			if (detaching) detach_dev(t18);
     			if (detaching) detach_dev(p2);
     			mounted = false;
     			run_all(dispose);
@@ -3266,32 +3330,43 @@ var app = (function () {
     	let t14;
     	let t15;
     	let p2;
+    	let t16;
+    	let br0;
+    	let center0;
+    	let img0;
+    	let img0_src_value;
+    	let br1;
     	let t17;
     	let p3;
     	let t19;
     	let p4;
-    	let t21;
+    	let br2;
+    	let center1;
+    	let img1;
+    	let img1_src_value;
+    	let br3;
+    	let t20;
     	let p5;
-    	let t22;
+    	let t21;
     	let a1;
     	let link_action_1;
-    	let t24;
+    	let t23;
     	let a2;
     	let link_action_2;
-    	let t26;
+    	let t25;
     	let a3;
     	let link_action_3;
-    	let t28;
+    	let t27;
     	let strong3;
+    	let t29;
     	let t30;
-    	let t31;
     	let h4;
-    	let t33;
+    	let t32;
     	let p6;
-    	let t34;
+    	let t33;
     	let strong4;
+    	let t35;
     	let t36;
-    	let t37;
     	let p7;
     	let mounted;
     	let dispose;
@@ -3323,38 +3398,45 @@ var app = (function () {
     			t14 = text(" using some form of on/off switch. You can use a form of binary counting to count to 31 on the fingers of one hand.");
     			t15 = space();
     			p2 = element("p");
-    			p2.textContent = "If your thumb is worth 1, each finger doubles in value: your index finger is worth 2, middle finger is 4, ring finger is 8 and little finger is 16:\n![[hand.png]]";
+    			t16 = text("If your thumb is worth 1, each finger doubles in value: your index finger is worth 2, middle finger is 4, ring finger is 8 and little finger is 16:\n");
+    			br0 = element("br");
+    			center0 = element("center");
+    			img0 = element("img");
+    			br1 = element("br");
     			t17 = space();
     			p3 = element("p");
     			p3.textContent = "Using this system, we can count from zero (closed fist) to 31 (all fingers outstretched), and each number in-between:";
     			t19 = space();
     			p4 = element("p");
-    			p4.textContent = "![[binary counting on fingers.png]]";
-    			t21 = space();
+    			br2 = element("br");
+    			center1 = element("center");
+    			img1 = element("img");
+    			br3 = element("br");
+    			t20 = space();
     			p5 = element("p");
-    			t22 = text("The way that bits are represented is different in ");
+    			t21 = text("The way that bits are represented is different in ");
     			a1 = element("a");
     			a1.textContent = "magnetic";
-    			t24 = text(", ");
+    			t23 = text(", ");
     			a2 = element("a");
     			a2.textContent = "optical";
-    			t26 = text(" and ");
+    			t25 = text(" and ");
     			a3 = element("a");
     			a3.textContent = "solid state";
-    			t28 = text(" storage devices, but the principle remains the same: combinations of 0s and 1s just like the fingers \nBits can be combined into ");
+    			t27 = text(" storage devices, but the principle remains the same: combinations of 0s and 1s just like the fingers \nBits can be combined into ");
     			strong3 = element("strong");
     			strong3.textContent = "strings";
-    			t30 = text(" that can represent a wide variety of different kinds of data, including:");
-    			t31 = space();
+    			t29 = text(" that can represent a wide variety of different kinds of data, including:");
+    			t30 = space();
     			h4 = element("h4");
     			h4.textContent = "Text";
-    			t33 = space();
+    			t32 = space();
     			p6 = element("p");
-    			t34 = text("Each letter of the alphabet is ");
+    			t33 = text("Each letter of the alphabet is ");
     			strong4 = element("strong");
     			strong4.textContent = "one byte long";
-    			t36 = text(", with each letter being represented in binary by eight bits, as follows:");
-    			t37 = space();
+    			t35 = text(", with each letter being represented in binary by eight bits, as follows:");
+    			t36 = space();
     			p7 = element("p");
     			p7.textContent = "| Letter | Binary   |\n|--------|----------|\n| A      | 01000001 |\n| B      | 01000010 |\n| C      | 01000011 |\n| D      | 01000100 |";
     			add_location(h1, file$b, 1, 0, 61);
@@ -3366,21 +3448,33 @@ var app = (function () {
     			attr_dev(a0, "href", "/storage/home");
     			add_location(a0, file$b, 4, 86, 359);
     			add_location(p1, file$b, 4, 0, 273);
+    			add_location(br0, file$b, 6, 0, 679);
+    			if (img0.src !== (img0_src_value = "static/assets/hand.png")) attr_dev(img0, "src", img0_src_value);
+    			attr_dev(img0, "class", "img-fluid");
+    			add_location(img0, file$b, 6, 12, 691);
+    			add_location(center0, file$b, 6, 4, 683);
+    			add_location(br1, file$b, 6, 72, 751);
     			add_location(p2, file$b, 5, 0, 528);
-    			add_location(p3, file$b, 7, 0, 697);
-    			add_location(p4, file$b, 8, 0, 822);
+    			add_location(p3, file$b, 7, 0, 760);
+    			add_location(br2, file$b, 8, 3, 888);
+    			if (img1.src !== (img1_src_value = "static/assets/binary counting on fingers.png")) attr_dev(img1, "src", img1_src_value);
+    			attr_dev(img1, "class", "img-fluid");
+    			add_location(img1, file$b, 8, 15, 900);
+    			add_location(center1, file$b, 8, 7, 892);
+    			add_location(br3, file$b, 8, 97, 982);
+    			add_location(p4, file$b, 8, 0, 885);
     			attr_dev(a1, "href", "/storage/magnetic");
-    			add_location(a1, file$b, 9, 53, 918);
+    			add_location(a1, file$b, 9, 53, 1044);
     			attr_dev(a2, "href", "/storage/optical");
-    			add_location(a2, file$b, 9, 104, 969);
+    			add_location(a2, file$b, 9, 104, 1095);
     			attr_dev(a3, "href", "/storage/solid_state");
-    			add_location(a3, file$b, 9, 156, 1021);
-    			add_location(strong3, file$b, 10, 26, 1205);
-    			add_location(p5, file$b, 9, 0, 865);
-    			add_location(h4, file$b, 11, 0, 1307);
-    			add_location(strong4, file$b, 12, 34, 1355);
-    			add_location(p6, file$b, 12, 0, 1321);
-    			add_location(p7, file$b, 13, 0, 1463);
+    			add_location(a3, file$b, 9, 156, 1147);
+    			add_location(strong3, file$b, 10, 26, 1331);
+    			add_location(p5, file$b, 9, 0, 991);
+    			add_location(h4, file$b, 11, 0, 1433);
+    			add_location(strong4, file$b, 12, 34, 1481);
+    			add_location(p6, file$b, 12, 0, 1447);
+    			add_location(p7, file$b, 13, 0, 1589);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3405,29 +3499,38 @@ var app = (function () {
     			append_dev(p1, t14);
     			insert_dev(target, t15, anchor);
     			insert_dev(target, p2, anchor);
+    			append_dev(p2, t16);
+    			append_dev(p2, br0);
+    			append_dev(p2, center0);
+    			append_dev(center0, img0);
+    			append_dev(p2, br1);
     			insert_dev(target, t17, anchor);
     			insert_dev(target, p3, anchor);
     			insert_dev(target, t19, anchor);
     			insert_dev(target, p4, anchor);
-    			insert_dev(target, t21, anchor);
+    			append_dev(p4, br2);
+    			append_dev(p4, center1);
+    			append_dev(center1, img1);
+    			append_dev(p4, br3);
+    			insert_dev(target, t20, anchor);
     			insert_dev(target, p5, anchor);
-    			append_dev(p5, t22);
+    			append_dev(p5, t21);
     			append_dev(p5, a1);
-    			append_dev(p5, t24);
+    			append_dev(p5, t23);
     			append_dev(p5, a2);
-    			append_dev(p5, t26);
+    			append_dev(p5, t25);
     			append_dev(p5, a3);
-    			append_dev(p5, t28);
+    			append_dev(p5, t27);
     			append_dev(p5, strong3);
-    			append_dev(p5, t30);
-    			insert_dev(target, t31, anchor);
+    			append_dev(p5, t29);
+    			insert_dev(target, t30, anchor);
     			insert_dev(target, h4, anchor);
-    			insert_dev(target, t33, anchor);
+    			insert_dev(target, t32, anchor);
     			insert_dev(target, p6, anchor);
-    			append_dev(p6, t34);
+    			append_dev(p6, t33);
     			append_dev(p6, strong4);
-    			append_dev(p6, t36);
-    			insert_dev(target, t37, anchor);
+    			append_dev(p6, t35);
+    			insert_dev(target, t36, anchor);
     			insert_dev(target, p7, anchor);
 
     			if (!mounted) {
@@ -3458,13 +3561,13 @@ var app = (function () {
     			if (detaching) detach_dev(p3);
     			if (detaching) detach_dev(t19);
     			if (detaching) detach_dev(p4);
-    			if (detaching) detach_dev(t21);
+    			if (detaching) detach_dev(t20);
     			if (detaching) detach_dev(p5);
-    			if (detaching) detach_dev(t31);
+    			if (detaching) detach_dev(t30);
     			if (detaching) detach_dev(h4);
-    			if (detaching) detach_dev(t33);
+    			if (detaching) detach_dev(t32);
     			if (detaching) detach_dev(p6);
-    			if (detaching) detach_dev(t37);
+    			if (detaching) detach_dev(t36);
     			if (detaching) detach_dev(p7);
     			mounted = false;
     			run_all(dispose);
@@ -4030,12 +4133,18 @@ var app = (function () {
     	let a0;
     	let link_action;
     	let t4;
+    	let br0;
+    	let center;
+    	let img;
+    	let img_src_value;
+    	let br1;
+    	let t5;
     	let a1;
     	let link_action_1;
-    	let t6;
+    	let t7;
     	let a2;
     	let link_action_2;
-    	let t8;
+    	let t9;
     	let mounted;
     	let dispose;
 
@@ -4048,20 +4157,31 @@ var app = (function () {
     			t2 = text("Magnetic storage devices store ");
     			a0 = element("a");
     			a0.textContent = "storage/binary";
-    			t4 = text(" data (0s and 1s) using magnetic polarity: \n![[magneticdatastorage.png]]\nCommonly-used magnetic storage devices include ");
+    			t4 = text(" data (0s and 1s) using magnetic polarity: \n");
+    			br0 = element("br");
+    			center = element("center");
+    			img = element("img");
+    			br1 = element("br");
+    			t5 = text("\nCommonly-used magnetic storage devices include ");
     			a1 = element("a");
     			a1.textContent = "hard disks";
-    			t6 = text(" and ");
+    			t7 = text(" and ");
     			a2 = element("a");
     			a2.textContent = "magnetic tape";
-    			t8 = text(". While they store data using magnetic polarity, they work in very different ways.");
+    			t9 = text(". While they store data using magnetic polarity, they work in very different ways.");
     			add_location(h1, file$f, 1, 0, 61);
     			attr_dev(a0, "href", "/storage/binary");
     			add_location(a0, file$f, 2, 34, 129);
+    			add_location(br0, file$f, 3, 0, 226);
+    			if (img.src !== (img_src_value = "static/assets/magneticdatastorage.png")) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "class", "img-fluid");
+    			add_location(img, file$f, 3, 12, 238);
+    			add_location(center, file$f, 3, 4, 230);
+    			add_location(br1, file$f, 3, 87, 313);
     			attr_dev(a1, "href", "/storage/hard_disks");
-    			add_location(a1, file$f, 4, 47, 302);
+    			add_location(a1, file$f, 4, 47, 365);
     			attr_dev(a2, "href", "/storage/magnetic_tape");
-    			add_location(a2, file$f, 4, 105, 360);
+    			add_location(a2, file$f, 4, 105, 423);
     			add_location(p, file$f, 2, 0, 95);
     		},
     		l: function claim(nodes) {
@@ -4074,10 +4194,15 @@ var app = (function () {
     			append_dev(p, t2);
     			append_dev(p, a0);
     			append_dev(p, t4);
+    			append_dev(p, br0);
+    			append_dev(p, center);
+    			append_dev(center, img);
+    			append_dev(p, br1);
+    			append_dev(p, t5);
     			append_dev(p, a1);
-    			append_dev(p, t6);
+    			append_dev(p, t7);
     			append_dev(p, a2);
-    			append_dev(p, t8);
+    			append_dev(p, t9);
 
     			if (!mounted) {
     				dispose = [
@@ -4209,7 +4334,7 @@ var app = (function () {
     function create_fragment$k(ctx) {
     	let h1;
     	let t1;
-    	let p;
+    	let p0;
     	let a0;
     	let link_action;
     	let t3;
@@ -4222,6 +4347,19 @@ var app = (function () {
     	let a3;
     	let link_action_3;
     	let t9;
+    	let br0;
+    	let center;
+    	let img;
+    	let img_src_value;
+    	let br1;
+    	let t10;
+    	let t11;
+    	let aside;
+    	let t12;
+    	let em;
+    	let t14;
+    	let t15;
+    	let p1;
     	let mounted;
     	let dispose;
 
@@ -4230,7 +4368,7 @@ var app = (function () {
     			h1 = element("h1");
     			h1.textContent = "Introduction";
     			t1 = space();
-    			p = element("p");
+    			p0 = element("p");
     			a0 = element("a");
     			a0.textContent = "peripherals/keyboard";
     			t3 = text(" and ");
@@ -4242,7 +4380,21 @@ var app = (function () {
     			t7 = text(" vs. ");
     			a3 = element("a");
     			a3.textContent = "storage/binary";
-    			t9 = text("\n![[521799568069754890.png]]");
+    			t9 = space();
+    			br0 = element("br");
+    			center = element("center");
+    			img = element("img");
+    			br1 = element("br");
+    			t10 = text("i\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).");
+    			t11 = space();
+    			aside = element("aside");
+    			t12 = text("Epigraphs are like blockquotes but ");
+    			em = element("em");
+    			em.textContent = "Epigraphs are italicized";
+    			t14 = text(".");
+    			t15 = space();
+    			p1 = element("p");
+    			p1.textContent = "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.";
     			add_location(h1, file$h, 1, 0, 61);
     			attr_dev(a0, "href", "/peripherals/keyboard");
     			add_location(a0, file$h, 2, 3, 86);
@@ -4252,7 +4404,17 @@ var app = (function () {
     			add_location(a2, file$h, 2, 125, 208);
     			attr_dev(a3, "href", "/storage/binary");
     			add_location(a3, file$h, 2, 191, 274);
-    			add_location(p, file$h, 2, 0, 83);
+    			add_location(br0, file$h, 3, 0, 328);
+    			if (img.src !== (img_src_value = "static/assets/magneticdatastorage.png")) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "class", "img-fluid");
+    			add_location(img, file$h, 3, 12, 340);
+    			add_location(center, file$h, 3, 4, 332);
+    			add_location(br1, file$h, 3, 87, 415);
+    			add_location(p0, file$h, 2, 0, 83);
+    			add_location(em, file$h, 5, 61, 1100);
+    			attr_dev(aside, "class", "marginnote");
+    			add_location(aside, file$h, 5, 0, 1039);
+    			add_location(p1, file$h, 6, 0, 1143);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4260,15 +4422,27 @@ var app = (function () {
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
     			insert_dev(target, t1, anchor);
-    			insert_dev(target, p, anchor);
-    			append_dev(p, a0);
-    			append_dev(p, t3);
-    			append_dev(p, a1);
-    			append_dev(p, t5);
-    			append_dev(p, a2);
-    			append_dev(p, t7);
-    			append_dev(p, a3);
-    			append_dev(p, t9);
+    			insert_dev(target, p0, anchor);
+    			append_dev(p0, a0);
+    			append_dev(p0, t3);
+    			append_dev(p0, a1);
+    			append_dev(p0, t5);
+    			append_dev(p0, a2);
+    			append_dev(p0, t7);
+    			append_dev(p0, a3);
+    			append_dev(p0, t9);
+    			append_dev(p0, br0);
+    			append_dev(p0, center);
+    			append_dev(center, img);
+    			append_dev(p0, br1);
+    			append_dev(p0, t10);
+    			insert_dev(target, t11, anchor);
+    			insert_dev(target, aside, anchor);
+    			append_dev(aside, t12);
+    			append_dev(aside, em);
+    			append_dev(aside, t14);
+    			insert_dev(target, t15, anchor);
+    			insert_dev(target, p1, anchor);
 
     			if (!mounted) {
     				dispose = [
@@ -4287,7 +4461,11 @@ var app = (function () {
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(h1);
     			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(p);
+    			if (detaching) detach_dev(p0);
+    			if (detaching) detach_dev(t11);
+    			if (detaching) detach_dev(aside);
+    			if (detaching) detach_dev(t15);
+    			if (detaching) detach_dev(p1);
     			mounted = false;
     			run_all(dispose);
     		}
@@ -4757,8 +4935,12 @@ var app = (function () {
     // (65:2) <span slot="content">
     function create_content_slot(ctx) {
     	let span;
-    	let div;
+    	let div3;
+    	let div2;
+    	let div0;
     	let router;
+    	let t;
+    	let div1;
     	let current;
 
     	router = new Router({
@@ -4769,17 +4951,31 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			span = element("span");
-    			div = element("div");
+    			div3 = element("div");
+    			div2 = element("div");
+    			div0 = element("div");
     			create_component(router.$$.fragment);
-    			attr_dev(div, "class", "container");
-    			add_location(div, file$l, 65, 4, 3055);
+    			t = space();
+    			div1 = element("div");
+    			attr_dev(div0, "class", "col-md-9");
+    			add_location(div0, file$l, 67, 8, 3121);
+    			attr_dev(div1, "class", "col-md-3");
+    			add_location(div1, file$l, 70, 8, 3197);
+    			attr_dev(div2, "class", "columns");
+    			add_location(div2, file$l, 66, 6, 3091);
+    			attr_dev(div3, "class", "container-fluid");
+    			add_location(div3, file$l, 65, 4, 3055);
     			attr_dev(span, "slot", "content");
     			add_location(span, file$l, 64, 2, 3029);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
-    			append_dev(span, div);
-    			mount_component(router, div, null);
+    			append_dev(span, div3);
+    			append_dev(div3, div2);
+    			append_dev(div2, div0);
+    			mount_component(router, div0, null);
+    			append_dev(div2, t);
+    			append_dev(div2, div1);
     			current = true;
     		},
     		p: noop,

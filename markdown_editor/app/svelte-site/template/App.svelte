@@ -14,8 +14,13 @@
 <Sidebar>
   <span slot="sidebar"> $$SIDEBAR$$ </span>
   <span slot="content">
-    <div class="container">
-      <Router {routes} />
+    <div class="container-fluid">
+      <div class="columns">
+        <div class="col-md-9">
+          <Router {routes} />
+        </div>
+        <div class="col-md-3" />
+      </div>
     </div>
   </span>
 </Sidebar>

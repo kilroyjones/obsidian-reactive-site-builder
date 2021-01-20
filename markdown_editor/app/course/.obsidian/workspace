@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "peripherals/bananas.md",
+            "file": "peripherals/home.md",
             "mode": "source"
           }
         }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "peripherals/bananas.md",
+                "file": "peripherals/home.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -85,10 +85,10 @@
     "width": 300
   },
   "lastOpenFiles": [
+    "peripherals/home.md",
     "peripherals/bananas.md",
     "peripherals/sub_perphs/testing.md",
     "peripherals/521799568069754890.png",
-    "peripherals/home.md",
     "peripherals/binary.md",
     "storage/magnetic tape.md",
     "peripherals/mouse.md",

@@ -14,55 +14,108 @@ body {
     "Helvetica Neue", sans-serif;
 }
 
+@font-face {
+  font-family: "Varela Round";
+  src: URL("static/fonts/VarelaRound-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Open sans";
+  src: URL("static/fonts/OpenSans-Regular.ttf") format("truetype");
+}
+
+h1 {
+  font-size: 32px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  color: #c62641;
+  line-height: 26.4px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-family: "Varela Round";
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  color: #c62641;
+  line-height: 15.4px;
+}
+
+p {
+  font-family: "Open sans";
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+blockquote {
+  font-family: "Open sans";
+  font-size: 21px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 30px;
+}
+pre {
+  font-family: "Open sans";
+  font-size: 13px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 18.5714px;
+}
+
 a {
-  color: rgb(0, 100, 200);
+  color: #c62641;
+  font-weight: bold;
   text-decoration: none;
 }
 
+div.list-group a {
+  color: white;
+}
+
+div.list-group a:hover {
+  color: #e6e6e6;
+}
+
 a:hover {
-  text-decoration: underline;
-}
-
-a:visited {
-  color: rgb(0, 80, 160);
-}
-
-label {
-  display: block;
-}
-
-input,
-button,
-select,
-textarea {
-  font-family: inherit;
-  font-size: inherit;
-  -webkit-padding: 0.4em 0;
-  padding: 0.4em;
-  margin: 0 0 0.5em 0;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-}
-
-input:disabled {
-  color: #ccc;
+  text-decoration: none;
+  color: #ff6242;
 }
 
 button {
-  color: #333;
-  background-color: #f4f4f4;
-  outline: none;
+  font-family: "Open sans";
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 20px;
 }
 
-button:disabled {
-  color: #999;
+aside,
+.aside {
+  position: relative;
+  display: inline;
+  float: right;
+  width: 10vw;
+  margin-right: -14vw;
+  font-size: 12px;
+  color: red;
 }
 
-button:not(:disabled):active {
-  background-color: #ddd;
-}
-
-button:focus {
-  border-color: #666;
+@media (max-width: 768px) {
+  aside,
+  .aside {
+    display: block;
+    float: none;
+    margin: 5% 10% 5% 10%;
+    width: 80%;
+    font-size: 15px;
+    color: red;
+  }
 }

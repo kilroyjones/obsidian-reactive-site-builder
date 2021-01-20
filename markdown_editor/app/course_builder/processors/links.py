@@ -42,13 +42,10 @@ class Links:
 
     def run(self):
         for page in self.markdown_pages:
-            print(page)
             content = self.markdown_pages[page]
             matches = self.__get_all_possible_links(content)
             if len(matches) > 0:
                 content = self.__append_svelte_header(content)
                 content = self.__process_matches(page, content, matches)
-                # print(content)
                 self.markdown_pages[page] = content
-                print("----------")
         return self.markdown_pages

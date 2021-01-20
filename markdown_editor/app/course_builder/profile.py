@@ -36,9 +36,8 @@ class Profile:
         self.source = Path(source)
         self.sections = self.get_sections()
         self.section_pages = self.get_section_pages()
-        # self.markdown_paths = self.get_markdown_paths()
         self.svelte_paths = self.get_svelte_paths()
-        self.assets_paths = self.get_asset_paths()
+        self.assets_paths = self.get_assets_paths()
 
     def get_sections(self):
         """
@@ -80,28 +79,6 @@ class Profile:
             print(e)
             print("get_section_pages: Unable to read files from the given folder")
 
-    # def get_markdown_paths(self):
-    #     """
-    #     Temp
-    #     """
-    #     try:
-    #         markdown_paths = {}
-    #         for section in self.section_pages:
-    #             path = str(os.path.join(self.source, section)) + ".md"
-    #             markdown_paths[section] = path
-    #             for page in self.section_pages[section]:
-    #                 page = str(page)
-    #                 path = page[: page.rfind("/")]
-    #                 page = page[page.rfind("/") + 1 : -3]
-    #                 markdown_paths[page] = path
-    #         return markdown_paths
-    #     except OSError as e:
-    #         print(e)
-    #         print(
-    #             "get_markdown_paths: Error building markdown paths. Maybe missing a section (folder) markdown file."
-    #         )
-    #     return markdown_paths
-
     def get_svelte_paths(self):
         """
         Gets the svelte routes with the capitalized svelte components for building
@@ -123,7 +100,7 @@ class Profile:
             print(e)
             print("get_svelte_routes: Unable to read the source folder for listdir")
 
-    def get_asset_paths(self):
+    def get_assets_paths(self):
         """
         Gets the svelte routes with the capitalized svelte components for building
         the App.svelte file.
@@ -135,7 +112,7 @@ class Profile:
             path = os.path.join(self.source, "assets")
             for file_path in Path(path).rglob("*"):
                 asset_path = str(file_path).replace(str(path) + "/", "")
-                assets_paths[file_path] = str(asset_path)
+                assets_paths[str(file_path)] = str(asset_path)
             return assets_paths
 
         except OSError as e:
@@ -150,9 +127,6 @@ if __name__ == "__main__":
 
     print("\nSection Pages ------------")
     print(course_profile.section_pages)
-
-    # print("\nMarkdown Paths ------------")
-    # print(course_profile.markdown_paths)
 
     print("\nSvelte Paths ------------")
     print(course_profile.svelte_paths)

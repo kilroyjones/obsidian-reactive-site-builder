@@ -63,8 +63,13 @@ import Peripherals_sub_perphs_testing from "./content/peripherals/sub_perphs/tes
 <a href="/peripherals/home" use:link use:active>peripherals</a><br />
  </span>
   <span slot="content">
-    <div class="container">
-      <Router {routes} />
+    <div class="container-fluid">
+      <div class="columns">
+        <div class="col-md-9">
+          <Router {routes} />
+        </div>
+        <div class="col-md-3" />
+      </div>
     </div>
   </span>
 </Sidebar>

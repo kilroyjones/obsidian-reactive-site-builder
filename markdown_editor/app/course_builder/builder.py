@@ -132,6 +132,12 @@ class Builder:
             markdown_pages = processor.run()
         return markdown_pages
 
+    def __copy_assets(self, profile, svelte_path):
+        svelte_path = os.path.join(svelte_path, "public/static/assets")
+        for asset in profile.assets_paths:
+            path = os.path.join(svelte_path, profile.assets_paths[asset])
+            shutil.copyfile(asset, path)
+
     def output_markdown(self, svelte_path):
         """
         Parameters:
@@ -141,6 +147,7 @@ class Builder:
         """
         markdown_pages = self.__get_markdown()
         self.__setup_svelte(markdown_pages, [self.profile, svelte_path])
+        self.__copy_assets(self.profile, svelte_path)
         self.__run_processors(markdown_pages)
         html = self.__get_html(markdown_pages)
         self.__save_as_svelte(svelte_path, html)
