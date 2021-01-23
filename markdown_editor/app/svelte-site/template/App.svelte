@@ -16,7 +16,8 @@
   <span slot="content">
     <div class="container-fluid">
       <div class="columns">
-        <div class="col-md-9">
+        <div class="col-md-1" />
+        <div class="col-md-8">
           <Router {routes} />
         </div>
         <div class="col-md-3" />

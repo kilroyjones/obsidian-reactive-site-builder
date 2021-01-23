@@ -18,6 +18,7 @@
   .sidebar-heading {
     color: white;
     font-family: "Varela Round";
+    font-weight: bold;
     font-size: 2.2rem;
     margin-left: 30px;
     padding-top: 10px;
@@ -57,6 +58,7 @@
 
   .content-container {
     margin-top: 30px;
+    margin-left: 5%;
   }
 
   @media (min-width: 768px) {

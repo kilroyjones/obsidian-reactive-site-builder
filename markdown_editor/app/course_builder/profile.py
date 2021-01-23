@@ -24,6 +24,7 @@ Issues:
 """
 
 import os
+import glob
 from pathlib import Path
 
 
@@ -38,6 +39,7 @@ class Profile:
         self.section_pages = self.get_section_pages()
         self.svelte_paths = self.get_svelte_paths()
         self.assets_paths = self.get_assets_paths()
+        self.questions_paths = self.get_questions_paths()
 
     def get_sections(self):
         """
@@ -64,7 +66,7 @@ class Profile:
         files.
 
         Known issues: This process only returns file immediately in the folder
-        and is not recursive.
+        and is not recursive. [RESOLVED]
         """
         try:
             section_pages = {}
@@ -119,9 +121,22 @@ class Profile:
             print(e)
             print("get_svelte_routes: Unable to read the source folder for listdir")
 
+    def get_questions_paths(self):
+        """
+        Gets all the question paths.
+        """
+        questions = {}
+        for section in self.sections:
+            questions_path = os.path.join(self.source, *[section, "questions"])
+            if os.path.exists(questions_path):
+                questions[section] = []
+                for md in glob.glob(questions_path + "/*.md"):
+                    questions[section].append(md)
+        return questions
+
 
 if __name__ == "__main__":
-    course_profile = Profile("./app/course")
+    course_profile = Profile("../course")
     print("\nSections ------------")
     print(course_profile.sections)
 
@@ -133,3 +148,6 @@ if __name__ == "__main__":
 
     print("\nAssests Paths ------------")
     print(course_profile.assets_paths)
+
+    print("\nQuestions Paths ------------")
+    print(course_profile.questions_paths)

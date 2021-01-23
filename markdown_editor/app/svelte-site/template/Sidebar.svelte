@@ -1,29 +1,45 @@
 <script>
   let menuActive = false;
-  // list of items in accordian
 </script>
 
 <style>
   #sidebar-wrapper {
     min-height: 100vh;
-    margin-left: -25rem;
-    padding-top: 8px;
-    padding-right: 20px;
-    text-align: right;
+    margin-left: -20rem;
+    padding-top: 2rem;
+    width: 20rem;
+    background-color: #c62641;
     -webkit-transition: margin 0.25s ease-out;
     -moz-transition: margin 0.25s ease-out;
     -o-transition: margin 0.25s ease-out;
     transition: margin 0.25s ease-out;
   }
 
-  #sidebar-wrapper .sidebar-heading {
+  .sidebar-heading {
+    color: white;
+    font-family: "Varela Round";
+    font-weight: bold;
     font-size: 2.2rem;
-    padding-bottom: 1.5rem;
+    margin-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
   }
 
-  #sidebar-wrapper .list-group {
-    width: 25rem;
-    margin-left: 0px;
+  .list-group {
+    color: white;
+    font-size: 18px;
+    margin-left: 50px;
+    padding-right: 20px;
+    padding-bottom: 6px;
+  }
+
+  .navbar-toggler {
+    color: #c62641;
+    font-weight: bold;
+    font-size: 14px;
+    padding-top: 15px;
+    padding-left: 25px;
   }
 
   #page-content-wrapper {
@@ -32,6 +48,12 @@
 
   #wrapper.toggled #sidebar-wrapper {
     margin-left: 0;
+  }
+
+  .navbar {
+    background-color: #00000000;
+    margin: 0px;
+    padding: 0px;
   }
 
   .content-container {
@@ -49,7 +71,7 @@
     }
 
     #wrapper.toggled #sidebar-wrapper {
-      margin-left: -25rem;
+      margin-left: -20rem;
     }
 
     .navbar {
@@ -57,8 +79,7 @@
     }
 
     #menu-toggle {
-      font-size: 12px;
-      margin-left: -20px;
+      /* margin-left: -20px; */
       margin-top: -20px;
     }
     .no-border {
@@ -67,12 +88,16 @@
       background: none;
     }
   }
+  .filter {
+    filter: invert(27%) sepia(33%) saturate(4088%) hue-rotate(326deg)
+      brightness(87%) contrast(102%);
+  }
 </style>
 
 <div class="d-flex" id="wrapper" class:toggled={menuActive}>
-  <div class="bg-light border-right" id="sidebar-wrapper">
+  <div class="border-right" id="sidebar-wrapper">
     <slot name="sidebar-heading">
-      <div class="sidebar-heading">Course Title</div>
+      <div class="sidebar-heading">TITLE</div>
     </slot>
     <div class="list-group list-group-flush">
       <slot name="sidebar" />
@@ -88,11 +113,13 @@
         {#if menuActive}
           sidebar
           <img
+            class="filter"
             src="static/images/right-chevron.svg"
             width="10px"
             alt="close chevron" />
         {:else}
           <img
+            class="filter"
             src="static/images/left-chevron.svg"
             width="10px"
             alt="open chevron" />
