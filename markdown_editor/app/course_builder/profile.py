@@ -34,12 +34,12 @@ class Profile:
         Parameters:
             source: base folder of the project
         """
-        self.source = Path(source)
+        self.source = source
         self.sections = self.get_sections()
         self.section_pages = self.get_section_pages()
         self.svelte_paths = self.get_svelte_paths()
         self.assets_paths = self.get_assets_paths()
-        self.questions_paths = self.get_questions_paths()
+        self.quizzes_paths = self.get_quizzes_paths()
 
     def get_sections(self):
         """
@@ -121,18 +121,17 @@ class Profile:
             print(e)
             print("get_svelte_routes: Unable to read the source folder for listdir")
 
-    def get_questions_paths(self):
+    def get_quizzes_paths(self):
         """
         Gets all the question paths.
         """
-        questions = {}
+        quizzes = []
         for section in self.sections:
-            questions_path = os.path.join(self.source, *[section, "questions"])
-            if os.path.exists(questions_path):
-                questions[section] = []
-                for md in glob.glob(questions_path + "/*.md"):
-                    questions[section].append(md)
-        return questions
+            quiz_path = os.path.join(self.source, *[section, "quizzes"])
+            if os.path.exists(quiz_path):
+                for md_path in glob.glob(quiz_path + "/*.md"):
+                    quizzes.append((md_path, section))
+        return quizzes
 
 
 if __name__ == "__main__":
@@ -149,5 +148,5 @@ if __name__ == "__main__":
     print("\nAssests Paths ------------")
     print(course_profile.assets_paths)
 
-    print("\nQuestions Paths ------------")
-    print(course_profile.questions_paths)
+    print("\Quizzes Paths ------------")
+    print(course_profile.quizzes_paths)

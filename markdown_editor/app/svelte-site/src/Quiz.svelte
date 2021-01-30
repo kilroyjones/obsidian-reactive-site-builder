@@ -56,8 +56,13 @@
   }
 
   .incorrect {
-    background-color: #c62641;
+    background-color: #dd6961;
     color: #fff !important;
+  }
+
+  .answer {
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 
   .data-column {
@@ -80,9 +85,9 @@
 <div class="container">
   {#each questions as question, question_index}
     <div class="question">
-      {question['question']}
+      <h2>{question['question']}</h2>
       {#each question['answers'] as answer, answer_index}
-        <div>
+        <div class="answer">
           <button
             class="btn {active[question_index][answer_index]}"
             on:click={() => handleSelect(question_index, answer_index)}>

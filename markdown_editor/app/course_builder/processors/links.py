@@ -1,5 +1,8 @@
 """
 Links
+
+Issues:
+- Overrite question links - either priority quizzes or exclude them here (or create a way to exclude when importing the library)
 """
 import os
 import re

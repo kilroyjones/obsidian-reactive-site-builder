@@ -148,6 +148,7 @@ class Builder:
         markdown_pages = self.__get_markdown()
         self.__setup_svelte(markdown_pages, [self.profile, svelte_path])
         self.__copy_assets(self.profile, svelte_path)
-        self.__run_processors(markdown_pages)
+        markdown_pages = self.__run_processors(markdown_pages)
+        print()
         html = self.__get_html(markdown_pages)
         self.__save_as_svelte(svelte_path, html)

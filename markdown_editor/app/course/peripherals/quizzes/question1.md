@@ -3,7 +3,7 @@ q: Which of the following is a duck?
 (x): Mallard
 ( ): Panda
 
-q: Is this is an animal
+q: Is a duck an animal
 ( ): Nope
 (X): Yes
 (X): Maybe

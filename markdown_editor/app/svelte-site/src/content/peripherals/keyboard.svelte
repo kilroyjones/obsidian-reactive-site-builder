@@ -1,3 +1,3 @@
-<script> import { link } from "svelte-spa-router"; </script>
+<script>import Quiz from "@/Quiz.svelte";</script>
 <h1>Keyboard</h1>
-<p>link to <a href="/peripherals/mouse" use:link>mouse</a> <a href="/peripherals/binary" use:link>peripherals/binary</a></p>
+<p>link to <Quiz questions={[{'question': 'Which of the following is a duck?', 'answers': [' Beaver', ' Mallard', ' Panda'], 'correct': [0, 1, 0]}, {'question': 'Is a duck an animal', 'answers': [' Nope', ' Yes', ' Maybe'], 'correct': [0, 1, 1]}]}/> <Quiz questions={[{'question': 'Which of the following is a duck?', 'answers': [' Beaver', ' Mallard', ' Panda'], 'correct': [0, 1, 0]}, {'question': 'Is a duck an animal', 'answers': [' Nope', ' Yes', ' Maybe'], 'correct': [0, 1, 1]}]}/></p>
