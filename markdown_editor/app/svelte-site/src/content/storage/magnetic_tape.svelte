@@ -1,4 +1,6 @@
-<script> import { link } from "svelte-spa-router"; </script>
+<script>import Quiz from "@/Quiz.svelte";
+import { link } from "svelte-spa-router";
+</script>
 <h1>Magnetic tape</h1>
 <p>Magnetic tape is a <a href="/storage/serial" use:link>serial</a> storage device that stores data <strong>sequentially</strong> on the magnetically-coated surface of a plastic tape.
 <br><center><img src="static/assets/sequentialdatastorage.png"class="img-fluid"></center><br>

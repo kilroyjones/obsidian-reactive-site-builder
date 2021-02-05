@@ -24,6 +24,7 @@ import os
 import shutil
 from pathlib import Path
 from processors.app_header import AppHeader
+from markdown_page import MarkdownPage
 
 
 class Builder:
@@ -60,8 +61,16 @@ class Builder:
         pages = {}
         for section in self.profile.sections:
             for page in self.profile.section_pages[section]:
-                pages[page] = self.__read_file(page)
+                pages[page] = MarkdownPage(self.__read_file(page))
         return pages
+
+    def __add_headers(self, source, headers):
+        if headers:
+            to_append = "<script>"
+            for header in headers:
+                to_append += header + "\n"
+            return to_append + "</script>\n" + source
+        return source
 
     def __get_html(self, markdown_pages):
         """
@@ -70,7 +79,8 @@ class Builder:
         """
         html = {}
         for path in markdown_pages:
-            source = markdown_pages[path]
+            source = markdown_pages[path].page
+            source = self.__add_headers(source, markdown_pages[path].headers)
             path = Path(str(path).replace(".md", ".html"))
             html[str(path)] = self.md.markdown(source)
         return html
@@ -149,6 +159,5 @@ class Builder:
         self.__setup_svelte(markdown_pages, [self.profile, svelte_path])
         self.__copy_assets(self.profile, svelte_path)
         markdown_pages = self.__run_processors(markdown_pages)
-        print()
         html = self.__get_html(markdown_pages)
         self.__save_as_svelte(svelte_path, html)

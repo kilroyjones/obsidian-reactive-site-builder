@@ -33,28 +33,31 @@ class Quizzes:
     def __get_all_possible_links(self, page):
         return re.findall("[^!](\[\[(.*?)\]\])", page)
 
-    def __add_svelte_header(self, page):
-        return '<script>import Quiz from "@/Quiz.svelte";</script>\n' + page
-
-    def __process_matches(self, matches, page, quiz_data):
-        page = self.__add_svelte_header(page)
+    def __add_quiz(self, section, quiz_filename, quiz_data):
         quiz_data = "<Quiz questions={" + str(quiz_data) + "}/>"
-        for match in matches:
-            to_replace = match[0].strip()
-            page = page.replace(to_replace, quiz_data)
-        return page
-
-    def __add_quiz(self, section, quiz_data):
+        quiz_matches = [section + "/quizzes/" + quiz_filename, quiz_filename]
         for path in self.profile.section_pages[section]:
-            page = self.markdown_pages[path]
-            matches = self.__get_all_possible_links(page)
-            self.markdown_pages[path] = self.__process_matches(matches, page, quiz_data)
+            content = self.markdown_pages[path].page
+            matches = self.__get_all_possible_links(content)
+            for match in matches:
+                to_replace = match[0].strip()
+                tag_title = match[1].strip()
+
+                if tag_title in quiz_matches:
+                    print("here")
+                    content = content.replace(to_replace, quiz_data)
+                    self.markdown_pages[path].update_page(content)
+                    self.markdown_pages[path].add_header(
+                        'import Quiz from "@/Quiz.svelte";'
+                    )
 
     def run(self):
         for quiz_path, section in self.profile.quizzes_paths:
-            quiz = self.markdown_pages[quiz_path]
+            quiz = self.markdown_pages[quiz_path].page
             quiz_data = self.__get_quiz_data(quiz)
-            self.__add_quiz(section, quiz_data)
+            quiz_filename = quiz_path.split("/")[-1]
+            quiz_filename = quiz_filename.split(".md")[0]
+            self.__add_quiz(section, quiz_filename, quiz_data)
         return self.markdown_pages
 
 

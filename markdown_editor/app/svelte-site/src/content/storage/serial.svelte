@@ -1,4 +1,6 @@
-<script> import { link } from "svelte-spa-router"; </script>
+<script>import Quiz from "@/Quiz.svelte";
+import { link } from "svelte-spa-router";
+</script>
 <h1>Serial data access</h1>
 <p>In <strong>serial</strong> data <a href="/storage/home" use:link>storage/home</a> devices, data is stored in <strong>sequential</strong> order.</p>
 <p><br><center><img src="static/assets/sequentialdatastorage.png"class="img-fluid"></center><br></p>

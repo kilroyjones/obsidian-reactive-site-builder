@@ -1,4 +1,6 @@
-<script> import { link } from "svelte-spa-router"; </script>
+<script>import Quiz from "@/Quiz.svelte";
+import { link } from "svelte-spa-router";
+</script>
 <h1>Binary</h1>
 <p>Binary code is the fundamental language of the computer, using only two digits (<strong>0s</strong> and <strong>1s</strong>) to represent data in a computer system.</p>
 <h2>Bits and bytes</h2>

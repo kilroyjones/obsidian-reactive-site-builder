@@ -39,16 +39,14 @@ class Links:
     def __get_all_possible_links(self, page):
         return re.findall("[^!](\[\[(.*?)\]\])", page)
 
-    def __append_svelte_header(self, page):
-        header = '<script> import { link } from "svelte-spa-router"; </script>'
-        return header + "\n" + page
-
     def run(self):
         for page in self.markdown_pages:
-            content = self.markdown_pages[page]
+            content = self.markdown_pages[page].page
             matches = self.__get_all_possible_links(content)
             if len(matches) > 0:
-                content = self.__append_svelte_header(content)
+                self.markdown_pages[page].add_header(
+                    'import { link } from "svelte-spa-router";'
+                )
                 content = self.__process_matches(page, content, matches)
-                self.markdown_pages[page] = content
+                self.markdown_pages[page].update_page(content)
         return self.markdown_pages

@@ -1,2 +1,2 @@
 this is testing
-[[question1]]
+[[peripherals/quizzes/question1]]

@@ -38,9 +38,9 @@ class Images:
 
     def run(self):
         for page in self.markdown_pages:
-            content = self.markdown_pages[page]
+            content = self.markdown_pages[page].page
             matches = self.__get_all_possible_images(content)
             if len(matches) > 0:
                 content = self.__process_matches(page, content, matches)
-                self.markdown_pages[page] = content
+                self.markdown_pages[page].update_page(content)
         return self.markdown_pages

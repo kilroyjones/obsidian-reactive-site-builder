@@ -1,4 +1,6 @@
-<script> import { link } from "svelte-spa-router"; </script>
+<script>import Quiz from "@/Quiz.svelte";
+import { link } from "svelte-spa-router";
+</script>
 <h1>Magnetic storage devices</h1>
 <p>Magnetic storage devices store <a href="/storage/binary" use:link>storage/binary</a> data (0s and 1s) using magnetic polarity: 
 <br><center><img src="static/assets/magneticdatastorage.png"class="img-fluid"></center><br>

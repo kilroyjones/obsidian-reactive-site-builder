@@ -1,4 +1,6 @@
-<script> import { link } from "svelte-spa-router"; </script>
+<script>import Quiz from "@/Quiz.svelte";
+import { link } from "svelte-spa-router";
+</script>
 <h1>Solid state</h1>
 <hr />
 <p>In solid state <a href="/storage/home" use:link>storage/home</a> devices, <a href="/storage/binary" use:link>storage/binary</a> data is stored with the presence or absence of an electrical charge, meaning there are no moving parts as there are in other storage devices.</p>

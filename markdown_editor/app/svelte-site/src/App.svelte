@@ -25,6 +25,7 @@ import Peripherals_home from "./content/peripherals/home.svelte";
 import Peripherals_bananas from "./content/peripherals/bananas.svelte";
 import Peripherals_mouse from "./content/peripherals/mouse.svelte";
 import Peripherals_keyboard from "./content/peripherals/keyboard.svelte";
+import Peripherals_sub_perphs_question1 from "./content/peripherals/sub_perphs/question1.svelte";
 import Peripherals_sub_perphs_testing from "./content/peripherals/sub_perphs/testing.svelte";
 import Peripherals_quizzes_question1 from "./content/peripherals/quizzes/question1.svelte";
 
@@ -52,6 +53,7 @@ import Peripherals_quizzes_question1 from "./content/peripherals/quizzes/questio
 "/peripherals/bananas": Peripherals_bananas,
 "/peripherals/mouse": Peripherals_mouse,
 "/peripherals/keyboard": Peripherals_keyboard,
+"/peripherals/sub_perphs/question1": Peripherals_sub_perphs_question1,
 "/peripherals/sub_perphs/testing": Peripherals_sub_perphs_testing,
 "/peripherals/quizzes/question1": Peripherals_quizzes_question1,
 
