@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "peripherals/home.md",
+            "file": "storage/optical.md",
             "mode": "source"
           }
         }
@@ -40,7 +40,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "[[CD]",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "peripherals/home.md",
+                "file": "storage/optical.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -85,15 +85,15 @@
     "width": 300
   },
   "lastOpenFiles": [
+    "storage/optical.md",
     "peripherals/home.md",
-    "peripherals/sub_perphs/Untitled.md",
-    "peripherals/bananas.md",
-    "peripherals/binary.md",
+    "storage/home.md",
     "peripherals/keyboard.md",
-    "peripherals/mouse.md",
-    "peripherals/quizzes/question1.md",
+    "peripherals/binary.md",
+    "peripherals/bananas.md",
     "peripherals/sub_perphs/testing.md",
-    "peripherals/questions/Untitled.md",
-    "peripherals/521799568069754890.png"
+    "peripherals/sub_perphs/question1.md",
+    "peripherals/sub_perphs/Untitled.md",
+    "peripherals/mouse.md"
   ]
 }

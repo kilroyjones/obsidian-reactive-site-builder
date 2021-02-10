@@ -25,7 +25,8 @@ body {
 }
 
 h1 {
-  font-size: 32px;
+  font-family: "Varela Round";
+  font-size: 48px;
   font-style: normal;
   font-variant: normal;
   font-weight: 700;
@@ -36,7 +37,7 @@ h1 {
 
 h2 {
   font-family: "Varela Round";
-  font-size: 18px;
+  font-size: 32px;
   font-style: normal;
   font-variant: normal;
   font-weight: 700;
@@ -46,7 +47,17 @@ h2 {
 
 h3 {
   font-family: "Varela Round";
-  font-size: 14px;
+  font-size: 24px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  color: #c62641;
+  line-height: 15.4px;
+}
+
+h4 {
+  font-family: "Varela Round";
+  font-size: 18px;
   font-style: normal;
   font-variant: normal;
   font-weight: 700;

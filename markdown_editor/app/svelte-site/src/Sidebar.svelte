@@ -7,7 +7,6 @@
     min-height: 100vh;
     margin-left: -20rem;
     padding-top: 2rem;
-    width: 20rem;
     background-color: #c62641;
     -webkit-transition: margin 0.25s ease-out;
     -moz-transition: margin 0.25s ease-out;
@@ -28,8 +27,9 @@
 
   .list-group {
     color: white;
+    width: 20rem;
     font-size: 18px;
-    margin-left: 50px;
+    padding-left: 50px;
     padding-right: 20px;
     padding-bottom: 6px;
   }
@@ -61,6 +61,16 @@
     margin-left: 5%;
   }
 
+  #menu-toggle {
+    margin-left: -20px;
+    margin-top: -20px;
+  }
+  .no-border {
+    outline: none;
+    border: none;
+    background: none;
+  }
+
   @media (min-width: 768px) {
     #sidebar-wrapper {
       margin-left: 0;
@@ -77,16 +87,6 @@
 
     .navbar {
       background-color: #00000000;
-    }
-
-    #menu-toggle {
-      margin-left: -20px;
-      margin-top: -20px;
-    }
-    .no-border {
-      outline: none;
-      border: none;
-      background: none;
     }
   }
   .filter {

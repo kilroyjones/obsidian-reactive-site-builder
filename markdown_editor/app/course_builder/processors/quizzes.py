@@ -31,7 +31,7 @@ class Quizzes:
         return questions
 
     def __get_all_possible_links(self, page):
-        return re.findall("[^!](\[\[(.*?)\]\])", page)
+        return re.findall("[^!$](\[\[(.*?)\]\])", page)
 
     def __add_quiz(self, section, quiz_filename, quiz_data):
         quiz_data = "<Quiz questions={" + str(quiz_data) + "}/>"
@@ -44,14 +44,13 @@ class Quizzes:
                 tag_title = match[1].strip()
 
                 if tag_title in quiz_matches:
-                    print("here")
                     content = content.replace(to_replace, quiz_data)
                     self.markdown_pages[path].update_page(content)
                     self.markdown_pages[path].add_header(
                         'import Quiz from "@/Quiz.svelte";'
                     )
 
-    def run(self):
+    def run(self, markdown_file=""):
         for quiz_path, section in self.profile.quizzes_paths:
             quiz = self.markdown_pages[quiz_path].page
             quiz_data = self.__get_quiz_data(quiz)

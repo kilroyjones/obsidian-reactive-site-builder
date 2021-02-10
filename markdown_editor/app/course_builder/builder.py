@@ -60,8 +60,13 @@ class Builder:
         """
         pages = {}
         for section in self.profile.sections:
-            for page in self.profile.section_pages[section]:
-                pages[page] = MarkdownPage(self.__read_file(page))
+            for path in self.profile.section_pages[section]:
+                pages[path] = MarkdownPage(
+                    section=section, content=self.__read_file(path), path=path
+                )
+        for key in pages:
+            pages[key].display()
+            print("--")
         return pages
 
     def __add_headers(self, source, headers):
@@ -79,7 +84,7 @@ class Builder:
         """
         html = {}
         for path in markdown_pages:
-            source = markdown_pages[path].page
+            source = markdown_pages[path].content
             source = self.__add_headers(source, markdown_pages[path].headers)
             path = Path(str(path).replace(".md", ".html"))
             html[str(path)] = self.md.markdown(source)
