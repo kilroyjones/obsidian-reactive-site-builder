@@ -7,7 +7,7 @@ class Quizzes:
         self.markdown_pages = markdown_pages
         self.profile = profile
 
-    def __get_quiz_data(self, quiz):
+    def __render_quiz(self, quiz):
         questions = []
         question_counter = -1
         question = {"question": "", "answers": [], "correct": []}
@@ -30,36 +30,39 @@ class Quizzes:
                 questions[question_counter]["correct"].append(1)
         return questions
 
-    def __get_all_possible_links(self, page):
-        return re.findall("[^!$](\[\[(.*?)\]\])", page)
+    def __get_quiz(self, tag_title, quiz_pages):
+        for quiz in quiz_pages:
+            if tag_title in quiz.markdown_relative_path:
+                quiz_data = self.__render_quiz(quiz.content)
+                quiz_data = "<Quiz questions={" + str(quiz_data) + "}/>"
+                return quiz_data
+        return None
 
-    def __add_quiz(self, section, quiz_filename, quiz_data):
-        quiz_data = "<Quiz questions={" + str(quiz_data) + "}/>"
-        quiz_matches = [section + "/quizzes/" + quiz_filename, quiz_filename]
-        for path in self.profile.section_pages[section]:
-            content = self.markdown_pages[path].page
-            matches = self.__get_all_possible_links(content)
-            for match in matches:
-                to_replace = match[0].strip()
-                tag_title = match[1].strip()
+    def __process_matches(self, page, matches, quiz_pages):
+        for match in matches:
+            to_replace = match[0].strip()
+            tag_title = match[1].strip()
+            quiz = self.__get_quiz(tag_title, quiz_pages)
+            if quiz:
+                page.content = page.content.replace(to_replace, quiz)
+                page.add_header('import Quiz from "@/Quiz.svelte";')
+        return page
 
-                if tag_title in quiz_matches:
-                    content = content.replace(to_replace, quiz_data)
-                    self.markdown_pages[path].update_page(content)
-                    self.markdown_pages[path].add_header(
-                        'import Quiz from "@/Quiz.svelte";'
-                    )
+    def __get_all_possible_links(self, content):
+        return re.findall("[^$!](\[\[(.*?)\]\])", content)
+
+    def __get_quiz_pages(self):
+        quiz_pages = []
+        for page in self.markdown_pages:
+            partial_path = page.section + "/quizzes"
+            if partial_path in page.path:
+                quiz_pages.append(page)
+        return quiz_pages
 
     def run(self, markdown_file=""):
-        for quiz_path, section in self.profile.quizzes_paths:
-            quiz = self.markdown_pages[quiz_path].page
-            quiz_data = self.__get_quiz_data(quiz)
-            quiz_filename = quiz_path.split("/")[-1]
-            quiz_filename = quiz_filename.split(".md")[0]
-            self.__add_quiz(section, quiz_filename, quiz_data)
+        quiz_pages = self.__get_quiz_pages()
+        for page in self.markdown_pages:
+            matches = self.__get_all_possible_links(page.content)
+            if len(matches) > 0:
+                page = self.__process_matches(page, matches, quiz_pages)
         return self.markdown_pages
-
-
-if __name__ == "__main__":
-    with open("quiz1.md") as f:
-        lines = f.readlines()

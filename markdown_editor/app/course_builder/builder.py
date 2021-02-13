@@ -58,16 +58,15 @@ class Builder:
         Reads from the root markdown folder and builds a dictionary with the
         path as the key and the markdown content as the value.
         """
-        pages = {}
+        markdown_pages = []
         for section in self.profile.sections:
             for path in self.profile.section_pages[section]:
-                pages[path] = MarkdownPage(
-                    section=section, content=self.__read_file(path), path=path
+                markdown_pages.append(
+                    MarkdownPage(
+                        section=section, content=self.__read_file(path), path=path
+                    )
                 )
-        for key in pages:
-            pages[key].display()
-            print("--")
-        return pages
+        return markdown_pages
 
     def __add_headers(self, source, headers):
         if headers:
@@ -83,10 +82,10 @@ class Builder:
         key is the path to the original markdown and the value is the html.
         """
         html = {}
-        for path in markdown_pages:
-            source = markdown_pages[path].content
-            source = self.__add_headers(source, markdown_pages[path].headers)
-            path = Path(str(path).replace(".md", ".html"))
+        for page in markdown_pages:
+            source = page.content
+            source = self.__add_headers(source, page.headers)
+            path = Path(str(page.path).replace(".md", ".html"))
             html[str(path)] = self.md.markdown(source)
         return html
 
@@ -132,7 +131,7 @@ class Builder:
         Issue:
             - This should be rolled into the "processors" at some point.
         """
-        app_header = AppHeader(markdown_pages, params)
+        app_header = AppHeader(params)
         app_header.run()
 
     def __run_processors(self, markdown_pages):

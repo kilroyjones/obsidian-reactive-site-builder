@@ -6,8 +6,7 @@ import os
 
 
 class AppHeader:
-    def __init__(self, pages, params):
-        self.pages = pages
+    def __init__(self, params):
         self.profile = params[0]
         self.source = params[1]
 

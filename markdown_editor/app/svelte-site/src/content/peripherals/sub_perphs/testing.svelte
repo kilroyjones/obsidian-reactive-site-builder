@@ -1,4 +1,4 @@
-<script>import { link } from "svelte-spa-router";
+<script>import Quiz from "@/Quiz.svelte";
 </script>
 <p>this is testing
-<a href="/peripherals/quizzes/question1" use:link>peripherals/quizzes/question1</a></p>
+<Quiz questions={[{'question': 'Which of the following is a duck?', 'answers': [' Beaver', ' Mallard', ' Panda'], 'correct': [0, 1, 0]}, {'question': 'Is a duck an animal', 'answers': [' Nope', ' Yes', ' Maybe'], 'correct': [0, 1, 1]}]}/></p>
