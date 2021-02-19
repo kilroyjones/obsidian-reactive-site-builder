@@ -4,13 +4,13 @@
     "type": "split",
     "children": [
       {
-        "id": "e721857ddb34a835",
+        "id": "4b63e1ae271687d2",
         "type": "leaf",
         "active": true,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "storage/optical.md",
+            "file": "peripherals/home.md",
             "mode": "source"
           }
         }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "storage/optical.md",
+                "file": "peripherals/home.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -85,11 +85,11 @@
     "width": 300
   },
   "lastOpenFiles": [
-    "storage/optical.md",
     "peripherals/home.md",
+    "peripherals/binary.md",
+    "storage/optical.md",
     "storage/home.md",
     "peripherals/keyboard.md",
-    "peripherals/binary.md",
     "peripherals/bananas.md",
     "peripherals/sub_perphs/testing.md",
     "peripherals/sub_perphs/question1.md",

@@ -20,6 +20,37 @@
   }
 </script>
 
+<div class="container">
+  {#each questions as question, question_index}
+    <div class="question">
+      <h4>{question["question"]}</h4>
+      {#each question["answers"] as answer, answer_index}
+        <div class="answer">
+          <button
+            class="btn {active[question_index][answer_index]}"
+            on:click={() => handleSelect(question_index, answer_index)}
+          >
+            {answer}
+          </button>
+        </div>
+      {/each}
+    </div>
+  {/each}
+  <div class="question">
+    <div class="row data-row">
+      <div class="col-sm-4">
+        <div class="data-column correct">{correct}</div>
+      </div>
+      <div class="col-sm-4 ">
+        <div class="data-column incorrect">{incorrect}</div>
+      </div>
+      <div class="col-sm-4">
+        <div class="data-column score">stuff</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <style>
   .quiz {
     width: 100;
@@ -51,12 +82,12 @@
   }
 
   .correct {
-    background-color: #a1ae25;
+    background-color: #2a9d8f;
     color: #fff !important;
   }
 
   .incorrect {
-    background-color: #dd6961;
+    background-color: #e76f51;
     color: #fff !important;
   }
 
@@ -81,33 +112,3 @@
     padding-top: 5px;
   }
 </style>
-
-<div class="container">
-  {#each questions as question, question_index}
-    <div class="question">
-      <h2>{question['question']}</h2>
-      {#each question['answers'] as answer, answer_index}
-        <div class="answer">
-          <button
-            class="btn {active[question_index][answer_index]}"
-            on:click={() => handleSelect(question_index, answer_index)}>
-            {answer}
-          </button>
-        </div>
-      {/each}
-    </div>
-  {/each}
-  <div class="question">
-    <div class="row data-row">
-      <div class="col-sm-4">
-        <div class="data-column correct">{correct}</div>
-      </div>
-      <div class="col-sm-4 ">
-        <div class="data-column incorrect">{incorrect}</div>
-      </div>
-      <div class="col-sm-4">
-        <div class="data-column score">stuff</div>
-      </div>
-    </div>
-  </div>
-</div>

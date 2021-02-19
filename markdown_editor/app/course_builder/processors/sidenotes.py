@@ -1,3 +1,17 @@
+"""
+Class: Sidenotes
+
+Description:
+
+    Creates sidenotes along the right side. See the global.css for the styling 
+    of the aside tag.  
+
+Methods:
+
+
+Issues:
+    - Probably should clean up some of the naming scheme (output_markdown)
+"""
 import os
 import re
 
@@ -19,9 +33,8 @@ class Sidenotes:
 
     def run(self):
         for page in self.markdown_pages:
-            content = self.markdown_pages[page].page
+            content = page.content
             matches = self.__get_all_possible_sidenotes(content)
             if len(matches) > 0:
-                content = self.__process_matches(content, matches)
-                self.markdown_pages[page].update_page(content)
+                page.content = self.__process_matches(content, matches)
         return self.markdown_pages
