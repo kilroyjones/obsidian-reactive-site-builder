@@ -1,0 +1,99 @@
+{
+  "main": {
+    "id": "685e4b754a38e514",
+    "type": "split",
+    "children": [
+      {
+        "id": "4b63e1ae271687d2",
+        "type": "leaf",
+        "active": true,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "peripherals/home.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "eb02766f94c4255e",
+    "type": "split",
+    "children": [
+      {
+        "id": "25309bd01c182a95",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a84dd87d041ad870",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "af533d38c5a253f7",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "[[CD]",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "2acb5a3140460b97",
+    "type": "split",
+    "children": [
+      {
+        "id": "6072e01449de1883",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "164a2bfc4ada78a2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "peripherals/home.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "lastOpenFiles": [
+    "peripherals/home.md",
+    "peripherals/binary.md",
+    "storage/optical.md",
+    "storage/home.md",
+    "peripherals/keyboard.md",
+    "peripherals/bananas.md",
+    "peripherals/sub_perphs/testing.md",
+    "peripherals/sub_perphs/question1.md",
+    "peripherals/sub_perphs/Untitled.md",
+    "peripherals/mouse.md"
+  ]
+}
