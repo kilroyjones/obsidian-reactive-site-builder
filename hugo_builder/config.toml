@@ -1,9 +1,0 @@
-baseURL = "http://example.org/"
-languageCode = "en-us"
-title = "Testing"
-
-[markup.goldmark.renderer]
-unsafe= true
-
-[outputs]
-home = [ "HTML", "RSS", "JSON"]

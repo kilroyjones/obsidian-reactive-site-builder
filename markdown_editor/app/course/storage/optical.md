@@ -1,2 +1,0 @@
-# Optical storage devices 
-	[[CD]]
