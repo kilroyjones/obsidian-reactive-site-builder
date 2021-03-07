@@ -6,12 +6,13 @@ import os
 
 
 class AppHeader:
-    def __init__(self, params):
-        self.profile = params[0]
-        self.source = params[1]
+    def __init__(self, markdown_pages, profile, svelte_path):
+        self.markdown_pages = markdown_pages
+        self.profile = profile
+        self.svelte_path = svelte_path
 
     def __get_app_header(self):
-        source = os.path.join(self.source, "template/App.svelte")
+        source = os.path.join(self.svelte_path, "template/App.svelte")
         with open(source) as f:
             app_header = f.read()
         return app_header
@@ -32,11 +33,27 @@ class AppHeader:
     def __add_sidebar(self, app_header):
         sidebar = ""
         template = '<a href="$$PATH$$" use:link use:active>$$TITLE$$</a><br />'
-        for section in self.profile.sections:
-            path = os.path.join("/", section.replace(" ", "_") + "/home")
-            link = template.replace("$$PATH$$", path)
-            link = link.replace("$$TITLE$$", section)
-            sidebar += link + "\n"
+        sidebar += "<Accordion>"
+        structure = {}
+        for page in self.markdown_pages:
+            if page.section not in structure:
+                structure[page.section] = [page.filename[:-3]]
+            else:
+                structure[page.section].append(page.filename[:-3])
+
+        for section in structure:
+            sidebar += (
+                "<Accordion.Section title={'"
+                + section
+                + '\'}><div class="section-content">'
+            )
+            for page in structure[section]:
+                path = os.path.join("/", section.replace(" ", "_") + "/" + page)
+                link = template.replace("$$PATH$$", path)
+                link = link.replace("$$TITLE$$", page)
+                sidebar += link + "\n"
+            sidebar += "</div></Accordion.Section>"
+        sidebar += "</Accordion>"
         return app_header.replace("$$SIDEBAR$$", sidebar)
 
     def run(self):
@@ -45,6 +62,6 @@ class AppHeader:
         app_header = self.__add_imports(app_header)
         app_header = self.__add_sidebar(app_header)
 
-        source = os.path.join(self.source, "src/App.svelte")
+        source = os.path.join(self.svelte_path, "src/App.svelte")
         with open(source, "w") as f:
             f.write(app_header)

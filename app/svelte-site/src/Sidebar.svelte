@@ -7,6 +7,7 @@
     <slot name="sidebar-heading">
       <div class="sidebar-heading">TITLE</div>
     </slot>
+
     <div class="list-group list-group-flush">
       <slot name="sidebar" />
     </div>
@@ -50,9 +51,11 @@
 <style>
   #sidebar-wrapper {
     min-height: 100vh;
-    margin-left: -20rem;
+    width: 24rem;
+    max-width: 24rem;
+    /* margin-left: -20rem; */
     padding-top: 2rem;
-    background-color: #264653;
+    background-color: white;
     -webkit-transition: margin 0.25s ease-out;
     -moz-transition: margin 0.25s ease-out;
     -o-transition: margin 0.25s ease-out;
@@ -60,22 +63,22 @@
   }
 
   .sidebar-heading {
-    color: white;
+    color: #000;
     font-family: "Varela Round";
     font-weight: bold;
     font-size: 2.2rem;
-    margin-left: 30px;
+    padding-left: 30px;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-right: 20px;
   }
 
   .list-group {
-    color: white;
+    color: #000;
     width: 24rem;
     font-size: 20px;
-    padding-left: 50px;
-    padding-right: 20px;
+    /* padding-left: 50px; */
+    /* padding-right: 20px; */
     padding-bottom: 6px;
   }
 
@@ -107,7 +110,7 @@
   }
 
   #menu-toggle {
-    margin-left: -20px;
+    /* margin-left: -20px; */
     margin-top: -20px;
   }
   .no-border {
@@ -127,7 +130,7 @@
     }
 
     #wrapper.toggled #sidebar-wrapper {
-      margin-left: -20rem;
+      margin-left: -24rem;
     }
 
     .navbar {

@@ -119,7 +119,7 @@ class Builder:
                 print(e)
                 print("save_as_svelte: file does not exist")
 
-    def __setup_svelte(self, markdown_pages, params):
+    def __setup_svelte(self, markdown_pages, profile, svelte_path):
         """
         Parameters:
             pages: Markdown pages
@@ -131,7 +131,7 @@ class Builder:
         Issue:
             - This should be rolled into the "processors" at some point.
         """
-        app_header = AppHeader(params)
+        app_header = AppHeader(markdown_pages, profile, svelte_path)
         app_header.run()
 
     def __run_processors(self, markdown_pages):
@@ -160,7 +160,7 @@ class Builder:
         Primary function for the builder.
         """
         markdown_pages = self.__get_markdown()
-        self.__setup_svelte(markdown_pages, [self.profile, svelte_path])
+        self.__setup_svelte(markdown_pages, self.profile, svelte_path)
         self.__copy_assets(self.profile, svelte_path)
         markdown_pages = self.__run_processors(markdown_pages)
         html = self.__get_html(markdown_pages)

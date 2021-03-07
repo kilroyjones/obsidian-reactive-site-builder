@@ -3,6 +3,7 @@
   import Router from "svelte-spa-router";
   import active from "svelte-spa-router/active";
   import { link } from "svelte-spa-router";
+  import Accordion from "svelte-accordion";
   $$IMPORTS$$
 
   const routes = {

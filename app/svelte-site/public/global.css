@@ -99,13 +99,13 @@ a {
   text-decoration: none;
 }
 
-div.list-group a {
+/* div.list-group a {
   color: white;
 }
 
 div.list-group a:hover {
   color: #e6e6e6;
-}
+} */
 
 a:hover {
   text-decoration: none;
@@ -147,4 +147,42 @@ aside,
 img {
   padding-top: 6px;
   padding-bottom: 6px;
+}
+
+/* 
+  Sidebar
+*/
+.accordion {
+  width: 100%;
+  background-color: white;
+}
+
+ul.accordion {
+  padding: 0px;
+}
+
+.accordion > li {
+  color: #264653;
+  width: 100% !important;
+}
+
+.accordion-section {
+  padding-left: 20;
+  margin-left: 20;
+  width: 100% !important;
+}
+
+.accordion-section__header {
+  padding-left: 30px !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  border: 0 !important;
+  background-color: #efefef !important;
+  border-radius: 0 !important;
+}
+
+.section-content {
+  padding-top: 10px;
+  margin-left: 40px;
+  padding-bottom: 10px;
 }
