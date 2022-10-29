@@ -20,6 +20,7 @@ class Images:
 
     def __is_image(self, image):
         suffix = image.split(".")[-1].lower()
+        #TODO: Detect more images - programmatically open all files and determine type 
         suffixes = ["jpg", "jpeg", "png", "gif", "bmp", "tiff", "svg"]
         if suffix in suffixes:
             return True

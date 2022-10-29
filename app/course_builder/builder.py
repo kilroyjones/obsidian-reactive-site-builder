@@ -39,19 +39,35 @@ class Builder:
         self.md = markdown
         self.processors = processors
 
-    def __read_file(self, source):
+    def build_site(self, build_path):
         """
         Parameters:
-            source: Path to a markdown file
+            output_path: destination folder 
 
-        Reads in a markdown file and returns it as a single string.
+
+        Primary function for the builder.
         """
-        try:
-            with open(source) as f:
-                return f.read()
-        except OSError as e:
-            print(e)
-            print("read_file: File not found")
+        markdown_pages = self.__get_markdown()
+        self.__copy_assets(build_path)
+        # self.__(markdown_pages, self.profile, output_path)
+        # markdown_pages = self.__run_processors(markdown_pages)
+        # html = self.__get_html(markdown_pages)
+        # self.__save_as_svelte(svelte_path, html)
+
+    def __setup_svelte(self, markdown_pages, profile, svelte_path):
+        """
+        Parameters:
+            pages: Markdown pages
+            params: List with profile and svelte_path at the moment.
+                additional options could be sent later.
+
+        Used to set up the svelte project.
+
+        Issue:
+            - This should be rolled into the "processors" at some point.
+        """
+        app_header = AppHeader(markdown_pages, profile, svelte_path)
+        app_header.run()
 
     def __get_markdown(self):
         """
@@ -68,13 +84,25 @@ class Builder:
                 )
         return markdown_pages
 
-    def __add_headers(self, source, headers):
-        if headers:
-            to_append = "<script>"
-            for header in headers:
-                to_append += header + "\n"
-            return to_append + "</script>\n" + source
-        return source
+    def __read_file(self, source):
+        """
+        Parameters:
+            source: Path to a markdown file
+
+        Reads in a markdown file and returns it as a single string.
+        """
+        try:
+            with open(source) as f:
+                return f.read()
+        except Exception as e:
+            print('[__read_file]', e)
+
+    def __copy_assets(self, build_path):
+        for asset_source in self.profile.asset_paths:
+            asset_dest = os.path.relpath(asset_source, self.profile.source).replace(' ', '_')
+            asset_dest = Path(os.path.join(build_path, asset_dest))
+            asset_dest.parent.mkdir(exist_ok=True, parents=True)
+            shutil.copy(asset_source, asset_dest)
 
     def __get_html(self, markdown_pages):
         """
@@ -119,20 +147,6 @@ class Builder:
                 print(e)
                 print("save_as_svelte: file does not exist")
 
-    def __setup_svelte(self, markdown_pages, profile, svelte_path):
-        """
-        Parameters:
-            pages: Markdown pages
-            params: List with profile and svelte_path at the moment.
-                additional options could be sent later.
-
-        Used to set up the svelte project.
-
-        Issue:
-            - This should be rolled into the "processors" at some point.
-        """
-        app_header = AppHeader(markdown_pages, profile, svelte_path)
-        app_header.run()
 
     def __run_processors(self, markdown_pages):
         """
@@ -146,22 +160,4 @@ class Builder:
             markdown_pages = processor.run()
         return markdown_pages
 
-    def __copy_assets(self, profile, svelte_path):
-        svelte_path = os.path.join(svelte_path, "public/static/assets")
-        for asset in profile.assets_paths:
-            path = os.path.join(svelte_path, profile.assets_paths[asset])
-            shutil.copyfile(asset, path)
 
-    def output_markdown(self, svelte_path):
-        """
-        Parameters:
-            svelte_path: location of an existing svelte project
-
-        Primary function for the builder.
-        """
-        markdown_pages = self.__get_markdown()
-        self.__setup_svelte(markdown_pages, self.profile, svelte_path)
-        self.__copy_assets(self.profile, svelte_path)
-        markdown_pages = self.__run_processors(markdown_pages)
-        html = self.__get_html(markdown_pages)
-        self.__save_as_svelte(svelte_path, html)

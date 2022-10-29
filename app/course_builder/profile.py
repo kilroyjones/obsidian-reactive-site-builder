@@ -23,6 +23,7 @@ Issues:
 
 """
 
+from genericpath import isfile
 import os
 import glob
 from pathlib import Path
@@ -37,9 +38,9 @@ class Profile:
         self.source = source
         self.sections = self.get_sections()
         self.section_pages = self.get_section_pages()
-        self.svelte_paths = self.get_svelte_paths()
-        self.assets_paths = self.get_assets_paths()
-        self.quizzes_paths = self.get_quizzes_paths()
+        self.markdown_paths = self.get_markdown_paths()
+        self.asset_paths = self.get_assets_paths()
+        # self.quizzes_paths = self.get_quizzes_paths() # Currently unsupported:q
 
     def get_sections(self):
         """
@@ -55,9 +56,8 @@ class Profile:
                         sections.append(section)
             return sections
 
-        except OSError as e:
-            print(e)
-            print("get_sections: Unable to open the source folder " + self.source)
+        except Exception as e:
+            print('[get_sections]', e)
 
     def get_section_pages(self):
         """
@@ -65,8 +65,9 @@ class Profile:
         the key is the section folder and the contents are the markdown page
         files.
 
-        Known issues: This process only returns file immediately in the folder
-        and is not recursive. [RESOLVED]
+        Issues: 
+            - This process only returns file immediately in the folder and is not recursive. 
+                - [RESOLVED] 
         """
         try:
             section_pages = {}
@@ -77,61 +78,58 @@ class Profile:
                     section_pages[section].append(str(file_path))
             return section_pages
 
-        except OSError as e:
-            print(e)
-            print("get_section_pages: Unable to read files from the given folder")
+        except Exception as e:
+            print('[get_section_pages]', e)
 
-    def get_svelte_paths(self):
+    def get_markdown_paths(self):
         """
-        Gets the svelte routes with the capitalized svelte components for building
-        the App.svelte file.
+        Gets the paths of the file as key with the markdown file name as the value.
 
-        Issues: Use os walk to get full tree and scan that way.
+        Issues:
+            - Rewrite to use os walk to get full tree and scan that way?
         """
         try:
-            svelte_paths = {}
+            paths = {}
             for section in self.section_pages:
                 for page in self.section_pages[section]:
-                    route = str(page).replace(str(self.source), "")[:-3]
-                    route = route.replace(" ", "_")
-                    page = str(route[1:]).replace("/", "_")
-                    svelte_paths[route] = page.capitalize()
-            return svelte_paths
+                    route = str(page).replace(" ", "_")
+                    page = os.path.basename(route)
+                    paths[route] = page
+            return paths
 
-        except OSError as e:
-            print(e)
-            print("get_svelte_routes: Unable to read the source folder for listdir")
+        except Exception as e:
+            print('[get_paths]', e)
 
     def get_assets_paths(self):
         """
-        Gets the svelte routes with the capitalized svelte components for building
-        the App.svelte file.
+        Gets the assets paths as key with the filename name as value. 
 
         Issues: Use os walk to get full tree and scan that way.
         """
         try:
-            assets_paths = {}
+            asset_paths = {}
             path = os.path.join(self.source, "assets")
-            for file_path in Path(path).rglob("*"):
-                asset_path = str(file_path).replace(str(path) + "/", "")
-                assets_paths[str(file_path)] = str(asset_path)
-            return assets_paths
+            for asset_path in Path(path).rglob("*"):
+                asset = os.path.relpath(asset_path, path)
+                if os.path.isfile(asset_path):
+                    asset_paths[str(asset_path)] = asset
+            return asset_paths 
 
-        except OSError as e:
-            print(e)
-            print("get_svelte_routes: Unable to read the source folder for listdir")
+        except Exception as e:
+            print('[get_assets_paths]', e)
 
-    def get_quizzes_paths(self):
-        """
-        Gets all the question paths.
-        """
-        quizzes = []
-        for section in self.sections:
-            quiz_path = os.path.join(self.source, *[section, "quizzes"])
-            if os.path.exists(quiz_path):
-                for md_path in glob.glob(quiz_path + "/*.md"):
-                    quizzes.append((md_path, section))
-        return quizzes
+    # Look at adding this separately as a processor?
+    # def get_quizzes_paths(self):
+    #     """
+    #     Gets all the question paths.
+    #     """
+    #     quizzes = []
+    #     for section in self.sections:
+    #         quiz_path = os.path.join(self.source, *[section, "quizzes"])
+    #         if os.path.exists(quiz_path):
+    #             for md_path in glob.glob(quiz_path + "/*.md"):
+    #                 quizzes.append((md_path, section))
+    #     return quizzes
 
 
 if __name__ == "__main__":
@@ -142,11 +140,12 @@ if __name__ == "__main__":
     print("\nSection Pages ------------")
     print(course_profile.section_pages)
 
-    print("\nSvelte Paths ------------")
-    print(course_profile.svelte_paths)
+    print("\Markdown paths ------------")
+    print(course_profile.markdown_paths)
 
     print("\nAssests Paths ------------")
-    print(course_profile.assets_paths)
+    print(course_profile.asset_paths)
 
-    print("\Quizzes Paths ------------")
-    print(course_profile.quizzes_paths)
+    # Currently not including this
+    # print("\Quizzes Paths ------------")
+    # print(course_profile.quizzes_paths)

@@ -1,0 +1,164 @@
+{
+  "main": {
+    "id": "685e4b754a38e514",
+    "type": "split",
+    "children": [
+      {
+        "id": "bb384d9ca5272192",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4b63e1ae271687d2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Other/home.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "ee2f548f3dedf1b3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Other/home.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "eb02766f94c4255e",
+    "type": "split",
+    "children": [
+      {
+        "id": "25309bd01c182a95",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a84dd87d041ad870",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "af533d38c5a253f7",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "[[CD]",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "7510a46d28bad24f",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "2acb5a3140460b97",
+    "type": "split",
+    "children": [
+      {
+        "id": "6072e01449de1883",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "164a2bfc4ada78a2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Other/home.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "8773c0975d7aa21b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Other/home.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "84649282c67c77ee",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "a36257488fd3eab0",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Other/home.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "active": "ee2f548f3dedf1b3",
+  "lastOpenFiles": [
+    "assets/Untitled/hand.png",
+    "assets/hand.png",
+    "Other/home.md",
+    "assets/hand 1.png",
+    "assets/magneticdatastorage.png",
+    "Peripherals/keyboard.md",
+    "Other/Untitled.md",
+    "peripherals/home.md",
+    "peripherals/binary.md",
+    "storage/optical.md"
+  ]
+}
