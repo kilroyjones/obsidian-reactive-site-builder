@@ -25,14 +25,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Other/home.md",
+                "file": "Peripherals and stuff/home.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "ad82cebb41c64dd2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "home.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -98,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Other/home.md",
+                "file": "home.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Other/home.md",
+                "file": "home.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Other/home.md"
+                "file": "home.md"
               }
             }
           }
@@ -148,17 +160,17 @@
     "direction": "horizontal",
     "width": 300
   },
-  "active": "ee2f548f3dedf1b3",
+  "active": "a84dd87d041ad870",
   "lastOpenFiles": [
-    "assets/Untitled/hand.png",
-    "assets/hand.png",
+    "Peripherals and stuff/binary.md",
+    "home.md",
+    "storage/binary.md",
+    "storage/home.md",
+    "Peripherals and stuff/home.md",
+    "Peripherals and stuff/quizzes/question1.md",
+    "Peripherals and stuff/mouse.md",
     "Other/home.md",
-    "assets/hand 1.png",
-    "assets/magneticdatastorage.png",
-    "Peripherals/keyboard.md",
-    "Other/Untitled.md",
-    "peripherals/home.md",
-    "peripherals/binary.md",
-    "storage/optical.md"
+    "assets/Untitled/hand.png",
+    "assets/hand.png"
   ]
 }

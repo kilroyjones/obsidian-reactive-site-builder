@@ -38,6 +38,7 @@ class Builder:
         self.profile = profile
         self.md = markdown
         self.processors = processors
+        self.html = None
 
     def build_site(self, build_path):
         """
@@ -49,25 +50,9 @@ class Builder:
         """
         markdown_pages = self.__get_markdown()
         self.__copy_assets(build_path)
-        # self.__(markdown_pages, self.profile, output_path)
-        # markdown_pages = self.__run_processors(markdown_pages)
-        # html = self.__get_html(markdown_pages)
-        # self.__save_as_svelte(svelte_path, html)
-
-    def __setup_svelte(self, markdown_pages, profile, svelte_path):
-        """
-        Parameters:
-            pages: Markdown pages
-            params: List with profile and svelte_path at the moment.
-                additional options could be sent later.
-
-        Used to set up the svelte project.
-
-        Issue:
-            - This should be rolled into the "processors" at some point.
-        """
-        app_header = AppHeader(markdown_pages, profile, svelte_path)
-        app_header.run()
+        markdown_pages = self.__run_processors(markdown_pages)
+        self.html = self.__get_html(markdown_pages)
+        self.__save_site(build_path)
 
     def __get_markdown(self):
         """
@@ -111,41 +96,49 @@ class Builder:
         """
         html = {}
         for page in markdown_pages:
-            source = page.content
-            source = self.__add_headers(source, page.headers)
-            path = Path(str(page.path).replace(".md", ".html"))
-            html[str(path)] = self.md.markdown(source)
+            html[page.output_path + '.html'] = self.md.markdown(page.content)
         return html
 
-    def __save_as_svelte(self, destination, html):
-        """
-        Parameters:
-            destination: Root folder for existing svelte project
-            html: Writes out the svelte files to the content folder
+    def __save_site(self, build_path):
+        for page in self.html:
+            print(page, self.html[page])
+            # asset_dest = os.path.relpath(asset_source, self.profile.source).replace(' ', '_')
+            path = Path(os.path.join(build_path, page))
+            path.parent.mkdir(exist_ok=True, parents=True)
+            with open(path, 'w') as f:
+                f.write(self.html[page])
+            # shutil.copy(asset_source, asset_dest)
+        pass
 
-        Saves the svelte project. This requires an existing svelte project
-        to write to. It overwrites the App.svelte file at a later point.
-        """
-        for path in html:
-            file_path = Path(str(path).replace(str(self.profile.source) + "/", ""))
-            base = os.path.join(destination, "src/content")
-            svelte_path = os.path.join(base, file_path)
-            svelte_path = svelte_path.replace(".html", ".svelte")
-            svelte_path = svelte_path.replace(" ", "_")
-            if not os.path.exists(os.path.dirname(svelte_path)):
-                try:
-                    os.makedirs(os.path.dirname(svelte_path))
-                except OSError as e:
-                    if e.errno != errno.EEXIST:
-                        print(e)
-                        print("save_as_svelte: Error creating base folders")
-                    print(e)
-            try:
-                with open(svelte_path, "w") as f:
-                    f.write(html[path])
-            except OSError as e:
-                print(e)
-                print("save_as_svelte: file does not exist")
+    # def __save_as_svelte(self, destination, html):
+    #     """
+    #     Parameters:
+    #         destination: Root folder for existing svelte project
+    #         html: Writes out the svelte files to the content folder
+
+    #     Saves the svelte project. This requires an existing svelte project
+    #     to write to. It overwrites the App.svelte file at a later point.
+    #     """
+    #     for path in html:
+    #         file_path = Path(str(path).replace(str(self.profile.source) + "/", ""))
+    #         base = os.path.join(destination, "src/content")
+    #         svelte_path = os.path.join(base, file_path)
+    #         svelte_path = svelte_path.replace(".html", ".svelte")
+    #         svelte_path = svelte_path.replace(" ", "_")
+    #         if not os.path.exists(os.path.dirname(svelte_path)):
+    #             try:
+    #                 os.makedirs(os.path.dirname(svelte_path))
+    #             except OSError as e:
+    #                 if e.errno != errno.EEXIST:
+    #                     print(e)
+    #                     print("save_as_svelte: Error creating base folders")
+    #                 print(e)
+    #         try:
+    #             with open(svelte_path, "w") as f:
+    #                 f.write(html[path])
+    #         except OSError as e:
+    #             print(e)
+    #             print("save_as_svelte: file does not exist")
 
 
     def __run_processors(self, markdown_pages):

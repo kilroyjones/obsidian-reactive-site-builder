@@ -11,11 +11,7 @@ class Images:
         self.profile = profile
 
     def __replace_image(self, content, to_replace, image):
-        image = (
-            '<br><center><img src="static/assets/'
-            + image
-            + '"class="img-fluid"></center><br>'
-        )
+        image = '<img src="/assets/{}" alt="{}">'.format(image, image)
         return content.replace(to_replace, image)
 
     def __is_image(self, image):

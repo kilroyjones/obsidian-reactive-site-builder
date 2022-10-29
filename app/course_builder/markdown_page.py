@@ -7,7 +7,7 @@ class MarkdownPage:
         self.filename = self.__get_filename()
         self.markdown_link = self.__get_markdown_link()
         self.markdown_relative_path = self.__get_markdown_relative_path()
-        self.svelte_path = self.__get_svelte_path()
+        self.output_path = self.__get_output_path()
         self.is_homepage = self.__is_homepage()
 
     def add_header(self, header):
@@ -29,17 +29,17 @@ class MarkdownPage:
             return True
         return False
 
-    def __get_svelte_path(self):
+    def __get_output_path(self):
         return self.markdown_relative_path.replace(" ", "_")
 
     def display(self):
         print(self.section)
         # print(self.content)
         print(self.path)
-        print(self.svelte_path)
+        print(self.output_path)
         print("l", self.markdown_link)
         print("r", self.markdown_relative_path)
         print(self.headers)
         print(self.filename)
         print(self.is_homepage)
-        print(self.is_quiz)
+        # print(self.is_quiz)

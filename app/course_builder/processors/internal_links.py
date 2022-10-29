@@ -22,7 +22,7 @@ import os
 import re
 
 
-class Links:
+class InternalLinks:
     def __init__(self, markdown_pages, profile):
         """
         Parameters:
@@ -32,7 +32,7 @@ class Links:
         self.markdown_pages = markdown_pages
         self.profile = profile
 
-    def __get_svelte_path(self, link_title):
+    def __get_paths(self, link_title):
         """
         Parameters:
             link_title: The value inside the link (ie. the path) [[ link_title ]]
@@ -41,18 +41,13 @@ class Links:
         replaces the gives link_title [[ link goes here ]] with a svelte style
         link.
         """
+        link = '<a href="/{}.html">{}</a>'
         for page in self.markdown_pages:
             if (
                 link_title == page.markdown_link
                 or link_title == page.markdown_relative_path
             ):
-                return (
-                    '<a href="/'
-                    + page.svelte_path
-                    + '" use:link>'
-                    + link_title
-                    + "</a>"
-                )
+                return link.format(page.output_path, link_title) 
         return None
 
     def __process_matches(self, content, matches):
@@ -68,7 +63,7 @@ class Links:
         for match in matches:
             to_replace = match[0].strip()
             link_title = match[1].strip()
-            new_value = self.__get_svelte_path(link_title)
+            new_value = self.__get_paths(link_title)
             if new_value:
                 content = content.replace(to_replace, new_value)
         return content
@@ -94,6 +89,5 @@ class Links:
         for page in self.markdown_pages:
             matches = self.__get_all_possible_links(page.content)
             if len(matches) > 0:
-                page.add_header('import { link } from "svelte-spa-router";')
                 page.content = self.__process_matches(page.content, matches)
         return self.markdown_pages
