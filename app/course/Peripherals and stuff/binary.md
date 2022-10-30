@@ -1,4 +1,4 @@
 # Another binary 
 
-[[home]]
+[[index]]
 [[Peripherals and stuff/quizzes/question1]]

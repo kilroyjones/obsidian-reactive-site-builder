@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Other/home.md",
+                "file": "Other/index.md",
                 "mode": "source",
                 "source": false
               }
@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Peripherals and stuff/home.md",
+                "file": "Peripherals and stuff/index.md",
                 "mode": "source",
                 "source": false
               }
@@ -37,26 +37,14 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "home.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "57b994c0524f3d32",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Peripherals and stuff/sub_perphs/home.md",
+                "file": "index.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -122,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Peripherals and stuff/sub_perphs/home.md",
+                "file": "index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Peripherals and stuff/sub_perphs/home.md",
+                "file": "index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -162,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Peripherals and stuff/sub_perphs/home.md"
+                "file": "index.md"
               }
             }
           }
@@ -172,17 +160,17 @@
     "direction": "horizontal",
     "width": 300
   },
-  "active": "57b994c0524f3d32",
+  "active": "ad82cebb41c64dd2",
   "lastOpenFiles": [
-    "home.md",
-    "Peripherals and stuff/binary.md",
+    "Peripherals and stuff/index.md",
+    "index.md",
+    "Epigraphs are like blockquotes but <em>Epigraphs are italicized</em>..md",
+    "Other/index.md",
+    "assets/magneticdatastorage.png",
+    "assets/readwritehead.png",
+    "assets/sequentialdatastorage.png",
+    "storage/index.md",
     "storage/binary.md",
-    "storage/home.md",
-    "Peripherals and stuff/home.md",
-    "Peripherals and stuff/quizzes/question1.md",
-    "Peripherals and stuff/mouse.md",
-    "Other/home.md",
-    "assets/Untitled/hand.png",
-    "assets/hand.png"
+    "assets/Untitled/hand.png"
   ]
 }

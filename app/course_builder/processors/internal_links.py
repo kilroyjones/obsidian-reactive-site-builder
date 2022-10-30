@@ -18,7 +18,6 @@ Issues:
     - One other possible issue is overlaps with other "link" like structures. 
 """
 
-import os
 import re
 
 
@@ -32,7 +31,7 @@ class InternalLinks:
         self.markdown_pages = markdown_pages
         self.profile = profile
 
-    def __get_paths(self, link_title):
+    def __get_link(self, link_title):
         """
         Parameters:
             link_title: The value inside the link (ie. the path) [[ link_title ]]
@@ -41,13 +40,13 @@ class InternalLinks:
         replaces the gives link_title [[ link goes here ]] with a svelte style
         link.
         """
-        link = '<a href="/{}.html">{}</a>'
+        link = '<a href="/{}">{}</a>'
         for page in self.markdown_pages:
             if (
                 link_title == page.markdown_link
                 or link_title == page.markdown_relative_path
             ):
-                return link.format(page.output_path, link_title) 
+                return link.format(page.output_path, link_title)
         return None
 
     def __process_matches(self, content, matches):
@@ -63,9 +62,9 @@ class InternalLinks:
         for match in matches:
             to_replace = match[0].strip()
             link_title = match[1].strip()
-            new_value = self.__get_paths(link_title)
-            if new_value:
-                content = content.replace(to_replace, new_value)
+            link = self.__get_link(link_title)
+            if link:
+                content = content.replace(to_replace, link)
         return content
 
     def __get_all_possible_links(self, content):

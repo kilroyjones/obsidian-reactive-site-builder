@@ -1,4 +1,4 @@
-from builder import Builder
+from app.course_builder.site_render import Builder
 from profile import Profile
 import markdown as md
 import os

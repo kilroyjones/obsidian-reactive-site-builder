@@ -22,7 +22,7 @@ class Sidenotes:
         self.profile = profile
 
     def __get_all_possible_sidenotes(self, page):
-        return re.findall("(\$\[\[(.*?)\]\])", page)
+        return re.findall("(\$\{\{(.*?)\}\})", page)
 
     def __process_matches(self, content, matches):
         for match in matches:
