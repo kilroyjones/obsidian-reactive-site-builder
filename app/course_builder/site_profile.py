@@ -60,6 +60,11 @@ class SiteProfile:
         except Exception as e:
             print("[get_sections]", e)
 
+    def get_tree(self):
+        root = Path(self.source)
+        for path in Path(root).rglob("*"):
+            print(path)
+
     def get_section_pages(self):
         """
         Gets all the pages within the sections and returns a dictionary where
@@ -135,10 +140,12 @@ if __name__ == "__main__":
     print(course_profile.asset_paths)
 
 
-    for section in course_profile.section_pages:
-        print(section)
-        for d in course_profile.section_pages[section]: 
-            print('\t', d)
+    # for section in course_profile.section_pages:
+    #     print(section)
+    #     for d in course_profile.section_pages[section]: 
+    #         print('\t', dk)
+    print('------------')
+    print(course_profile.get_tree())
     # Currently not including this
     # print("\Quizzes Paths ------------")
     # print(course_profile.quizzes_paths)
