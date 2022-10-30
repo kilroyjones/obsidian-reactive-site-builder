@@ -49,10 +49,10 @@ class Builder:
         Primary function for the builder.
         """
         markdown_pages = self.__get_markdown()
-        self.__copy_assets(build_path)
         markdown_pages = self.__run_processors(markdown_pages)
         self.html = self.__get_html(markdown_pages)
         self.__save_site(build_path)
+        self.__copy_assets(build_path)
 
     def __get_markdown(self):
         """
@@ -64,7 +64,10 @@ class Builder:
             for path in self.profile.section_pages[section]:
                 markdown_pages.append(
                     MarkdownPage(
-                        section=section, content=self.__read_file(path), path=path
+                        self.profile.source, 
+                        section=section, 
+                        content=self.__read_file(path), 
+                        path=path
                     )
                 )
         return markdown_pages
@@ -96,12 +99,15 @@ class Builder:
         """
         html = {}
         for page in markdown_pages:
+            print(page.display())
+            print('-------------')
             html[page.output_path + '.html'] = self.md.markdown(page.content)
         return html
 
     def __save_site(self, build_path):
+        print()
         for page in self.html:
-            print(page, self.html[page])
+            # print(page, self.html[page])
             # asset_dest = os.path.relpath(asset_source, self.profile.source).replace(' ', '_')
             path = Path(os.path.join(build_path, page))
             path.parent.mkdir(exist_ok=True, parents=True)
