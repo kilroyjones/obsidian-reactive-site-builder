@@ -22,11 +22,7 @@ Issues:
       - RESOLVED: Assets included as assets_paths
 
 """
-#
-# from genericpath import isfile
 import os
-
-# import glob
 from pathlib import Path
 
 
@@ -38,10 +34,7 @@ class SiteProfile:
         """
         self.source = source
         self.sections = self.get_sections()
-        self.section_pages = self.get_section_pages()
-        self.markdown_paths = self.get_markdown_paths()
         self.asset_paths = self.get_assets_paths()
-        # self.quizzes_paths = self.get_quizzes_paths() # Currently unsupported:q
 
     def get_sections(self):
         """
@@ -49,62 +42,37 @@ class SiteProfile:
         contain markdown to be rendered.
         """
         try:
-            sections = []
-            for section in os.listdir(self.source):
-                section_path = os.path.join(self.source, section)
-                if os.path.isdir(section_path):
-                    if "index.md" in os.listdir(section_path):
-                        sections.append(section)
+            root = Path(self.source)
+            sections = {"root": []}
+            for path in Path(root).rglob("*"):
+                if not self.is_valid_path(path):
+                    continue
+                if os.path.isfile(path):
+                    if path.parent in sections:
+                        sections[path.parent].append(path)
+                    else:
+                        sections[path.parent] = [path]
             return sections
 
         except Exception as e:
             print("[get_sections]", e)
 
-    def get_tree(self):
-        root = Path(self.source)
-        for path in Path(root).rglob("*"):
-            print(path)
-
-    def get_section_pages(self):
+    def is_valid_path(self, path):
         """
-        Gets all the pages within the sections and returns a dictionary where
-        the key is the section folder and the contents are the markdown page
-        files.
+        Checks if the path is valid. A path is valid if it's:
 
-        Issues:
-            - This process only returns file immediately in the folder and is not recursive.
-                - [RESOLVED]
+            1. Not in the assets or .obsidian folders.
+            2. Is a markdown file.
         """
-        try:
-            section_pages = {}
-            for section in self.sections:
-                section_path = os.path.join(self.source, section)
-                section_pages[section] = []
-                for file_path in Path(section_path).rglob("*.md"):
-                    section_pages[section].append(str(file_path))
-            return section_pages
-
-        except Exception as e:
-            print("[get_section_pages]", e)
-
-    def get_markdown_paths(self):
-        """
-        Gets the paths of the file as key with the markdown file name as the value.
-
-        Issues:
-            - Rewrite to use os walk to get full tree and scan that way?
-        """
-        try:
-            paths = {}
-            for section in self.section_pages:
-                for page in self.section_pages[section]:
-                    route = str(page).replace(" ", "_")
-                    page = os.path.basename(route)
-                    paths[route] = page
-            return paths
-
-        except Exception as e:
-            print("[get_paths]", e)
+        excluded = [
+            os.path.join(self.source, exclude) for exclude in ["assets", ".obsidian"]
+        ]
+        for exclude in excluded:
+            if str(path).startswith(str(exclude)):
+                return False
+        if Path(path).suffix.lower() == ".md":
+            return True
+        return False
 
     def get_assets_paths(self):
         """
@@ -130,22 +98,5 @@ if __name__ == "__main__":
     print("\nSections ------------")
     print(course_profile.sections)
 
-    print("\nSection Pages ------------")
-    print(course_profile.section_pages)
-
-    print("\Markdown paths ------------")
-    print(course_profile.markdown_paths)
-
     print("\nAssests Paths ------------")
     print(course_profile.asset_paths)
-
-
-    # for section in course_profile.section_pages:
-    #     print(section)
-    #     for d in course_profile.section_pages[section]: 
-    #         print('\t', dk)
-    print('------------')
-    print(course_profile.get_tree())
-    # Currently not including this
-    # print("\Quizzes Paths ------------")
-    # print(course_profile.quizzes_paths)

@@ -5,14 +5,15 @@ import os
 import re
 from pathlib import Path
 
+
 class Images:
     def __init__(self, markdown_pages, profile):
         self.markdown_pages = markdown_pages
         self.profile = profile
 
     def __replace_image(self, content, to_replace, image):
-        if not re.search(r'assets.*', image):
-            image = 'assets/' + image
+        if not re.search(r"assets.*", image):
+            image = "assets/" + image
         image = '<img src="/{}" alt="{}">'.format(image, image)
         return content.replace(to_replace, image)
 

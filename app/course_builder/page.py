@@ -10,6 +10,7 @@ class Page:
         self.path = path
         self.headers = []
         self.rendered = ""
+        self.section_title = self.__get_section_title()
         self.filename = self.__get_filename()
         self.markdown_link = self.__get_markdown_link()
         self.markdown_relative_path = self.__get_markdown_relative_path()
@@ -18,14 +19,17 @@ class Page:
         self.is_base_homepage = self.__is_base_homepage()
 
     def __get_filename(self):
-        return self.path.split("/")[-1].strip()
+        return Path(self.path).name
+
+    def __get_section_title(self):
+        print(self.section.name)
+        return self.section.name
 
     def __get_markdown_link(self):
         return self.filename.strip()[:-3]
 
     def __get_markdown_relative_path(self):
-        index = self.path.index(self.section)
-        return self.path[index:][:-3]
+        return str(os.path.relpath(self.path, self.source))[:-3]
 
     def __get_output_path(self):
         return self.markdown_relative_path.replace(" ", "_") + ".html"
@@ -53,4 +57,3 @@ class Page:
         print("Is base homepage:", self.is_base_homepage)
         print("Content:", self.content)
         print("Rendered:", self.rendered)
-        # print(self.is_quiz)

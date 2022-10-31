@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "index.md",
+                "file": "Peripherals and stuff/index.md",
                 "mode": "source",
                 "source": false
               }
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "index.md",
+                "file": "Peripherals and stuff/index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "index.md",
+                "file": "Peripherals and stuff/index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "index.md"
+                "file": "Peripherals and stuff/index.md"
               }
             }
           }
@@ -162,15 +162,15 @@
   },
   "active": "ad82cebb41c64dd2",
   "lastOpenFiles": [
-    "Peripherals and stuff/index.md",
+    "Peripherals and stuff/521799568069754890.png",
     "index.md",
+    "Peripherals and stuff/index.md",
     "Epigraphs are like blockquotes but <em>Epigraphs are italicized</em>..md",
     "Other/index.md",
     "assets/magneticdatastorage.png",
     "assets/readwritehead.png",
     "assets/sequentialdatastorage.png",
     "storage/index.md",
-    "storage/binary.md",
-    "assets/Untitled/hand.png"
+    "storage/binary.md"
   ]
 }

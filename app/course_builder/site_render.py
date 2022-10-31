@@ -8,13 +8,11 @@ Description:
     outputs the html. 
 
 Methods:
-    read_file
-    get_markdown
-    get_html
-    save_as_svelte
-    setup_svelte
-    run_processors
-    output_markdown
+    render
+    __get_markdown
+    __read_file
+    __run_processors
+    __render_html
 
 Issues:
     - Probably should clean up some of the naming scheme (output_markdown)
@@ -28,7 +26,7 @@ class SiteRender:
     def __init__(self, profile, processors):
         """
         Parameters:
-            profile: Create in profile.py a contains project data
+            profile: from SiteProfile, contains project file overview
             markdown: Is the markdown processor
             processors: A list of classes that will be run on the markdown (plugins)
         """
@@ -38,11 +36,7 @@ class SiteRender:
 
     def __render(self):
         """
-        Parameters:
-            output_path: destination folder
-
-
-        Primary function for the builder.
+        Rendering the individual page content
         """
         pages = self.__get_markdown()
         pages = self.__run_processors(pages)
@@ -55,7 +49,7 @@ class SiteRender:
         """
         pages = []
         for section in self.profile.sections:
-            for path in self.profile.section_pages[section]:
+            for path in self.profile.sections[section]:
                 pages.append(
                     Page(
                         self.profile.source,
@@ -64,6 +58,8 @@ class SiteRender:
                         path=path,
                     )
                 )
+                # pages[-1].display()
+                # print('----------------------')
         return pages
 
     def __read_file(self, source):
@@ -78,6 +74,7 @@ class SiteRender:
                 return f.read()
         except Exception as e:
             print("[__read_file]", e)
+            return
 
     def __run_processors(self, pages):
         """
@@ -89,14 +86,12 @@ class SiteRender:
         for Processor in self.processors:
             processor = Processor(pages, self.profile)
             pages = processor.run()
-        return pages 
+        return pages
 
     def __render_html(self, markdown_pages):
         """
         Converts all the markdown to html and updates the markdown_pages object.
         """
-        print(md)
-        print(markdown_pages)
         for page in markdown_pages:
             page.rendered = md.markdown(page.content)
         return markdown_pages
