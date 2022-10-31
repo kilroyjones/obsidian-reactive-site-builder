@@ -58,8 +58,6 @@ class SiteRender:
                         path=path,
                     )
                 )
-                # pages[-1].display()
-                # print('----------------------')
         return pages
 
     def __read_file(self, source):

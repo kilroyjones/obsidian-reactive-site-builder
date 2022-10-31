@@ -9,7 +9,6 @@ from site_profile import SiteProfile
 from site_render import SiteRender
 from processors.internal_links import InternalLinks
 from processors.images import Images
-from processors.quizzes import Quizzes
 from processors.sidenotes import Sidenotes
 
 if __name__ == "__main__":

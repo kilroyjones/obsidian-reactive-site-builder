@@ -101,7 +101,13 @@ class SiteBuilder:
         """
         menu = []
         menu_item = '<div class="navigation-item"><a href="/{}">{}</a></div>'
+        homepage = ''
         for page in pages:
-            if page.is_base_homepage:
+            if page.is_navigation_item:
                 menu.append(menu_item.format(page.output_path, page.section_title))
-        return "\n".join(reversed(menu))
+            if page.is_homepage:
+                homepage = '<div class="navigation-item homepage"><a href="/{}">Home</a></div>'
+                homepage = homepage.format(page.output_path)
+                print(homepage)
+
+        return homepage + "\n".join(reversed(menu))

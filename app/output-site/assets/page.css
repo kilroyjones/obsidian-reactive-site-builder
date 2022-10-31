@@ -17,6 +17,8 @@ body {
 .navigation {
   display: flex;
   justify-content: end;
+  padding: 10px;
+  padding-right: 30px;
 }
 
 .navigation-item {

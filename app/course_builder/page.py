@@ -15,8 +15,9 @@ class Page:
         self.markdown_link = self.__get_markdown_link()
         self.markdown_relative_path = self.__get_markdown_relative_path()
         self.output_path = self.__get_output_path()
+        self.is_index = self.__is_index()
+        self.is_navigation_item = self.__is_navigation_item()
         self.is_homepage = self.__is_homepage()
-        self.is_base_homepage = self.__is_base_homepage()
 
     def __get_filename(self):
         return Path(self.path).name
@@ -34,15 +35,22 @@ class Page:
     def __get_output_path(self):
         return self.markdown_relative_path.replace(" ", "_") + ".html"
 
-    def __is_homepage(self):
+    def __is_index(self):
         if self.filename.lower() == "index.md":
             return True
         return False
 
-    def __is_base_homepage(self):
-        if self.is_homepage:
+    def __is_navigation_item(self):
+        if self.is_index:
             path = Path(os.path.relpath(self.path, self.source))
             if len(path.parents) == 2:
+                return True
+        return False
+
+    def __is_homepage(self):
+        if self.is_index:
+            path = Path(os.path.relpath(self.path, self.source))
+            if len(path.parents) == 1:
                 return True
         return False
 
@@ -53,7 +61,7 @@ class Page:
         print("MD link:", self.markdown_link)
         print("MD rel link:", self.markdown_relative_path)
         print("Filename:", self.filename)
-        print("Is homepage:", self.is_homepage)
-        print("Is base homepage:", self.is_base_homepage)
+        print("Is homepage:", self.is_index)
+        print("Is base homepage:", self.is_navigation_item)
         print("Content:", self.content)
         print("Rendered:", self.rendered)
