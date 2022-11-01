@@ -1,14 +1,14 @@
 """
-Class: Builder
+Class: SiteRender 
 
 Description:
 
-    This is the main folder for the course builder. It mainly sets up the 
-    folders in the svelte project, gets loads the markdown files, and 
-    outputs the html. 
+    This class is in charge of rendering the markdown and running through the 
+    processors. Its primary purpose is to create a list of pages (Page class as
+    found in page.py) which can be compiled into the site by the SiteRender class. 
 
 Methods:
-    render
+    __render
     __get_markdown
     __read_file
     __run_processors
@@ -18,6 +18,7 @@ Issues:
     - Probably should clean up some of the naming scheme (output_markdown)
 """
 
+import logging
 import markdown as md
 from page import Page
 
@@ -27,7 +28,6 @@ class SiteRender:
         """
         Parameters:
             profile: from SiteProfile, contains project file overview
-            markdown: Is the markdown processor
             processors: A list of classes that will be run on the markdown (plugins)
         """
         self.profile = profile
@@ -70,26 +70,21 @@ class SiteRender:
         try:
             with open(source) as f:
                 return f.read()
-        except Exception as e:
-            print("[__read_file]", e)
-            return
+        except Exception:
+            logging.exception("Error reading the markdown file.")
+            return "[Error processing this file]"
 
     def __run_processors(self, pages):
         """
         Parameters:
-            markdown_pages: dictionary of markdown pages
-
-        Loops through the processors and executes them using the run method.
+            markdown_pages: dictionary of markdown pages (Page - page.py)
         """
         for Processor in self.processors:
-            processor = Processor(pages, self.profile)
+            processor = Processor(pages)
             pages = processor.run()
         return pages
 
     def __render_html(self, markdown_pages):
-        """
-        Converts all the markdown to html and updates the markdown_pages object.
-        """
         for page in markdown_pages:
             page.rendered = md.markdown(page.content)
         return markdown_pages

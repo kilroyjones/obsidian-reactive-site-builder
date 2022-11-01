@@ -1,1 +1,0 @@
-<h1>Direct data storage</h1>

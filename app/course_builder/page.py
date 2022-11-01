@@ -1,3 +1,23 @@
+"""
+Class: Page 
+
+Description:
+
+    Used to represent each individual markdown page.
+
+Methods:
+    __get_section_title
+    __get_markdown_link
+    __get_markdown_relative_path
+    __get_output_path
+    __is_index
+    __is_navigation_item
+    __is_homepage
+
+Issues:
+    - See is_homepage function
+
+"""
 import os
 from pathlib import Path
 
@@ -10,21 +30,14 @@ class Page:
         self.path = path
         self.headers = []
         self.rendered = ""
-        self.section_title = self.__get_section_title()
-        self.filename = self.__get_filename()
+        self.section_title = self.section.name
+        self.filename = Path(self.path).name
         self.markdown_link = self.__get_markdown_link()
         self.markdown_relative_path = self.__get_markdown_relative_path()
         self.output_path = self.__get_output_path()
         self.is_index = self.__is_index()
         self.is_navigation_item = self.__is_navigation_item()
         self.is_homepage = self.__is_homepage()
-
-    def __get_filename(self):
-        return Path(self.path).name
-
-    def __get_section_title(self):
-        print(self.section.name)
-        return self.section.name
 
     def __get_markdown_link(self):
         return self.filename.strip()[:-3]
@@ -41,6 +54,10 @@ class Page:
         return False
 
     def __is_navigation_item(self):
+        """
+        If it's an index.md in one of the folders at the root level then it 
+        gets a navigation link.
+        """
         if self.is_index:
             path = Path(os.path.relpath(self.path, self.source))
             if len(path.parents) == 2:
@@ -48,6 +65,12 @@ class Page:
         return False
 
     def __is_homepage(self):
+        """
+        If the index.md file as at the root level then it's our homepage.
+
+        Issues: 
+            - This is a really bad way of doing this since it checks all files. 
+        """
         if self.is_index:
             path = Path(os.path.relpath(self.path, self.source))
             if len(path.parents) == 1:
@@ -55,6 +78,9 @@ class Page:
         return False
 
     def display(self):
+        """
+        Used for debugging
+        """
         print("Section:", self.section)
         print("Path:", self.path)
         print("Output path:", self.output_path)

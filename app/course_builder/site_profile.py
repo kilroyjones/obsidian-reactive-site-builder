@@ -3,26 +3,25 @@ Class: Profile
 
 Description:
 
-    Contains all information about the course being parsed. The source folder 
-    should be the base folder of the project and conform to the Obsidian 
-    format. 
+    Contains information about the structure of the vault being parsed. 
+
+    Assumptions are made such as: 
+        - All folders aside from assets and .obsidian will be rendered
+        - All assets, such as images, are stored in the assets folder. 
+        - Both content and nested folders may be nested
+
 
 Methods:
-    get_sections
-    get_section_pages
-    get_page_paths
+    __get_sections
+    __is_valid_file
+    __get_asset_paths
 
 Issues:
-    - Currently only works with one level under each section, so nested
-      folders will not be included.
-      - RESOLVED: Should be fixed at this point
-     
-    
-    - Assets folder not yet included.
-      - RESOLVED: Assets included as assets_paths
+    - It would be nice to include assets stored in any folder. 
 
 """
 import os
+import logging
 from pathlib import Path
 
 
@@ -33,10 +32,10 @@ class SiteProfile:
             source: base folder of the project
         """
         self.source = source
-        self.sections = self.get_sections()
-        self.asset_paths = self.get_assets_paths()
+        self.sections = self.__get_sections()
+        self.asset_paths = self.__get_assets_paths()
 
-    def get_sections(self):
+    def __get_sections(self):
         """
         Gets all folders which are not the asset folder. These files should
         contain markdown to be rendered.
@@ -45,7 +44,7 @@ class SiteProfile:
             root = Path(self.source)
             sections = {"root": []}
             for path in Path(root).rglob("*"):
-                if not self.is_valid_path(path):
+                if not self.__is_valid_path(path):
                     continue
                 if os.path.isfile(path):
                     if path.parent in sections:
@@ -54,13 +53,12 @@ class SiteProfile:
                         sections[path.parent] = [path]
             return sections
 
-        except Exception as e:
-            print("[get_sections]", e)
+        except Exception:
+            logging.exception("Error getting sections!")
 
-    def is_valid_path(self, path):
+    def __is_valid_path(self, path):
         """
         Checks if the path is valid. A path is valid if it's:
-
             1. Not in the assets or .obsidian folders.
             2. Is a markdown file.
         """
@@ -74,7 +72,7 @@ class SiteProfile:
             return True
         return False
 
-    def get_assets_paths(self):
+    def __get_assets_paths(self):
         """
         Gets the assets paths as key with the filename name as value.
 
@@ -89,8 +87,8 @@ class SiteProfile:
                     asset_paths[str(asset_path)] = asset
             return asset_paths
 
-        except Exception as e:
-            print("[get_assets_paths]", e)
+        except Exception:
+            logging.exception("Error getting assets_paths!")
 
 
 if __name__ == "__main__":

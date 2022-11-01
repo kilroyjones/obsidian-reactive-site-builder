@@ -1,1 +1,0 @@
-<h1>Primary storage</h1>

@@ -26,6 +26,11 @@ body {
   padding: 10px;
 }
 
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
 .content {
   padding-top: 60px;
   margin: auto;

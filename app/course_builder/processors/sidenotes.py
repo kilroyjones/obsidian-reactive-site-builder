@@ -7,21 +7,22 @@ Description:
     of the aside tag.  
 
 Methods:
+    __get_possible_sidenotes
+    __process_matches
+    run
 
-
-Issues:
-    - Probably should clean up some of the naming scheme (output_markdown)
 """
-import os
 import re
 
 
 class Sidenotes:
-    def __init__(self, markdown_pages, profile):
+    def __init__(self, markdown_pages):
         self.markdown_pages = markdown_pages
-        self.profile = profile
 
     def __get_possible_sidenotes(self, page):
+        """
+        Sidenotes are creating in Obsidian using the pattern ${{ place note here }}
+        """
         return re.findall("(\${{(.*?)}})", page)
 
     def __process_matches(self, content, matches):
@@ -34,11 +35,7 @@ class Sidenotes:
 
     def run(self):
         for page in self.markdown_pages:
-            content = page.content
-            matches = self.__get_possible_sidenotes(content)
-            print(matches)
-
+            matches = self.__get_possible_sidenotes(page.content)
             if len(matches) > 0:
-                page.content = self.__process_matches(content, matches)
-                # print(page.content)
+                page.content = self.__process_matches(page.content, matches)
         return self.markdown_pages
