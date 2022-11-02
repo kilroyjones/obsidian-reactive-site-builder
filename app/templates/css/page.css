@@ -1,0 +1,162 @@
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  color: #333;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+    "Helvetica Neue", sans-serif;
+}
+
+.navigation {
+  display: flex;
+  justify-content: end;
+  padding: 10px;
+  padding-right: 30px;
+}
+
+.navigation-item {
+  font-size: 18px;
+  padding: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.content {
+  padding-top: 60px;
+  margin: auto;
+  width: 70%;
+  min-width: 360px;
+  max-width: 600px;
+}
+
+img {
+  display: block;
+  margin: auto;
+  max-width: 80%;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+h1 {
+  font-family: "Varela Round";
+  font-size: 48px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  color: #264653;
+  line-height: 26.4px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-family: "Varela Round";
+  font-size: 32px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  color: #264653;
+  line-height: 15.4px;
+}
+
+h3 {
+  font-family: "Varela Round";
+  font-size: 24px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  color: #264653;
+  line-height: 15.4px;
+}
+
+h4 {
+  font-family: "Varela Round";
+  font-size: 18px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  color: #264653;
+  line-height: 15.4px;
+}
+
+p {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: "Open sans";
+  font-size: 16px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 28px;
+  max-width: 900px;
+}
+
+blockquote {
+  font-family: "Open sans";
+  font-size: 21px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+pre {
+  font-family: "Open sans";
+  font-size: 13px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 18.5714px;
+}
+
+a {
+  color: rgb(219, 101, 54);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #355f70;
+}
+
+button {
+  font-family: "Open sans";
+  font-size: 16px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+aside,
+.aside {
+  position: relative;
+  display: inline;
+  float: right;
+  width: 10vw;
+  margin-right: -12vw;
+  font-size: 14px;
+  color: red;
+}
+
+@media (max-width: 900px) {
+  aside,
+  .aside {
+    display: block;
+    float: none;
+    margin: 5% 10% 5% 10%;
+    width: 80%;
+    font-size: 16px;
+    color: red;
+  }
+}
