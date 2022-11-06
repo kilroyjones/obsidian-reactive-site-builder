@@ -43,7 +43,9 @@ class SiteBuilder:
         replacing spaces with underscores to avoid issues with the url.
         """
         try: 
-            shutil.copy("./templates/css/page.css", self.build_path + "/assets/page.css")
+            css_source = os.path.join(self.profile.source, '.theme/page.css')
+            css_dest = os.path.join(self.build_path, 'assets/page.css')
+            shutil.copy(css_source, css_dest)
         except Exception: 
             logging.exception("Error copying page.css to asssets folder!")
 
@@ -64,7 +66,7 @@ class SiteBuilder:
         """
         header = self.__get_header()
         menu = self.__get_navigation_menu(self.render.pages)
-        page_template = self.__get_page_template("./templates/page.html")
+        page_template = self.__get_page_template(os.path.join(self.profile.source, '.theme/page.html'))
         page_template = re.sub("{{\s*header\s*}}", header, page_template)
 
         for page in self.render.pages:

@@ -4,14 +4,13 @@ Class: SiteRender
 Description:
 
     This class is in charge of rendering the markdown and running through the 
-    processors. Its primary purpose is to create a list of pages (Page class as
+    extensions. Its primary purpose is to create a list of pages (Page class as
     found in page.py) which can be compiled into the site by the SiteRender class. 
 
 Methods:
     __render
-    __get_markdown
+    __build_pages
     __read_file
-    __run_processors
     __render_html
 
 Issues:
@@ -24,25 +23,31 @@ from page import Page
 
 
 class SiteRender:
-    def __init__(self, profile, processors):
+    def __init__(self, profile, extensions):
         """
         Parameters:
             profile: from SiteProfile, contains project file overview
-            processors: A list of classes that will be run on the markdown (plugins)
+            extensions: A list of classes that will be run on the markdown (plugins)
         """
         self.profile = profile
-        self.processors = processors
+        self.extensions = extensions 
         self.pages = self.__render()
 
     def __render(self):
         """
         Rendering the individual page content
         """
-        pages = self.__get_markdown()
-        pages = self.__run_processors(pages)
-        return self.__render_html(pages)
+        pages = self.__build_pages()
+        for page in pages:
+            page.rendered = md.markdown(page.content, extensions=['fenced_code', 'codehilite', 'sane_lists'])
+            page = self.__run_extensions(page) 
+        return pages
 
-    def __get_markdown(self):
+        # for i in range(len(pages)):
+        #     pages[i].rendered = md.markdown(pages[i].content, extensions=['fenced_code', 'codehilite', 'sane_lists'])
+        #     pages[i] = self.__run_extension(pages[i]) 
+
+    def __build_pages(self):
         """
         Reads from the root markdown folder and builds a dictionary with the
         path as the key and the markdown content as the value.
@@ -74,17 +79,13 @@ class SiteRender:
             logging.exception("Error reading the markdown file.")
             return "[Error processing this file]"
 
-    def __run_processors(self, pages):
+    def __run_extensions(self, page):
         """
         Parameters:
-            markdown_pages: dictionary of markdown pages (Page - page.py)
+            Page: A single Page object 
         """
-        for Processor in self.processors:
-            processor = Processor(pages)
-            pages = processor.run()
-        return pages
+        for Extension in self.extensions:
+            extension = Extension(page)
+            page = extension.run()
+        return page
 
-    def __render_html(self, markdown_pages):
-        for page in markdown_pages:
-            page.rendered = md.markdown(page.content)
-        return markdown_pages

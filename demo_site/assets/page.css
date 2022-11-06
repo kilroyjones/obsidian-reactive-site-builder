@@ -12,6 +12,7 @@ body {
   box-sizing: border-box;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial,
     sans-serif;
+  padding-bottom: 60px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -35,6 +36,27 @@ body {
   .aside,
   aside {
     color: #f7bfcd;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #eaff9f;
+  }
+
+  ul {
+    list-style: none; /* Remove default bullets */
+  }
+
+  ul li::before {
+    content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: #a2d2fb; /* Change the color */
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 1em; /* Also needed for space (tweak if needed) */
+    margin-left: -1em; /* Also needed for space (tweak if needed) */
   }
 
   /** CODE FORMATTING */
@@ -274,6 +296,27 @@ body {
   .aside,
   aside {
     color: #ca611c;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #383838;
+  }
+
+  ul {
+    list-style: none; /* Remove default bullets */
+  }
+
+  ul li::before {
+    content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: #0059a7; /* Change the color */
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 1em; /* Also needed for space (tweak if needed) */
+    margin-left: -1em; /* Also needed for space (tweak if needed) */
   }
 
   /** CODE FORMATTING */
@@ -539,6 +582,9 @@ blockquote p {
 
 blockquote {
   border-left: 4px solid;
+  padding-left: 30px;
+  margin-inline-start: 20px;
+  /* margin-inline-start: 20xp; */
 }
 
 code {
@@ -580,22 +626,25 @@ h6 {
   font-variant: normal;
   font-weight: 700;
 }
+
 h1 {
   font-size: 48px;
   line-height: 26.4px;
+  margin-top: 40px;
   margin-bottom: 60px;
 }
 
 h2 {
   font-size: 32px;
   line-height: 15.4px;
-  margin-bottom: 40px;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 
 h3 {
   font-size: 24px;
   line-height: 15.4px;
-
+  margin-top: 40px;
   margin-bottom: 20px;
 }
 
@@ -612,7 +661,13 @@ img {
   max-height: 420px;
   padding-top: 6px;
   padding-bottom: 6px;
-  border-radius: 5px;
+  border-radius: 10px;
+}
+
+li {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
 }
 
 .navigation {
@@ -623,6 +678,7 @@ img {
 }
 
 .navigation-item {
+  font-weight: 700;
   font-size: 18px;
   padding: 10px;
 }
@@ -630,7 +686,7 @@ img {
 p {
   padding-top: 10px;
   padding-bottom: 10px;
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-variant: normal;
   font-weight: 400;

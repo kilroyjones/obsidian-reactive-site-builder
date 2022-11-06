@@ -25,8 +25,8 @@ import re
 
 
 class InternalLinks:
-    def __init__(self, markdown_pages):
-        self.markdown_pages = markdown_pages
+    def __init__(self, page):
+        self.page = page 
 
     def __get_link(self, link_title):
         """
@@ -34,12 +34,11 @@ class InternalLinks:
             link_title: The value inside the link (ie. the path) [[ link_title ]]
         """
         link = '<a href="/{}">{}</a>'
-        for page in self.markdown_pages:
-            if (
-                link_title == page.markdown_link
-                or link_title == page.markdown_relative_path
-            ):
-                return link.format(page.output_path, link_title)
+        if (
+            link_title == self.page.markdown_link
+            or link_title == self.page.markdown_relative_path
+        ):
+            return link.format(self.page.output_path, link_title)
         return None
 
     def __process_matches(self, content, matches):
@@ -66,8 +65,8 @@ class InternalLinks:
         return re.findall("[^$!](\[\[(.*?)\]\])", content)
 
     def run(self):
-        for page in self.markdown_pages:
-            matches = self.__get_all_possible_links(page.content)
-            if len(matches) > 0:
-                page.content = self.__process_matches(page.content, matches)
-        return self.markdown_pages
+        content = self.page.rendered
+        matches = self.__get_all_possible_links(content)
+        if len(matches) > 0:
+            self.page.rendered = self.__process_matches(content, matches)
+        return self.page 
