@@ -7,8 +7,8 @@ Description:
    create a menu, move assets and add headers (CSS) as found in the template folder.
 
 Methods:
-    __copy_assets
-    __save_site
+   copy_assets
+   save_site
     __get_header
     __get_page_template
     __get_navigation_menu
@@ -34,10 +34,8 @@ class SiteBuilder:
         self.profile = profile
         self.render = render
         self.build_path = build_path
-        self.__copy_assets()
-        self.__save_site()
 
-    def __copy_assets(self):
+    def copy_assets(self):
         """
         Copy all assets from the assets folder, including the primary stylesheet,
         replacing spaces with underscores to avoid issues with the url.
@@ -59,7 +57,7 @@ class SiteBuilder:
             except Exception: 
                 logging.exception("Error copying ")
 
-    def __save_site(self):
+    def save_site(self):
         """
         This uses the page.html template and adds the head information along with the
         menu. It then writes these files out to the build folder.
