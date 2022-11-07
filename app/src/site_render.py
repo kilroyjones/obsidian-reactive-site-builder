@@ -84,8 +84,7 @@ class SiteRender:
         Parameters:
             Page: A single Page object 
         """
-        for Extension in self.extensions:
-            extension = Extension(page)
-            page = extension.run()
+        for extension in self.extensions:
+            page = extension.run(page)
         return page
 

@@ -40,12 +40,6 @@ class SiteBuilder:
         Copy all assets from the assets folder, including the primary stylesheet,
         replacing spaces with underscores to avoid issues with the url.
         """
-        try: 
-            css_source = os.path.join(self.profile.source, '.theme/page.css')
-            css_dest = os.path.join(self.build_path, 'assets/page.css')
-            shutil.copy(css_source, css_dest)
-        except Exception: 
-            logging.exception("Error copying page.css to asssets folder!")
 
         for asset_source in self.profile.asset_paths:
             asset_dest = os.path.relpath(asset_source, self.profile.source)
@@ -56,6 +50,13 @@ class SiteBuilder:
                 shutil.copy(asset_source, asset_dest)
             except Exception: 
                 logging.exception("Error copying ")
+
+        try: 
+            css_source = os.path.join(self.profile.source, '.theme/page.css')
+            css_dest = os.path.join(self.build_path, 'assets/page.css')
+            shutil.copy(css_source, css_dest)
+        except Exception: 
+            logging.exception("Error copying page.css to asssets folder!")
 
     def save_site(self):
         """

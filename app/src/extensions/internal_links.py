@@ -11,7 +11,6 @@ Description:
     handled by the markdown renderer. 
 
 Methods:
-    __get_link
     __process_matches
     run
 
@@ -23,50 +22,31 @@ Issues:
 
 import re
 
+def __process_matches(page, content, matches):
+    """
+    Parameters:
+        content: The content of the markdown page.
+        matches: All links within the page.
+    """
+    url = '<a href="/{}.html">{}</a>'
+    for match in matches:
+        to_replace = match[0].strip()
+        href = match[1].strip()
+        content = content.replace(to_replace, url.format(href, href))
+    return content
 
-class InternalLinks:
-    def __init__(self, page):
-        self.page = page 
+def __get_all_possible_links(content):
+    """
+    Parameters:
+        content: The content of the Markdown page.
 
-    def __get_link(self, link_title):
-        """
-        Parameters:
-            link_title: The value inside the link (ie. the path) [[ link_title ]]
-        """
-        link = '<a href="/{}">{}</a>'
-        if (
-            link_title == self.page.markdown_link
-            or link_title == self.page.markdown_relative_path
-        ):
-            return link.format(self.page.output_path, link_title)
-        return None
+    Finds all links while avoid images (!)
+    """
+    return re.findall("[^$!](\[\[(.*?)\]\])", content)
 
-    def __process_matches(self, content, matches):
-        """
-        Parameters:
-            content: The content of the markdown page.
-            matches: All links within the page.
-        """
-        for match in matches:
-            to_replace = match[0].strip()
-            link_title = match[1].strip()
-            link = self.__get_link(link_title)
-            if link:
-                content = content.replace(to_replace, link)
-        return content
-
-    def __get_all_possible_links(self, content):
-        """
-        Parameters:
-            content: The content of the Markdown page.
-
-        Finds all links while avoid images (!)
-        """
-        return re.findall("[^$!](\[\[(.*?)\]\])", content)
-
-    def run(self):
-        content = self.page.rendered
-        matches = self.__get_all_possible_links(content)
-        if len(matches) > 0:
-            self.page.rendered = self.__process_matches(content, matches)
-        return self.page 
+def run(page):
+    content = page.rendered
+    matches = __get_all_possible_links(content)
+    if len(matches) > 0:
+        page.rendered = __process_matches(page, content, matches)
+    return page 

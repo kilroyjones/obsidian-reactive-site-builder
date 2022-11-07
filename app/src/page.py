@@ -43,6 +43,8 @@ class Page:
         return self.filename.strip()[:-3]
 
     def __get_markdown_relative_path(self):
+        # print(self.path, self.source)
+        # print('test', str(os.path.relpath(self.path, self.source))[:-3])
         return str(os.path.relpath(self.path, self.source))[:-3]
 
     def __get_output_path(self):
@@ -89,5 +91,5 @@ class Page:
         print("Filename:", self.filename)
         print("Is homepage:", self.is_index)
         print("Is base homepage:", self.is_navigation_item)
-        print("Content:", self.content)
-        print("Rendered:", self.rendered)
+        # print("Content:", self.content)
+        # print("Rendered:", self.rendered)

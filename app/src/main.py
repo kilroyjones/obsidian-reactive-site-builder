@@ -4,9 +4,7 @@
 
 import logging
 import sys
-from extensions.internal_links import InternalLinks
-from extensions.images import Images
-from extensions.sidenotes import Sidenotes
+from extensions import images, internal_links, sidenotes
 from path_check import *
 from site_builder import SiteBuilder
 from site_profile import SiteProfile
@@ -22,7 +20,6 @@ def main():
 
     input_path = sys.argv[1]
     build_path = sys.argv[2]
-
     if not does_vault_path_exist(input_path):
         quit('')
         
@@ -32,8 +29,10 @@ def main():
     prepare_build_path(build_path)
 
     profile = SiteProfile(input_path)
-    render = SiteRender(profile, [Images, InternalLinks, Sidenotes])
+    render = SiteRender(profile, [images, internal_links, sidenotes])
     builder = SiteBuilder(profile, render, build_path)
     builder.copy_assets()
     builder.save_site()
 
+if __name__ == "__main__":
+    main()
