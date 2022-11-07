@@ -10,6 +10,8 @@ You can put these in as issues as you find them and when I have the time I'll wo
 
 ## Installation
 
+Clone the repo
+
 ### Using pip
 
 ### With the repo
