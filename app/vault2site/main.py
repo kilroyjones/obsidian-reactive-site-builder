@@ -33,6 +33,7 @@ def main():
     builder = SiteBuilder(profile, render, build_path)
     builder.copy_assets()
     builder.save_site()
+    print('Site rendered')
 
 if __name__ == "__main__":
     main()

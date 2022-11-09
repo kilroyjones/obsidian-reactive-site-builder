@@ -26,11 +26,11 @@ body {
   }
 
   a {
-    color: #7ce38b;
+    color: #b2fabd;
   }
 
   a:hover {
-    color: #f0f0f0;
+    color: #75fc89;
   }
 
   .aside,
@@ -44,7 +44,7 @@ body {
   h4,
   h5,
   h6 {
-    color: #eaff9f;
+    color: #ecffa6;
   }
 
   ul {
@@ -290,7 +290,7 @@ body {
   }
 
   a:hover {
-    color: #282828;
+    color: #0c9b21;
   }
 
   .aside,
@@ -539,14 +539,6 @@ body {
   } /* Literal.Number.Integer.Long */
 }
 
-a {
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
 aside,
 .aside {
   position: relative;
@@ -675,6 +667,10 @@ li {
   justify-content: end;
   padding: 10px;
   padding-right: 30px;
+}
+
+.navigation a {
+  text-decoration: none;
 }
 
 .navigation-item {

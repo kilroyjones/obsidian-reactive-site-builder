@@ -2,7 +2,7 @@
 
 ### Introduction
 
-I built this because I wanted to take simple Obsidian vaults and convert them into a static site. By simple I mean that in its current state the program will fail to render certain things, such as resizing images, like below:
+I built this because I wanted to take simple Obsidian vaults and convert them into static sites. By simple I mean that in its current state the program will fail to render certain things, such as resizing images, like below:
 
 ```markdown
 ![[image.jpg|size]]

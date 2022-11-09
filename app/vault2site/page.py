@@ -91,5 +91,5 @@ class Page:
         print("Filename:", self.filename)
         print("Is homepage:", self.is_index)
         print("Is base homepage:", self.is_navigation_item)
-        # print("Content:", self.content)
-        # print("Rendered:", self.rendered)
+        print("Content:", self.content)
+        print("Rendered:", self.rendered)

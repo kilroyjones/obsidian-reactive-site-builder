@@ -4,20 +4,19 @@ build-backend = "hatchling.build"
 
 [project]
 name = "vault2site"
-version = "0.0.3"
+version = "0.0.1"
 authors = [{name="kilroyjones"}]
 description = "Converts Obsidian.md vaults to a static site"
 readme = "README.md"
 requires-python = ">=3.8"
+
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-entry_points={
-    'console_scripts': [
-        'vault2site = vault2site.main:main',
-    ],
-},
+
+[project.scripts]
+vault2site = "vault2site.main:main"
 
 
