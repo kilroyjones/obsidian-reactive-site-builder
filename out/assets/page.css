@@ -55,7 +55,7 @@ h1 {
   font-weight: 700;
   color: #264653;
   line-height: 26.4px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 h2 {
@@ -66,6 +66,7 @@ h2 {
   font-weight: 700;
   color: #264653;
   line-height: 15.4px;
+  margin-bottom: 20px;
 }
 
 h3 {
@@ -76,6 +77,7 @@ h3 {
   font-weight: 700;
   color: #264653;
   line-height: 15.4px;
+  margin-bottom: 16px;
 }
 
 h4 {
@@ -86,6 +88,7 @@ h4 {
   font-weight: 700;
   color: #264653;
   line-height: 15.4px;
+  margin-bottom: 16px;
 }
 
 p {

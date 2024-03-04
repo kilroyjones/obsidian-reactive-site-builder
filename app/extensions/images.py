@@ -1,7 +1,9 @@
 """
 Class: Images
-pageescription:
-page This takes in the profile and rendered content and builds the site fro pageit. It will
+
+Description: 
+  
+   This takes in the profile and rendered content and builds the site fro pageit. It will
    create a menu, move assets and add headers (CSS) as found in the template folder.
 
 Methods:
