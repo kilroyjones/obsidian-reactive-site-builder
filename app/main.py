@@ -9,9 +9,9 @@ sys.path.append(os.path.dirname(__file__)) # Still need to fix this
 
 from extensions import images, internal_links, sidenotes
 from path_check import *
-from .site_builder import SiteBuilder
-from .site_profile import SiteProfile
-from .site_render import SiteRender
+from site_builder import SiteBuilder
+from site_profile import SiteProfile
+from site_render import SiteRender
 
 logger = logging.getLogger(__name__)
 

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/assets/page.css">
+  </head>
+  <body>
+    <div class="navigation"><div class="navigation-item homepage"><a href="/index.html">Home</a></div><div class="navigation-item"><a href="/Example/index.html">Example</a></div>
+<div class="navigation-item"><a href="/Installation/index.html">Installation</a></div></div>
+    <div class="content"><h2>Installation</h2>
+<h3>Using pip</h3>
+<p>This is the easiest way.</p>
+<pre class="codehilite"><code class="language-bash">pip install vault2site
+</code></pre>
+
+<p>Then just use as you would a normal console app:</p>
+<pre class="codehilite"><code>vault2site &lt;vault path&gt; &lt;output path&gt;
+</code></pre>
+
+<h3>From source</h3>
+<p>This assumes you'll be installing it to a virtual environment.</p>
+<pre class="codehilite"><code class="language-bash">git clone https://github.com/kilroyjones/vault2site
+cd vault2site
+virtualenv -p python3 venv
+. venv/bin/activate
+pip install -r requirements.txt
+</code></pre>
+
+<p>From this point you can run the program as follows:</p>
+<pre class="codehilite"><code class="language-bash">python app/vault2site/main.py &lt;vault path&gt; &lt;output path&gt;
+</code></pre>
+
+<p>Or, alternatively you can use pip and install it:</p>
+<pre class="codehilite"><code class="language-bash">cd app
+pip install .
+</code></pre>
+
+<p>Then, same as using pip you can run it as:</p>
+<pre class="codehilite"><code>vault2site &lt;vault path&gt; &lt;output path&gt;
+</code></pre></div>
+  </body>
+</html>

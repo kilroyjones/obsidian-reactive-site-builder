@@ -1,6 +1,6 @@
 # Vault to site
 
-A program to convert Obsidian vaults into a static site. At the moment only the basic features of Obsidian are implemented and the program will fail to render certain things correctly, such as resizing an image as shown below.
+A program to convert Obsidian vaults into a static site. You can see an example of finished site with the default theme [here](https://vault2site.pages.dev/). At the moment only the basic features of Obsidian are implemented and the program will fail to render certain things correctly, such as resizing an image as shown below.
 
 ```markdown
 ![[image.jpg|size]]
